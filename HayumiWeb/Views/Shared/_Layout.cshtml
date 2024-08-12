@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]  Hayumi - Loja de autopeças</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/HayumiWeb.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="ss d-flex justify-content-evenly align-items-center mb-3 " style="background-color:#002454;">
+            <a class="" href="" style="text-decoration-line: none;color: #FFFFFF;cursor: pointer;">A confiança que move seu <span style="color:#FFCC00">carro</span></a>
+            <a class="btn" href="" role="button" style="text-decoration-line: none;color: #FFCC00;cursor: pointer;">Lojas</a>
+            <a class="" href="" style="text-decoration-line: none;color: #FFFFFF;cursor: pointer;"><span style="color:#FFCC00">Telefone:</span> 11958238030</a>
+            <a class="btn" href="" role="button" style="text-decoration-line: none;color: #FFCC00;cursor: pointer;">Suporte</a>
+        </div>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom mb-3">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/logo2.png" width="114px" height="105px">
+                </a>
+                <div class="d-flex flex-grow-1 justify-content-center">
+                    <form method="get" class="d-flex mx-auto" role="search">
+                        <input type="text" class="form-control me-2 search-input" placeholder="Pesquisar" action="">
+                        <button type="submit" class="btn btn-outline-secondary search-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="bi bi-search search-icon" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                <ul class="navbar-nav flex-grow-1 justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>
+                </ul>
+            </div>
+            </div
+        </nav>
+
+        <div>
+            <a class="navbar-brand" asp-area="" asp-controller="Cliente" asp-action="Index">
+                Entrar
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        &copy; 2024 - Hayumi
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
