@@ -28,3 +28,4 @@ C:\Users\Renan\source\repos\HayumiWeb\HayumiWeb\obj\Debug\net8.0\refint\HayumiWe
 C:\Users\Renan\source\repos\HayumiWeb\HayumiWeb\obj\Debug\net8.0\HayumiWeb.pdb
 C:\Users\Renan\source\repos\HayumiWeb\HayumiWeb\obj\Debug\net8.0\HayumiWeb.genruntimeconfig.cache
 C:\Users\Renan\source\repos\HayumiWeb\HayumiWeb\obj\Debug\net8.0\ref\HayumiWeb.dll
+C:\Users\Renan\source\repos\HayumiWeb\HayumiWeb\obj\Debug\net8.0\HayumiWeb.sourcelink.json
