@@ -1,6 +1,8 @@
+using HayumiWeb.Libraries;
 using HayumiWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using HayumiWeb.Libraries.Login;
 
 namespace HayumiWeb.Controllers
 {
@@ -14,11 +16,6 @@ namespace HayumiWeb.Controllers
         }
 
         public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }

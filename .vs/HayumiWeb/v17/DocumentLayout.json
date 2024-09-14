@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\models\\clientemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\models\\clientemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\libraries\\login\\logincliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\libraries\\login\\logincliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\views\\cliente\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\views\\cliente\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\libraries\\session\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\libraries\\session\\session.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\models\\clientemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\models\\clientemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\source\\repos\\hayumiweb\\hayumiweb\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,64 +46,94 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Session.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Libraries\\Session\\Session.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Libraries\\Session\\Session.cs",
+              "ToolTip": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Libraries\\Session\\Session.cs",
+              "RelativeToolTip": "HayumiWeb\\Libraries\\Session\\Session.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-14T20:37:38.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginCliente.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Libraries\\Login\\LoginCliente.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Libraries\\Login\\LoginCliente.cs",
+              "ToolTip": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Libraries\\Login\\LoginCliente.cs",
+              "RelativeToolTip": "HayumiWeb\\Libraries\\Login\\LoginCliente.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAQwAoAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-14T20:35:11.46Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "HayumiWeb\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-14T20:16:59.66Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ClienteModel.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Models\\ClienteModel.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Models\\ClienteModel.cs",
+              "ToolTip": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Models\\ClienteModel.cs",
+              "RelativeToolTip": "HayumiWeb\\Models\\ClienteModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACAAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-12T01:26:14.562Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "HayumiWeb\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "HayumiWeb\\wwwroot\\css\\site.css",
+              "ViewState": "AQIAAH8AAAAAAAAAAAAAAI8AAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-09-13T23:26:06.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "HayumiWeb\\Views\\Home\\Index.cshtml",
               "ToolTip": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "HayumiWeb\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAADYAAAAXAAAA",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAAABIAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-08-13T22:21:34.42Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "HayumiWeb\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "HayumiWeb\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAARAAAA",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAEYAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-13T22:21:22.22Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClienteController.cs",
-              "DocumentMoniker": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Controllers\\ClienteController.cs",
-              "RelativeDocumentMoniker": "HayumiWeb\\Controllers\\ClienteController.cs",
-              "ToolTip": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Controllers\\ClienteController.cs",
-              "RelativeToolTip": "HayumiWeb\\Controllers\\ClienteController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T01:45:57.266Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ClienteModel.cs",
-              "DocumentMoniker": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Models\\ClienteModel.cs",
-              "RelativeDocumentMoniker": "HayumiWeb\\Models\\ClienteModel.cs",
-              "ToolTip": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Models\\ClienteModel.cs",
-              "RelativeToolTip": "HayumiWeb\\Models\\ClienteModel.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAqwAcAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-12T01:26:14.562Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Views\\Cliente\\Index.cshtml",
-              "RelativeDocumentMoniker": "HayumiWeb\\Views\\Cliente\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\Views\\Cliente\\Index.cshtml",
-              "RelativeToolTip": "HayumiWeb\\Views\\Cliente\\Index.cshtml",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAkAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-08-12T00:17:06.465Z"
+              "WhenOpened": "2024-08-13T22:21:22.22Z",
+              "EditorCaption": ""
             }
           ]
         }

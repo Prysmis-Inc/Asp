@@ -9,8 +9,32 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\favicon.ico",
-      "PackagePath": "staticwebassets\\favicon.ico"
+      "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\img\\email.png",
+      "PackagePath": "staticwebassets\\img\\email.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\img\\face.png",
+      "PackagePath": "staticwebassets\\img\\face.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\img\\favicon.ico",
+      "PackagePath": "staticwebassets\\img\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\img\\insta.png",
+      "PackagePath": "staticwebassets\\img\\insta.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\img\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\img\\logo2.png",
+      "PackagePath": "staticwebassets\\img\\logo2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\img\\zap.png",
+      "PackagePath": "staticwebassets\\img\\zap.png"
     },
     {
       "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\js\\site.js",
@@ -243,14 +267,6 @@
     {
       "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
-    },
-    {
-      "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\logo.png",
-      "PackagePath": "staticwebassets\\logo.png"
-    },
-    {
-      "Id": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\wwwroot\\logo2.png",
-      "PackagePath": "staticwebassets\\logo2.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.HayumiWeb.Microsoft.AspNetCore.StaticWebAssets.props",
