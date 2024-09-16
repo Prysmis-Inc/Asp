@@ -1,0 +1,28 @@
+﻿<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row border rounded-3 p-0 shadow box-area w-100">
+        <div class="col-md-6 rounded-2 d-flex justify-content-center align-items-center flex-column left-box p-5">
+            <div class="Login-Image mb-3">
+                <img src="~/img/logo.png" class="img-fluid" style="width: 250px; height: 250px;" />
+            </div>
+            <p class="fs-2 text-white" style="font-family: sans-serif;">Bem vindo(a) de volta!</p>
+            <small class="text-wrap text-center text-white" style="width: 17rem; font-family: sans-serif;">Crie sua conta agora:</small>
+            <a class="btn-cadastrar mt-3" asp-area="AreaName" asp-controller="Home" asp-action="Cadastro">Cadastrar</a>
+        </div>
+        <div class="col-md-6 right-box p-5">
+            <div class="row align-items-center mb-4">
+                <p class="align-items-center justify-content-center fs-2 text-dark font-weight-bold">Acesse sua conta</p>
+            </div>
+            <div class="form-group mb-3">
+                <label for="email" class="text-muted">Email:</label>
+                <input type="text" class="form-control form-control-lg bg-light fs-6 rounded-3" id="email" placeholder="Digite seu email aqui" />
+            </div>
+            <div class="form-group mb-3">
+                <label for="password" class="text-muted">Senha:</label>
+                <input type="password" class="form-control form-control-lg bg-light fs-6 rounded-3" id="password" placeholder="Digite sua senha aqui" />
+            </div>
+            <div class="form-group mb-3">
+                <button class="btn btn-lg w-100 fs-6 align-content-end btn-entrar">Entrar</button>
+            </div>
+        </div>
+    </div>
+</div>

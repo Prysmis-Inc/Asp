@@ -24,7 +24,7 @@ html {
 body {
     margin-bottom: 60px;
     min-height: 100vh;
-    padding:0;
+    padding: 0;
 }
 
 .search-button {
@@ -140,7 +140,7 @@ body {
 }
 
 .parceiro {
-    flex: 1 1 calc(20% - 10px); 
+    flex: 1 1 calc(20% - 10px);
     margin: 5px;
     display: flex;
     justify-content: center;
@@ -155,12 +155,57 @@ body {
 
 @media (max-width: 768px) {
     .parceiro {
-        flex: 1 1 calc(50% - 10px); 
+        flex: 1 1 calc(50% - 10px);
     }
 }
 
 @media (max-width: 480px) {
     .parceiro {
-        flex: 1 1 calc(100% - 10px); 
+        flex: 1 1 calc(100% - 10px);
     }
+}
+
+/*Tela Login e possivelmente cadastro*/
+.left-box {
+    background-color: #002454;
+}
+
+.btn-cadastrar {
+    display: inline-block;
+    background-color: #FFCC00;
+    color: #002454;
+    font-weight: bold;
+    border: 2px solid #FFCC00;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .btn-cadastrar:hover {
+        background-color: #002454;
+        color: #FFCC00;
+    }
+
+input.form-control-lg {
+    height: 60px;
+}
+
+.btn-entrar {
+    background-color: #FFCC00;
+    color: #002454;
+    font-weight: bold;
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .btn-entrar:hover {
+        background-color: #002454;
+        color: #FFCC00;
+    }
+
+.right-box {
+    background-color: white;
+}
 }

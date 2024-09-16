@@ -1656,11 +1656,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\HayumiWeb.csproj",
+      "projectUniqueName": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\HayumiWeb.csproj",
       "projectName": "HayumiWeb",
-      "projectPath": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\HayumiWeb.csproj",
+      "projectPath": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\HayumiWeb.csproj",
       "packagesPath": "C:\\Users\\Renan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Renan\\source\\repos\\HayumiWeb\\HayumiWeb\\obj\\",
+      "outputPath": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Renan\\AppData\\Roaming\\NuGet\\NuGet.Config",
