@@ -165,7 +165,7 @@ body {
     }
 }
 
-/*Tela Login e possivelmente cadastro*/
+/Tela Login e possivelmente cadastro/
 .left-box {
     background-color: #002454;
 }
@@ -208,4 +208,16 @@ input.form-control-lg {
 .right-box {
     background-color: white;
 }
+
+@media (max-width: 768px) {
+    .container-fluid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* Ajusta o espaço entre as colunas */
+    }
+
+    .col-sm-3 {
+        flex: 0 0 48%; /* Duas colunas ocupando 48% da largura cada, com espaço entre elas */
+        margin-bottom: 10px; /* Adiciona espaço abaixo de cada imagem */
+    }
 }
