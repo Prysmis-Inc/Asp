@@ -120,6 +120,7 @@ body {
         .produto .detalhes:hover {
             background-color: #002454;
             color: #FFCC00;
+            border: 2px solid #FFCC00;
         }
 
     .produto .comprar {
@@ -130,6 +131,7 @@ body {
         .produto .comprar:hover {
             background-color: #FFCC00;
             color: #002454;
+            border: 2px solid #002454;
         }
 
 .parceiros {

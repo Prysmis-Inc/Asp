@@ -9,6 +9,54 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\cbaterias.png",
+      "PackagePath": "staticwebassets\\img\\cbaterias.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\cescapamento.png",
+      "PackagePath": "staticwebassets\\img\\cescapamento.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\cfiltrodear.png",
+      "PackagePath": "staticwebassets\\img\\cfiltrodear.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\cfreios.png",
+      "PackagePath": "staticwebassets\\img\\cfreios.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\clampadas.png",
+      "PackagePath": "staticwebassets\\img\\clampadas.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\cmotores.png",
+      "PackagePath": "staticwebassets\\img\\cmotores.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\coleoselubri.png",
+      "PackagePath": "staticwebassets\\img\\coleoselubri.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\cpneus.png",
+      "PackagePath": "staticwebassets\\img\\cpneus.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\cradiadores.png",
+      "PackagePath": "staticwebassets\\img\\cradiadores.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\cretrovisores.png",
+      "PackagePath": "staticwebassets\\img\\cretrovisores.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\csuspensao.png",
+      "PackagePath": "staticwebassets\\img\\csuspensao.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\cvolante.png",
+      "PackagePath": "staticwebassets\\img\\cvolante.png"
+    },
+    {
       "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\email.png",
       "PackagePath": "staticwebassets\\img\\email.png"
     },
@@ -21,8 +69,16 @@
       "PackagePath": "staticwebassets\\img\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\honda.png",
+      "PackagePath": "staticwebassets\\img\\honda.png"
+    },
+    {
       "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\insta.png",
       "PackagePath": "staticwebassets\\img\\insta.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\jeep.png",
+      "PackagePath": "staticwebassets\\img\\jeep.png"
     },
     {
       "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\logo.png",
@@ -31,6 +87,34 @@
     {
       "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\logo2.png",
       "PackagePath": "staticwebassets\\img\\logo2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\nissan.png",
+      "PackagePath": "staticwebassets\\img\\nissan.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\pbaterias.png",
+      "PackagePath": "staticwebassets\\img\\pbaterias.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\pcarros.png",
+      "PackagePath": "staticwebassets\\img\\pcarros.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\peugeot.png",
+      "PackagePath": "staticwebassets\\img\\peugeot.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\pfrete.png",
+      "PackagePath": "staticwebassets\\img\\pfrete.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\ppneus.png",
+      "PackagePath": "staticwebassets\\img\\ppneus.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\toyota.png",
+      "PackagePath": "staticwebassets\\img\\toyota.png"
     },
     {
       "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\zap.png",

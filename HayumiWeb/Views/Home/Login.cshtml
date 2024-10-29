@@ -1,6 +1,13 @@
-﻿<div class="container d-flex justify-content-center align-items-center min-vh-100">
+﻿@model HayumiWeb.Models.ClienteModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="row border rounded-3 p-0 shadow box-area w-100">
-        <div class="col-md-6 rounded-2 d-flex justify-content-center align-items-center flex-column left-box p-5">
+        <!-- Painel Esquerdo -->
+        <div class="col-md-6 rounded-2 d-flex justify-content-center align-items-center flex-column left-box p-5" style="background-color: #002454;">
             <div class="Login-Image mb-3">
                 <img src="~/img/logo.png" class="img-fluid" style="width: 250px; height: 250px;" />
             </div>
@@ -8,6 +15,8 @@
             <small class="text-wrap text-center text-white" style="width: 17rem; font-family: sans-serif;">Crie sua conta agora:</small>
             <a class="btn-cadastrar mt-3" asp-area="AreaName" asp-controller="Home" asp-action="Cadastro">Cadastrar</a>
         </div>
+
+        <!-- Painel Direito -->
         <div class="col-md-6 right-box p-5">
             <div class="row align-items-center mb-4">
                 <p class="align-items-center justify-content-center fs-2 text-dark font-weight-bold">Acesse sua conta</p>

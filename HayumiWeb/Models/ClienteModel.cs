@@ -4,7 +4,6 @@ namespace HayumiWeb.Models;
 
 public class ClienteModel
 {
-    [Key]
     public int ClienteId { get; set; }
 
     [Required(ErrorMessage = "O seu nome deve ser informado")]
