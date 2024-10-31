@@ -18,20 +18,22 @@
 
         <!-- Painel Direito -->
         <div class="col-md-6 right-box p-5">
-            <div class="row align-items-center mb-4">
-                <p class="align-items-center justify-content-center fs-2 text-dark font-weight-bold">Acesse sua conta</p>
-            </div>
-            <div class="form-group mb-3">
-                <label for="email" class="text-muted">Email:</label>
-                <input type="text" class="form-control form-control-lg bg-light fs-6 rounded-3" id="email" placeholder="Digite seu email aqui" />
-            </div>
-            <div class="form-group mb-3">
-                <label for="password" class="text-muted">Senha:</label>
-                <input type="password" class="form-control form-control-lg bg-light fs-6 rounded-3" id="password" placeholder="Digite sua senha aqui" />
-            </div>
-            <div class="form-group mb-3">
-                <button class="btn btn-lg w-100 fs-6 align-content-end btn-entrar">Entrar</button>
-            </div>
+            <form method="post">
+                <div class="row align-items-center mb-4">
+                    <p class="align-items-center justify-content-center fs-2 text-dark font-weight-bold">Acesse sua conta</p>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="email" class="text-muted">Email:</label>
+                    <input asp-for="Email" type="text" class="form-control form-control-lg bg-light fs-6 rounded-3" id="email" placeholder="Digite seu email aqui" />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="password" class="text-muted">Senha:</label>
+                    <input asp-for="Senha" type="password" class="form-control form-control-lg bg-light fs-6 rounded-3" id="password" placeholder="Digite sua senha aqui" />
+                </div>
+                <div class="form-group mb-3">
+                    <button type="submit" class="btn btn-lg w-100 fs-6 align-content-end btn-entrar">Entrar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

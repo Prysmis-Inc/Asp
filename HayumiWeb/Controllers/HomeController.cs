@@ -5,6 +5,7 @@ using System.Diagnostics;
 using HayumiWeb.Repositorio;
 using Newtonsoft.Json;
 using System.Diagnostics.Eventing.Reader;
+using MySqlX.XDevAPI;
 
 namespace HayumiWeb.Controllers
 {
@@ -32,8 +33,21 @@ namespace HayumiWeb.Controllers
         }
         [HttpPost]
         public IActionResult Login(ClienteModel cliente)
-        { 
-            return View(); 
+        {
+            ClienteModel loginDB = _clienteRepositorio.Login(cliente.Email, cliente.Senha);
+
+            if (loginDB.Email != null && loginDB.Senha != null)
+            {
+                _loginCliente.Login(loginDB);
+                return new RedirectResult(Url.Action(nameof(Index)));
+            }
+            else
+            {
+                //Erro na sessão
+                ViewData["msg"] = "Usuário inválido, verifique e-mail e senha";
+                return View();
+            }
+
         }
         public IActionResult Cadastro()
         {
