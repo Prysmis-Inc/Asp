@@ -47,5 +47,14 @@ namespace HayumiWeb.Repositorio
                 return cliente;
             }
         }
+
+        public void Cadastrar(ClienteModel cliente) 
+        {
+            using (var conexao = new MySqlConnection(_conexaoMySQL)) 
+            {
+                conexao.Open();
+                MySqlCommand cmd = new MySqlCommand("call ");
+            }
+        }
     }
 }

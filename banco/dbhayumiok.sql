@@ -39,54 +39,45 @@ telefone bigint not null,
 NumEnd smallint not null,
 CompEnd varchar (50) not null,
 CEP decimal(8,0) not null,
-cliente_status boolean,
+cliente_status boolean null,
 foreign key (CEP) references tbEndereco (CEP)
 );
 
 create table tbLogin (
 LoginId int primary key auto_increment,      
-Email varchar(100) not null unique,          
-SenhaUsu varchar(50) not null,                
+Email VARCHAR(100) not null unique,          
+SenhaUsu VARCHAR(50) not null,                
 Cliente_Status boolean not null,              
 ClienteId int not null,                       
 foreign key (ClienteId) references tbCliente (ClienteId) -- Referência à tabela tbCliente
 );
 
-
+create table tbCategoria(
+ categoriaid int primary key auto_increment,
+ nomecategoria varchar(150) not null,
+ img_categoria varchar(255)
+);
 
 create table tbPeca(
 PecaId int primary key auto_increment,
 NomePeca varchar(100) not null,
 ValorPeca decimal(8,2) not null,
-fabricante varchar(150) not null,
-categoria varchar(30) not null,
 img_peca varchar (255) not null,
 descricao varchar (200) not null,
-qtd_estoque int not null
+qtd_estoque int not null,
+categoriaid int not null,
+Foreign key (categoriaid) references tbCategoria(Categoriaid)
 ); 
 
 create table tbCarrinhoCompra(
 CarrinhoId int primary key auto_increment,
 ProdutosSelecionados varchar(200) not null,
-ProdutosSelecionados1 varchar(200) null,
-ProdutosSelecionados2 varchar(200) null,
-ProdutosSelecionados3 varchar(200) null,
-ProdutosSelecionados4 varchar(200) null,
 QtdPeca int not null,
 ValorTotalCompra decimal(8,2) not null,
 ClienteId int not null,
 PecaId int not null,
-PecaId1 int null,
-PecaId2 int null,
-PecaId3 int null,
-PecaId4 int null,
-
 Foreign key (ClienteId) references tbCliente(ClienteId),
-foreign key (PecaId) references tbPeca(PecaId),
-foreign key (PecaId1) references tbPeca(PecaId),
-foreign key (PecaId2) references tbPeca(PecaId),
-foreign key (PecaId3) references tbPeca(PecaId),
-foreign key (PecaId4) references tbPeca(PecaId)
+foreign key (PecaId) references tbPeca(PecaId)
 );
 
 create table tbPedido(
@@ -128,32 +119,7 @@ NF int not null,
 foreign key (NF) references TbNota_Fiscal (NF)
 );
 
--- trigger para gerenciar o estoque --
-DELIMITER $$
 
-create trigger AtualizaEstoque
-after insert on TbPedido
-for each row
-begin
-    declare vQtdEstoqueAtual int;
-
-    -- Atualiza a quantidade de estoque das peças do carrinho
-    update TbPeca p
-    join TbCarrinhoCompra c on c.PecaId = p.PecaId
-    set p.qtd_estoque = p.qtd_estoque - c.QtdPeca
-    where c.CarrinhoId = new.CarrinhoId
-    and (select @vQtdEstoqueAtual := p.qtd_estoque) >= c.QtdPeca;
-
-    -- Verifica se a atualização foi bem-sucedida
-    if row_count() = 0 then
-        -- Se não houver estoque suficiente, restaura a quantidade
-        update TbPeca p
-        join TbCarrinhoCompra c on c.PecaId = p.PecaId
-        set p.qtd_estoque = p.qtd_estoque + c.QtdPeca
-        where c.CarrinhoId = new.CarrinhoId;
-        
-    end if;
-end $$
 
 -- aplicação das procedures --
 
@@ -271,56 +237,56 @@ begin
     declare vUFId int;
 
     -- Verifica se o CPF já existe --
-    if exists (select CPF from tbCliente where CPF = vCPF) then
+    IF EXISTS (SELECT CPF FROM tbCliente WHERE CPF = vCPF) THEN
         -- Caso ele exista, exibe a seguinte mensagem: --
-        select 'Cliente já existe!' AS Mensagem;
-    else
+        SELECT 'Cliente já existe!' AS Mensagem;
+    ELSE
         -- Verifica se o endereço já existe. --
-        if not exists (select * from tbEndereco where CEP = vCEP) then
+        IF NOT EXISTS (SELECT * FROM tbEndereco WHERE CEP = vCEP) THEN
             -- Se não existir, insere o endereço. --
             -- Verifica se o bairro existe, se não existir, insere. --
-            if not exists (select * from tbBairro where Bairro = vBairro) then
-                insert into tbBairro (Bairro) values (vBairro);
-            end if;
+            IF NOT EXISTS (SELECT * FROM tbBairro WHERE Bairro = vBairro) THEN
+                INSERT INTO tbBairro (Bairro) VALUES (vBairro);
+            END IF;
 
             -- Busca o Id do bairro e armazena na variável vBairroId. --
-            set vBairroId = (select BairroId from tbBairro where Bairro = vBairro);
+            SET vBairroId = (SELECT BairroId FROM tbBairro WHERE Bairro = vBairro);
 
             -- Verifica se a cidade existe, se não existir, insere. --
-            if not exists (select * from tbCidade where Cidade = vCidade) then
-                insert into tbCidade (Cidade) values (vCidade);
-            end if;
+            IF NOT EXISTS (SELECT * FROM tbCidade WHERE Cidade = vCidade) THEN
+                INSERT INTO tbCidade (Cidade) VALUES (vCidade);
+            END IF;
 
             -- Busca o Id da cidade e armazena na variável vCidadeId. --
-            set vCidadeId = (select CidadeId from tbCidade where Cidade = vCidade);
+            SET vCidadeId = (SELECT CidadeId FROM tbCidade WHERE Cidade = vCidade);
 
             -- Verifica se o Estado existe, se não existir, insere. --
-            if not exists (select * from tbEstado where UF = vUF) then
-                insert into tbEstado (UF) values (vUF);
-            end if;
+            IF NOT EXISTS (SELECT * FROM tbEstado WHERE UF = vUF) THEN
+                INSERT INTO tbEstado (UF) VALUES (vUF);
+            END IF;
 
             -- Busca o Id do UF e armazena na variável vUFId. --
-            set vUFId = (select UFId from tbEstado where UF = vUF);
+            SET vUFId = (SELECT UFId FROM tbEstado WHERE UF = vUF);
 
             -- Insere os registros na tbEndereco. --
-            insert into tbEndereco (Logradouro, BairroId, CidadeId, UFId, CEP)
-            values (vLogradouro, vBairroId, vCidadeId, vUFId, vCEP);
-        end if;
+            INSERT INTO tbEndereco (Logradouro, BairroId, CidadeId, UFId, CEP)
+            VALUES (vLogradouro, vBairroId, vCidadeId, vUFId, vCEP);
+        END IF;
 
         -- Insere os registros do cliente na tbCliente. -- 
-        insert into tbCliente 
+        INSERT INTO tbCliente 
             (NomeCli, CPF, Email, SenhaUsu, DataNasc, Telefone, NumEnd, CompEnd, CEP, Cliente_Status) 
-        values 
+        VALUES 
             (vNomeCli, vCPF, vEmail, vSenhaUsu, vDataNasc, vTelefone, vNumEnd, vCompEnd, vCEP, vClienteStatus);
         
         -- Pega o último Id inserido e armazena na variável vClienteId. --
-        set vClienteId = LAST_INSERT_ID();
+        SET vClienteId = LAST_INSERT_ID();
 
         -- Insere os registros na tbLogin, usando o ClienteId obtido. --
-        insert into TbLogin (Email, SenhaUsu, Cliente_Status, ClienteId) 
-        values (vEmail, vSenhaUsu, vClienteStatus, vClienteId);
-    end if;
-end $$
+        INSERT INTO TbLogin (Email, SenhaUsu, Cliente_Status, ClienteId) 
+        VALUES (vEmail, vSenhaUsu, vClienteStatus, vClienteId);
+    END IF;
+END $$
 
 call spInsertCliente('renan', 12345212350, 'pdro@gmail.com', 'pedrosenha', '1989-01-28', 11940028922, 192, 'apto 1', 12345051, 1, 'Av Brasil', 'lapa', 'Campinas', 'SP');
 call spInsertCliente('jeferson', 12345212351, 'pedro@gmail.com', 'pedrosenha', '1989-01-28', 11940028922, 194, 'apto 1', 12345051, 1, 'Av Brasil', 'lapa', 'Campinas', 'SP');
@@ -333,125 +299,71 @@ select * from tbendereco;
 select * from tbcliente;
 select * from tblogin;
 
+DELIMITER $$ 
+
+CREATE PROCEDURE spInsertCategoria (
+    IN p_categoriaid INT,
+    IN p_nomecategoria VARCHAR(150),
+    IN p_img varchar(255)
+)
+BEGIN
+    INSERT INTO tbCategoria (categoriaid, nomeCategoria, img_categoria)
+    VALUES (p_categoriaid, p_nomecategoria, p_img);
+END $$
+
+DELIMITER ;
+
+
+CALL AddCategoria(1, 'Fabricante A', 'imagem1'); -- generico 
+CALL AddCategoria(2, 'Fabricante B', 'imagem2'); -- generico 
+CALL AddCategoria(3, 'Fabricante C', 'imagem3'); -- generico 
+
+
+
 delimiter $$
-create procedure spInsertPeca(vNomePeca varchar(100), vValorPeca decimal(8,2), vFabricante varchar(150), vCategoria varchar(30), vImgPeca varchar(255), vDescricao varchar(200), vQtdEstoque int)
+create procedure spInsertPeca(vNomePeca varchar(100), vValorPeca decimal(8,2), vImgPeca varchar(255), vDescricao varchar(200), vQtdEstoque int, vcategoriaid int)
 begin
     declare contador int;
-    select COUNT(*) into contador from tbPeca where NomePeca = vNomePeca and ValorPeca = vValorPeca and Fabricante = vFabricante and Categoria = vCategoria;
+    select COUNT(*) into contador from tbPeca where NomePeca = vNomePeca and ValorPeca = vValorPeca and categoriaid= vcategoriaid;
 
     if contador > 0 then select 'Peça já registrada' as mensagem;
     else
-        insert into tbPeca (NomePeca, ValorPeca, Fabricante, Categoria, img_peca, descricao, qtd_estoque) values (vNomePeca, vValorPeca, vFabricante, vCategoria, vImgPeca, vDescricao, vQtdEstoque);
+        insert into tbPeca (NomePeca, ValorPeca,img_peca, descricao, qtd_estoque, categoriaid) values (vNomePeca, vValorPeca, vImgPeca, vDescricao, vQtdEstoque, vcategoriaid );
     end if;
 end $$
 
-call spInsertPeca('Carburador Marea', 220,'Fiat', 'Carburadores', 'img_carb_marea.jpg', 'Carburador para Fiat Marea 2.5',5);
+call spInsertPeca('Carburador Marea', 220, 'img_carb_marea.jpg', 'Carburador para Fiat Marea 2.5',5,1); -- pros outros calls tem q ser nesse pique
 call spInsertPeca('Carburador Gol', 700,'WolksWagen', 'Carburadores', 'img_carb_gol.jpg', 'Carburador para Wolkswagen Gol 1000',10);
 call spInsertPeca('Carburador Gol 1.6', 700,'WolksWagen', 'Carburadores', 'img_carb_gol1_6.jpg', 'Carburador para Wolkswagen Gol 1.6',0);
-call spInsertPeca('Kit Turbina', 2000,'Holsett', 'turbos', 'img_carb_gol1_6.jpg', 'Kit Turbo Padaria',2);
 
 select * from tbPeca
 
-
 -- procedure para insrir registro de carrinho --
-DELIMITER $$
+delimiter $$
+create procedure spInsertCarrinhoCompras( vProdutosSelecionados varchar(200),  vQtdPeca int, vValorTotalCompra decimal(8,2), vClienteId int, in vPecaId int)
+begin
+    -- Verifica se o cliente existe, se nao existir 
+    if not exists (select 1 from tbCliente where ClienteId = vClienteId) then
+        select 'Cliente não encontrado' as mensagem;
+    -- Verifica se o produto existe e se há estoque suficiente
+    elseif not exists (select 1 from TbPeca where PecaId = vPecaId and qtd_estoque >= vQtdPeca) then
+        select 'Produto não encontrado ou estoque insuficiente' as mensagem;
+    else
+        -- Insere o carrinho de compras
+        insert into TbCarrinhoCompra 
+            (ProdutosSelecionados, QtdPeca, ValorTotalCompra, ClienteId, PecaId) 
+        values
+            (vProdutosSelecionados, vQtdPeca, vValorTotalCompra, vClienteId, vPecaId);
+    end if;
+end $$
 
-CREATE PROCEDURE spInsertCarrinhoCompras(
-    IN vProdutosSelecionados VARCHAR(200),
-    IN vProdutosSelecionados1 VARCHAR(200),
-    IN vProdutosSelecionados2 VARCHAR(200),
-    IN vProdutosSelecionados3 VARCHAR(200),
-    IN vProdutosSelecionados4 VARCHAR(200),
-    IN vQtdPeca INT,
-    IN vValorTotalCompra DECIMAL(8,2),
-    IN vClienteId INT,
-    IN vPecaId INT,
-    IN vPecaId1 INT,
-    IN vPecaId2 INT,
-    IN vPecaId3 INT,
-    IN vPecaId4 INT
-)
-BEGIN
-    -- Verifica se o cliente existe
-    IF NOT EXISTS (SELECT 1 FROM tbCliente WHERE ClienteId = vClienteId) THEN
-        SELECT 'Cliente não encontrado' AS mensagem;
+describe tbpeca
 
-    -- Verifica se o produto principal existe e se há estoque suficiente
-    ELSEIF NOT EXISTS (SELECT 1 FROM tbPeca WHERE PecaId = vPecaId AND qtd_estoque >= vQtdPeca) THEN
-        SELECT 'Produto principal não encontrado ou estoque insuficiente' AS mensagem;
-
-    -- Verifica o produto 1 se vPecaId1 não for NULL
-    ELSEIF vPecaId1 IS NOT NULL AND NOT EXISTS (SELECT 1 FROM tbPeca WHERE PecaId = vPecaId1 AND qtd_estoque >= vQtdPeca) THEN
-        SELECT 'Produto 1 não encontrado ou estoque insuficiente' AS mensagem;
-
-    -- Verifica o produto 2 se vPecaId2 não for NULL
-    ELSEIF vPecaId2 IS NOT NULL AND NOT EXISTS (SELECT 1 FROM tbPeca WHERE PecaId = vPecaId2 AND qtd_estoque >= vQtdPeca) THEN
-        SELECT 'Produto 2 não encontrado ou estoque insuficiente' AS mensagem;
-
-    -- Verifica o produto 3 se vPecaId3 não for NULL
-    ELSEIF vPecaId3 IS NOT NULL AND NOT EXISTS (SELECT 1 FROM tbPeca WHERE PecaId = vPecaId3 AND qtd_estoque >= vQtdPeca) THEN
-        SELECT 'Produto 3 não encontrado ou estoque insuficiente' AS mensagem;
-
-    -- Verifica o produto 4 se vPecaId4 não for NULL
-    ELSEIF vPecaId4 IS NOT NULL AND NOT EXISTS (SELECT 1 FROM tbPeca WHERE PecaId = vPecaId4 AND qtd_estoque >= vQtdPeca) THEN
-        SELECT 'Produto 4 não encontrado ou estoque insuficiente' AS mensagem;
-
-    ELSE
-        -- Insere o carrinho de compras com múltiplos produtos
-        INSERT INTO tbCarrinhoCompra (
-            ProdutosSelecionados, ProdutosSelecionados1, ProdutosSelecionados2, 
-            ProdutosSelecionados3, ProdutosSelecionados4, QtdPeca, ValorTotalCompra, 
-            ClienteId, PecaId, PecaId1, PecaId2, PecaId3, PecaId4
-        )
-        VALUES (
-            vProdutosSelecionados, vProdutosSelecionados1, vProdutosSelecionados2, 
-            vProdutosSelecionados3, vProdutosSelecionados4, vQtdPeca, vValorTotalCompra, 
-            vClienteId, vPecaId, vPecaId1, vPecaId2, vPecaId3, vPecaId4
-        );
-
-        -- Atualiza o estoque de cada peça se o ID não for NULL
-        UPDATE tbPeca
-        SET qtd_estoque = qtd_estoque - vQtdPeca
-        WHERE PecaId = vPecaId;
-
-        IF vPecaId1 IS NOT NULL THEN
-            UPDATE tbPeca
-            SET qtd_estoque = qtd_estoque - vQtdPeca
-            WHERE PecaId = vPecaId1;
-        END IF;
-
-        IF vPecaId2 IS NOT NULL THEN
-            UPDATE tbPeca
-            SET qtd_estoque = qtd_estoque - vQtdPeca
-            WHERE PecaId = vPecaId2;
-        END IF;
-
-        IF vPecaId3 IS NOT NULL THEN
-            UPDATE tbPeca
-            SET qtd_estoque = qtd_estoque - vQtdPeca
-            WHERE PecaId = vPecaId3;
-        END IF;
-
-        IF vPecaId4 IS NOT NULL THEN
-            UPDATE tbPeca
-            SET qtd_estoque = qtd_estoque - vQtdPeca
-            WHERE PecaId = vPecaId4;
-        END IF;
-
-        SELECT 'Carrinho inserido com sucesso' AS mensagem;
-    END IF;
-END $$
-
-CALL spInsertCarrinhoCompras(
-    'Carburador Gol', 'Carburador Marea', NULL, NULL, NULL, 5, 7000.00, 1, 2, 1, NULL, NULL, NULL
-);
+call spInsertCarrinhoCompras('Carburador Gol', 10, 7000.00,1, 2);
 call spInsertCarrinhoCompras('Carburador Marea', 1, 660.00, 4, 1);
 call spInsertCarrinhoCompras('Carburador Marea', 2, 660.00, 3, 1);
 call spInsertCarrinhoCompras('Carburador Marea',2, 1500.00, 1, 1);
 
-
-
-describe tbpeca;
 select * from TbCarrinhoCompra;
 select * from TbCliente;
 select * from tbpeca
@@ -498,18 +410,16 @@ end $$
 
 call spInsertPedidos('2024-10-15', 'teste', 1, 'Cartão de Crédito');
 call spInsertPedidos('2024-10-15','3 carburadores de Marea', 2, 'Pix');
-call spInsertPedidos('2024-10-15','2 Laptop Mouse', 2,'dinheiro');
+call spInsertPedidos('2024-10-15','2 Laptop Mouse', 8);
 select * from tbcarrinhocompra;
-select * from tbpeca
+select * from tbpedido
 
-
--- procedure para inserir na tabela pagamento e puxar as informações através do id do pedido --
 delimiter $$ 
 create procedure spInsertPagamento(
     vPedidoId int, 
     vValorPago decimal(8,2), 
     vDataPagamento datetime, 
-    vStatusPagamento varchar(50)
+    vStatusPagamento varchar(50) -- Remover TipoPagamento daqui
 )
 begin
     declare contador int;
@@ -532,9 +442,9 @@ begin
             values 
                 (vPedidoId, vValorPago, vDataPagamento, vStatusPagamento);
 
-            -- Atualiza a coluna TipoPagamento na tbPedido --
+            -- Atualiza a coluna TipoPagamento na tbPedido
             update TbPedido
-            set TipoPagamento = 'Cartão de Crédito' -- podendo ser passado como parâmetro -- 
+            set TipoPagamento = 'Cartão de Crédito' -- Por exemplo, você pode passar como parâmetro também
             where PedidoId = vPedidoId;
 
             -- Se o pagamento for aprovado, opcionalmente atualiza o status do pedido --
@@ -549,46 +459,77 @@ begin
     end if;
 end $$ 
 
+
 call spInsertPagamento(1, 7000.00, '2024-10-20 12:00:00', 'Aprovado');
 call spInsertPagamento(2, 7000.00, '2024-10-20 12:00:00', 'Aprovado');
 
+DELIMITER $$
 
--- procedure de inserir na Nota Fiscal --
-
-delimiter $$
-create procedure spInsertNotaFiscal(vPedidoId int)
-begin
-    declare vProdutos varchar(500);
-    declare vDataEmissao datetime;
-    declare vValorTotal decimal(8,2);
+CREATE PROCEDURE spInsertNotaFiscal(
+    vPedidoId INT
+)
+BEGIN
+    DECLARE vProdutos VARCHAR(500);
+    DECLARE vDataEmissao DATETIME;
+    DECLARE vValorTotal DECIMAL(8,2);
 
     -- Verifica se o pedido existe
-    if not exists (select 1 from tbPedido where PedidoId = vPedidoId) THEN
-        signal sqlstate '45000' set message_text = 'Erro: Pedido não encontrado';
-    end if;
+    IF NOT EXISTS (SELECT 1 FROM tbPedido WHERE PedidoId = vPedidoId) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro: Pedido não encontrado';
+    END IF;
 
     -- Verifica se o pagamento foi realizado para o pedido
-    if not exists (select 1 from tbPagamento where PedidoId = vPedidoId) then
-        signal sqlstate '45000' set message_text = 'Erro: Pagamento não encontrado para este pedido';
-    end if;
+    IF NOT EXISTS (SELECT 1 FROM tbPagamento WHERE PedidoId = vPedidoId) THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro: Pagamento não encontrado para este pedido';
+    END IF;
 
     -- Busca informações do pedido
-    select InfoPedido, NOW(), ValorTotal into vProdutos, vDataEmissao, vValorTotal
-    from tbPedido
-    where PedidoId = vPedidoId;
+    SELECT InfoPedido, NOW(), ValorTotal INTO vProdutos, vDataEmissao, vValorTotal
+    FROM tbPedido
+    WHERE PedidoId = vPedidoId;
 
     -- Insere dados na tbNota_Fiscal (NF será gerado automaticamente)
-    insert into tbNota_Fiscal (Produtos, DataEmissao, ValorTotal, PedidoId)
-    values (vProdutos, vDataEmissao, vValorTotal, vPedidoId);
+    INSERT INTO tbNota_Fiscal (Produtos, DataEmissao, ValorTotal, PedidoId)
+    VALUES (vProdutos, vDataEmissao, vValorTotal, vPedidoId);
 
-    select 'Nota Fiscal criada com sucesso!' as Mensagem;
-end $$
+    SELECT 'Nota Fiscal criada com sucesso!' AS Mensagem;
+END $$
 
-call spInsertNotaFiscal(2);  -- dentro dos () tem que colocar o id de um pedido existente para poder "Puxar" as informações
+DELIMITER ;
+
+CALL spInsertNotaFiscal(1);  -- Substitua 1 pelo ID de um pedido existente
 select * from tbnota_fiscal;
 select * from tbpedido;
 
+
 select * from TbPagamento;
+-- triggers --
 
+DELIMITER $$
 
+CREATE TRIGGER AtualizaEstoque
+AFTER INSERT ON TbPedido
+FOR EACH ROW
+BEGIN
+    DECLARE vQtdEstoqueAtual INT;
+
+    -- Atualiza a quantidade de estoque das peças do carrinho
+    UPDATE TbPeca p
+    JOIN TbCarrinhoCompra c ON c.PecaId = p.PecaId
+    SET p.qtd_estoque = p.qtd_estoque - c.QtdPeca
+    WHERE c.CarrinhoId = NEW.CarrinhoId
+    AND (SELECT @vQtdEstoqueAtual := p.qtd_estoque) >= c.QtdPeca;
+
+    -- Verifica se a atualização foi bem-sucedida
+    IF ROW_COUNT() = 0 THEN
+        -- Se não houver estoque suficiente, restaura a quantidade
+        UPDATE TbPeca p
+        JOIN TbCarrinhoCompra c ON c.PecaId = p.PecaId
+        SET p.qtd_estoque = p.qtd_estoque + c.QtdPeca
+        WHERE c.CarrinhoId = NEW.CarrinhoId;
+        
+    END IF;
+END $$
+
+DELIMITER ;
 
