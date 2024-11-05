@@ -282,7 +282,17 @@ h2 {
         background-color: #cc0000;
     }
 
-Text-Category {
+#botaoentrar {
+    background-color: #FFCC00;
+    border-color: #002454;
+    width: 90px;
+    height: 40px;
+    margin-right: 100px;
+    border-radius: 8px;
+    border: 1px solid #002454;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center
 }
-
-
