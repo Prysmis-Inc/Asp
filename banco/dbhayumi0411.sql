@@ -19,7 +19,6 @@ Bairro varchar(200) not null
 
 create table tbEndereco(
 CEP decimal (8,0) primary key,
-Logradouro varchar(200) not null,
 BairroId int not null,
 CidadeId int not null,
 UFId int not null,
@@ -180,7 +179,7 @@ delimiter $$
 -- procedure para inserir registros na tbendereco -- 
 
 delimiter $$
-create procedure spInsertTbEndereco( vCEP decimal(8,0), vLogradouro varchar(200), vBairro varchar(200), vCidade varchar(200), vUF varchar(2))
+create procedure spInsertTbEndereco(vCEP decimal(8,0), vBairro varchar(200), vCidade varchar(200), vUF varchar(2))
 begin
 		declare vBairroId int;
         declare vCidadeId int;
@@ -209,18 +208,18 @@ end if;
 			select UFId into vUFId from tbestado where UF = vUF;
 end if;
 
-insert into tbendereco(CEP, Logradouro, BairroId, CidadeId, UFId) values(vCEP, vLogradouro, vBairroId, vCidadeId, vUFId);
+insert into tbendereco(CEP, BairroId, CidadeId, UFId) values(vCEP, vBairroId, vCidadeId, vUFId);
 end if;
 end $$
 
-call spInsertTbEndereco(12345678, 'Rua da Federal', 'Lapa', 'São Paulo','SP');
-call spInsertTbEndereco(12345051, 'Av Brasil', 'Lapa', 'Campinas','SP');
-call spInsertTbEndereco(12345052, 'Rua Liberdade', 'Consolação', 'São Paulo','SP');
-call spInsertTbEndereco(12345053, 'Av Paulista', 'Penha', 'Rio de Janeiro','RJ');
-call spInsertTbEndereco(12345054, 'Rua Ximbú', 'Penha', 'Rio de Janeiro','RJ');
-call spInsertTbEndereco(12345055, 'Rua Piu XI', 'Penha', 'Campinas','SP');
-call spInsertTbEndereco(12345056, 'Rua Chocolate', 'Aclimação', 'Barra Mansa','RJ');
-call spInsertTbEndereco(12345057, 'Rua Pão na Chapa', 'Barra Funda', 'Ponta Grossa','RS');
+call spInsertTbEndereco(12345678, 'Rua da Federal', 'São Paulo','SP');
+call spInsertTbEndereco(12345051, 'Av Brasil', 'Campinas','SP');
+call spInsertTbEndereco(12345052, 'Rua Liberdade', 'São Paulo','SP');
+call spInsertTbEndereco(12345053, 'Av Paulista', 'Rio de Janeiro','RJ');
+call spInsertTbEndereco(12345054, 'Rua Ximbú','Rio de Janeiro','RJ');
+call spInsertTbEndereco(12345055, 'Rua Piu XI','Campinas','SP');
+call spInsertTbEndereco(12345056, 'Rua Chocolate','Barra Mansa','RJ');
+call spInsertTbEndereco(12345057, 'Rua Pão na Chapa','Ponta Grossa','RS');
 
 select * from tbEndereco;
  
@@ -228,7 +227,7 @@ select * from tbEndereco;
 DELIMITER $$ 
 
 create procedure spInsertCliente(
-vNomeCli varchar(100), vCPF decimal(11), vEmail varchar(100), vSenhaUsu varchar(50), vDataNasc date, vTelefone bigint, vNumEnd smallint, vCompEnd varchar(50), vCEP decimal(8, 0), vClienteStatus boolean, vLogradouro varchar(200), vBairro varchar(200), vCidade varchar(200), vUF char(2)
+vNomeCli varchar(100), vCPF decimal(11), vEmail varchar(100), vSenhaUsu varchar(50), vDataNasc date, vTelefone bigint, vNumEnd smallint, vCompEnd varchar(50), vCEP decimal(8, 0), vClienteStatus boolean, vBairro varchar(200), vCidade varchar(200), vUF char(2)
 ) 
 begin
     declare vClienteId int;
@@ -269,8 +268,8 @@ begin
             SET vUFId = (SELECT UFId FROM tbEstado WHERE UF = vUF);
 
             -- Insere os registros na tbEndereco. --
-            INSERT INTO tbEndereco (Logradouro, BairroId, CidadeId, UFId, CEP)
-            VALUES (vLogradouro, vBairroId, vCidadeId, vUFId, vCEP);
+            INSERT INTO tbEndereco (BairroId, CidadeId, UFId, CEP)
+            VALUES (vBairroId, vCidadeId, vUFId, vCEP);
         END IF;
 
         -- Insere os registros do cliente na tbCliente. -- 
@@ -288,10 +287,10 @@ begin
     END IF;
 END $$
 
-call spInsertCliente('renan', 12345212350, 'pdro@gmail.com', 'pedrosenha', '1989-01-28', 11940028922, 192, 'apto 1', 12345051, 1, 'Av Brasil', 'lapa', 'Campinas', 'SP');
-call spInsertCliente('jeferson', 12345212351, 'pedro@gmail.com', 'pedrosenha', '1989-01-28', 11940028922, 194, 'apto 1', 12345051, 1, 'Av Brasil', 'lapa', 'Campinas', 'SP');
-call spInsertCliente('João Vitor', 12345212355, 'pedr@gmail.com', 'pedrosenha', '1989-01-28', 11940028922, 194, 'apto 1', 12345099, 1, 'Rua Pequena', 'barueri', 'São Paulo', 'SP');
-call spInsertCliente('Clayton', 12345212377, 'clayton@gmail.com', 'claytonsenha', '1989-01-28', 11940028933, 196, 'apto 15', 12345456, 0, 'Rua Campo Grande', 'Balneário Camboriú', 'São Paulo', 'SP');
+call spInsertCliente('renan', 12345212350, 'pdro@gmail.com', 'pedrosenha', '1989-01-28', 11940028922, 192, 'apto 1', 12345051, 1, 'Av Brasil', 'Campinas', 'SP');
+call spInsertCliente('jeferson', 12345212351, 'pedro@gmail.com', 'pedrosenha', '1989-01-28', 11940028922, 194, 'apto 1', 12345051, 1, 'Av Brasil','Campinas', 'SP');
+call spInsertCliente('João Vitor', 12345212355, 'pedr@gmail.com', 'pedrosenha', '1989-01-28', 11940028922, 194, 'apto 1', 12345099, 1, 'Rua Pequena', 'São Paulo', 'SP');
+call spInsertCliente('Clayton', 12345212377, 'clayton@gmail.com', 'claytonsenha', '1989-01-28', 11940028933, 196, 'apto 15', 12345456, 0, 'Rua Campo Grande', 'São Paulo', 'SP');
 
 select * from tbestado;
 select * from tbcidade;
@@ -409,7 +408,7 @@ end $$
 
 call spInsertPedidos('2024-10-15', 'teste', 1, 'Cartão de Crédito');
 call spInsertPedidos('2024-10-15','3 carburadores de Marea', 2, 'Pix');
-call spInsertPedidos('2024-10-15','2 Laptop Mouse', 8);
+/*call spInsertPedidos('2024-10-15','2 Laptop Mouse', 8); */
 select * from tbcarrinhocompra;
 select * from tbpedido
 
@@ -494,7 +493,6 @@ BEGIN
     SELECT 'Nota Fiscal criada com sucesso!' AS Mensagem;
 END $$
 
-DELIMITER ;
 
 CALL spInsertNotaFiscal(1);  -- Substitua 1 pelo ID de um pedido existente
 select * from tbnota_fiscal;
@@ -539,7 +537,6 @@ BEGIN
     SELECT 'Troca registrada com sucesso!' AS Mensagem;
 END $$
 
-DELIMITER ;
 
 
 CALL spInserirTroca('peça com defeito', 1); -- Substitua 1 pelo NF existente
@@ -575,5 +572,4 @@ BEGIN
     END IF;
 END $$
 
-DELIMITER ;
 

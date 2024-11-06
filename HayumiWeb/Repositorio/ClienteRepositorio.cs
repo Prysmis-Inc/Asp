@@ -68,7 +68,6 @@ namespace HayumiWeb.Repositorio
                 cmd.Parameters.AddWithValue("vCompEnd", cliente.CompEnd);
                 cmd.Parameters.AddWithValue("vCEP", cliente.CEP);
                 cmd.Parameters.AddWithValue("vClienteStatus", cliente.ClienteStatus);
-                cmd.Parameters.AddWithValue("vLogradouro", cliente.Ende2reco.Logradouro);
                 cmd.Parameters.AddWithValue("vBairro", cliente.Bairro.Bairro);
                 cmd.Parameters.AddWithValue("vCidade", cliente.Cidade.Cidade);
                 cmd.Parameters.AddWithValue("vUF", cliente.Estado.UF);

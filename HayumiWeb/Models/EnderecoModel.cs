@@ -5,7 +5,6 @@ namespace HayumiWeb.Models
     public class EnderecoModel
     {
         public decimal CEP { get; set; }
-        public string Logradouro { get; set; }
         public int BairroId { get; set; }
         public int CidadeId { get; set; }
         public int UFId { get; set; }
