@@ -42,19 +42,48 @@ namespace HayumiWeb.Repositorio
                 {
 
                     cliente.Email = Convert.ToString(dr["Email"]);
-                    cliente.Senha = Convert.ToString(dr["SenhaUsu"]);
+                    cliente.SenhaUsu = Convert.ToString(dr["SenhaUsu"]);
                 }
                 return cliente;
             }
         }
 
-        public void Cadastrar(ClienteModel cliente) 
+ public void Cadastrar(ClienteModel cliente)
+    {
+        using (var conexao = new MySqlConnection(_conexaoMySQL))
         {
-            using (var conexao = new MySqlConnection(_conexaoMySQL)) 
+            conexao.Open();
+
+            using (var cmd = new MySqlCommand("spInsertCliente", conexao))
             {
-                conexao.Open();
-                MySqlCommand cmd = new MySqlCommand("call ");
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("vNomeCli", cliente.NomeCli);
+                cmd.Parameters.AddWithValue("vCPF", cliente.CPF);
+                cmd.Parameters.AddWithValue("vEmail", cliente.Email);
+                cmd.Parameters.AddWithValue("vSenhaUsu", cliente.SenhaUsu);
+                cmd.Parameters.AddWithValue("vDataNasc", cliente.DataNasc);
+                cmd.Parameters.AddWithValue("vTelefone", cliente.Telefone);
+                cmd.Parameters.AddWithValue("vNumEnd", cliente.NumEnd);
+                cmd.Parameters.AddWithValue("vCompEnd", cliente.CompEnd);
+                cmd.Parameters.AddWithValue("vCEP", cliente.CEP);
+                cmd.Parameters.AddWithValue("vClienteStatus", cliente.ClienteStatus);
+                cmd.Parameters.AddWithValue("vLogradouro", cliente.Ende2reco.Logradouro);
+                cmd.Parameters.AddWithValue("vBairro", cliente.Bairro.Bairro);
+                cmd.Parameters.AddWithValue("vCidade", cliente.Cidade.Cidade);
+                cmd.Parameters.AddWithValue("vUF", cliente.Estado.UF);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string mensagem = reader["Mensagem"].ToString();
+                        Console.WriteLine(mensagem);
+                    }
+                }
             }
         }
+    }
+
     }
 }

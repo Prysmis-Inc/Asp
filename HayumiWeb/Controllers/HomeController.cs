@@ -34,9 +34,9 @@ namespace HayumiWeb.Controllers
         [HttpPost]
         public IActionResult Login(ClienteModel cliente)
         {
-            ClienteModel loginDB = _clienteRepositorio.Login(cliente.Email, cliente.Senha);
+            ClienteModel loginDB = _clienteRepositorio.Login(cliente.Email, cliente.SenhaUsu);
 
-            if (loginDB.Email != null && loginDB.Senha != null)
+            if (loginDB.Email != null && loginDB.SenhaUsu != null)
             {
                 _loginCliente.Login(loginDB);
                 return new RedirectResult(Url.Action(nameof(Index)));
@@ -49,11 +49,40 @@ namespace HayumiWeb.Controllers
             }
 
         }
+
+        [HttpGet]
         public IActionResult Cadastro()
         {
 
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Cadastro(ClienteModel cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+            if (cliente.ClienteStatus == null)
+            {
+                cliente.ClienteStatus = false; // Define o valor padrão como false
+            }
+
+            _clienteRepositorio.Cadastrar(cliente); // Salva o cliente no banco de dados
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+
+
+
+
+
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

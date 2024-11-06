@@ -4,11 +4,7 @@ namespace HayumiWeb.Models
 {
     public class CidadeModel
     {
-        [Key]
         public int CidadeId { get; set; }
-
-        [Required]
-        [StringLength(200)]
-        public string Nome { get; set; }
+        public string Cidade { get; set; }
     }
 }

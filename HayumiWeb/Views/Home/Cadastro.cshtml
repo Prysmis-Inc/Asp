@@ -1,4 +1,9 @@
-﻿<div class="container d-flex justify-content-center align-items-center min-vh-100">
+﻿@model HayumiWeb.Models.ClienteModel
+
+@{
+    ViewData["Title"] = "Cadastro";
+}
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
     <div class="row border rounded-3 p-0 shadow box-area w-100">
         <!-- Painel Esquerdo -->
         <div class="col-md-6 rounded-2 d-flex justify-content-center align-items-center flex-column left-box p-5" style="background-color: #002454;">
@@ -12,24 +17,83 @@
 
         <!-- Painel Direito -->
         <div class="col-md-6 right-box p-5">
-            <div class="row align-items-center mb-4">
-                <p class="txt align-items-center justify-content-center fs-2 text-dark font-weight-bold">Acesse sua conta</p>
-            </div>
-            <div class="form-group mb-3">
-                <label for="email" class="text-muted">Email:</label>
-                <input type="text" class="form-control form-control-lg bg-light fs-6 rounded-3" id="email" placeholder="Digite seu email aqui" />
-            </div>
-            <div class="form-group mb-3">
-                <label for="password" class="text-muted">Senha:</label>
-                <input type="password" class="form-control form-control-lg bg-light fs-6 rounded-3" id="password" placeholder="Digite sua senha aqui" />
-            </div>
-            <div class="form-group mb-3">
-                <label for="confirmPassword" class="text-muted">Confirmar senha:</label>
-                <input type="password" class="form-control form-control-lg bg-light fs-6 rounded-3" id="confirmPassword" placeholder="Confirme sua senha aqui" />
-            </div>
-            <div class="form-group mb-3">
-                <button class="btn btn-lg w-100 fs-6 align-content-end btn-entrar">Cadastrar</button>
-            </div>
+            <form method="post">
+                <div class="row align-items-center mb-4">
+                    <p class="txt align-items-center justify-content-center fs-2 text-dark font-weight-bold">Cadastre-se</p>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="nome" class="text-muted">Nome:</label>
+                    <input asp-for="NomeCli" class="form-control form-control-lg bg-light fs-6 rounded-3" id="nome" placeholder="Digite seu nome aqui" />
+                    <span asp-validation-for="NomeCli" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="cpf" class="text-muted">CPF:</label>
+                    <input asp-for="CPF" class="form-control form-control-lg bg-light fs-6 rounded-3" id="cpf" placeholder="Digite seu CPF aqui" />
+                    <span asp-validation-for="CPF" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="email" class="text-muted">Email:</label>
+                    <input asp-for="Email" class="form-control form-control-lg bg-light fs-6 rounded-3" id="email" placeholder="Digite seu email aqui" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="senha" class="text-muted">Senha:</label>
+                    <input asp-for="SenhaUsu" type="password" class="form-control form-control-lg bg-light fs-6 rounded-3" id="senha" placeholder="Digite sua senha aqui" />
+                    <span asp-validation-for="SenhaUsu" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="confirmarSenha" class="text-muted">Confirmar senha:</label>
+                    <input type="password" class="form-control form-control-lg bg-light fs-6 rounded-3" id="confirmarSenha" placeholder="Confirme sua senha aqui" />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="dataNasc" class="text-muted">Data de Nascimento:</label>
+                    <input asp-for="DataNasc" type="date" class="form-control form-control-lg bg-light fs-6 rounded-3" id="dataNasc" />
+                    <span asp-validation-for="DataNasc" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="telefone" class="text-muted">Telefone:</label>
+                    <input asp-for="Telefone" type="number" class="form-control form-control-lg bg-light fs-6 rounded-3" id="telefone" placeholder="Digite seu telefone aqui" />
+                    <span asp-validation-for="Telefone" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="numEnd" class="text-muted">Número:</label>
+                    <input asp-for="NumEnd" type="number" class="form-control form-control-lg bg-light fs-6 rounded-3" id="numEnd" placeholder="Digite o número do endereço" />
+                    <span asp-validation-for="NumEnd" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="compEnd" class="text-muted">Complemento:</label>
+                    <input asp-for="CompEnd" class="form-control form-control-lg bg-light fs-6 rounded-3" id="compEnd" placeholder="Digite o complemento" />
+                    <span asp-validation-for="CompEnd" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="cep" class="text-muted">CEP:</label>
+                    <input asp-for="CEP" class="form-control form-control-lg bg-light fs-6 rounded-3" id="cep" placeholder="Digite o CEP" />
+                    <span asp-validation-for="CEP" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="logradouro" class="text-muted">Logradouro:</label>
+                    <input asp-for="Endereco.Logradouro" class="form-control form-control-lg bg-light fs-6 rounded-3" id="logradouro" placeholder="Digite o logradouro" />
+                    <span asp-validation-for="Endereco.Logradouro" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="bairro" class="text-muted">Bairro:</label>
+                    <input asp-for="Bairro.Bairro" class="form-control form-control-lg bg-light fs-6 rounded-3" id="bairro" placeholder="Digite o bairro" />
+                    <span asp-validation-for="Bairro.Bairro" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="cidade" class="text-muted">Cidade:</label>
+                    <input asp-for="Cidade.Cidade" class="form-control form-control-lg bg-light fs-6 rounded-3" id="cidade" placeholder="Digite a cidade" />
+                    <span asp-validation-for="Cidade.Cidade" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="uf" class="text-muted">UF:</label>
+                    <input asp-for="Estado.UF" class="form-control form-control-lg bg-light fs-6 rounded-3" id="uf" placeholder="Digite a UF" />
+                    <span asp-validation-for="Estado.UF" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
+                    <button type="submit" class="btn btn-lg w-100 fs-6 align-content-end btn-entrar">Cadastrar</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
