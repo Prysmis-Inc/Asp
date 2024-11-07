@@ -24,6 +24,8 @@ namespace HayumiWeb.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
+
             return View();
         }
         public IActionResult Login()
@@ -39,6 +41,7 @@ namespace HayumiWeb.Controllers
             if (loginDB.Email != null && loginDB.SenhaUsu != null)
             {
                 _loginCliente.Login(loginDB);
+                HttpContext.Session.SetString("UsuarioNome", loginDB.Email);
                 return new RedirectResult(Url.Action(nameof(Index)));
             }
             else
@@ -79,7 +82,11 @@ namespace HayumiWeb.Controllers
 
 
 
-
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction(nameof(Login));
+        }
 
 
 

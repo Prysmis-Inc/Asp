@@ -1,3 +1,4 @@
+/* Estilos Globais */
 html {
     font-size: 14px;
 }
@@ -6,14 +7,6 @@ html {
     html {
         font-size: 16px;
     }
-}
-
-.btn:focus,
-.btn:active:focus,
-.btn-link.nav-link:focus,
-.form-control:focus,
-.form-check-input:focus {
-    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
@@ -25,6 +18,53 @@ body {
     margin-bottom: 60px;
     min-height: 100vh;
     padding: 0;
+}
+
+/* Foco e Atividade nos Botões */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Estilos do Cabeçalho */
+.ss {
+    background-color: #002454;
+    color: #FFCC00;
+}
+
+    .ss .btn {
+        font-family: Arial;
+        font-size: 20px;
+    }
+
+.ss {
+    font-family: Arial;
+    font-size: 20px;
+}
+
+/* Estilos do Botão "Entrar" */
+#botaoentrar {
+    background-color: #FFCC00;
+    border-color: #002454;
+    width: 90px;
+    height: 40px;
+    margin-right: 100px;
+    border-radius: 8px;
+    border: 1px solid #002454;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Estilos para a Barra de Pesquisa */
+.search-input {
+    width: 400px;
 }
 
 .search-button {
@@ -43,20 +83,7 @@ body {
     fill: #FFFFFF;
 }
 
-.search-input {
-    width: 400px;
-}
-
-.ss .btn {
-    font-family: Arial;
-    font-size: 20px;
-}
-
-.ss {
-    font-family: Arial;
-    font-size: 20px;
-}
-
+/* Estilos para Produtos */
 .produtos {
     display: flex;
     flex-wrap: wrap;
@@ -109,7 +136,6 @@ body {
         width: 100%;
     }
 
-
     .produto .detalhes {
         margin-top: 10px;
         background-color: #FFCC00;
@@ -134,6 +160,7 @@ body {
             border: 2px solid #002454;
         }
 
+/* Estilos para Parceiros */
 .parceiros {
     display: flex;
     flex-wrap: wrap;
@@ -155,19 +182,86 @@ body {
         border-radius: 10px;
     }
 
+/* Estilos de Responsividade */
 @media (max-width: 768px) {
     .parceiro {
         flex: 1 1 calc(50% - 10px);
     }
-}
 
-@media (max-width: 480px) {
-    .parceiro {
-        flex: 1 1 calc(100% - 10px);
+    .produto {
+        width: 150px;
+        padding: 10px;
+    }
+
+    .search-input {
+        width: 300px;
+    }
+
+    .search-button {
+        width: 50px;
+    }
+
+    /* Ajustes para a Barra de Navegação no Mobile */
+    .navbar-collapse {
+        display: block;
+        width: 100%;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .navbar-nav .nav-item {
+            margin: 5px 0;
+        }
+
+    #botaoentrar {
+        width: 80px;
+        height: 35px;
+        font-size: 14px;
+        margin-right: 0;
+        padding: 5px 10px;
     }
 }
 
-/Tela Login e possivelmente cadastro/
+@media (max-width: 550px) {
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .navbar-nav .nav-item {
+            margin: 5px 0;
+        }
+
+    #botaoentrar {
+        width: 70px;
+        height: 30px;
+        font-size: 12px;
+        margin-right: 0;
+        padding: 5px 10px;
+    }
+
+    .search-input {
+        width: 80%;
+        font-size: 12px;
+    }
+
+    .search-button {
+        width: 35px;
+        height: 35px;
+        padding: 6px;
+    }
+
+    .navbar-brand img {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+/* Estilos para a Tela de Login */
 .left-box {
     background-color: #002454;
 }
@@ -202,31 +296,12 @@ input.form-control-lg {
     transition: background-color 0.3s, color 0.3s;
 }
 
-    .btn-entrar:hover {
-        background-color: #002454;
-        color: #FFCC00;
-    }
 
 .right-box {
     background-color: white;
 }
 
-@media (max-width: 768px) {
-    .container-fluid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between; /* Ajusta o espaço entre as colunas */
-    }
-
-    .col-sm-3 {
-        flex: 0 0 48%; /* Duas colunas ocupando 48% da largura cada, com espaço entre elas */
-        margin-bottom: 10px; /* Adiciona espaço abaixo de cada imagem */
-    }
-}
-
-
-/*Categoria*/
-
+/* Estilos para Categorias */
 .container {
     text-align: center;
     background-color: #fff;
@@ -281,18 +356,3 @@ h2 {
     .shop-now:hover {
         background-color: #cc0000;
     }
-
-#botaoentrar {
-    background-color: #FFCC00;
-    border-color: #002454;
-    width: 90px;
-    height: 40px;
-    margin-right: 100px;
-    border-radius: 8px;
-    border: 1px solid #002454;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center
-}

@@ -1,0 +1,16 @@
+﻿@model HayumiWeb.Models.PecaViewModel
+
+@foreach (PecaModel pecaModel in Model.Pecas)
+{
+    <span>@pecaModel.PecaId</span>
+
+    <span>@pecaModel.NomePeca</span>
+
+    <span>@pecaModel.ImgPeca</span>
+
+    <span>@pecaModel.Descricao</span>
+
+    <span>@pecaModel.ValorPeca</span>
+
+    <span>@pecaModel.CategoriaId</span>
+}
