@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\HayumiWeb.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\css\\product.css",
+      "PackagePath": "staticwebassets\\css\\product.css"
+    },
+    {
       "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -71,6 +75,246 @@
     {
       "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\honda.png",
       "PackagePath": "staticwebassets\\img\\honda.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgbateria1.png",
+      "PackagePath": "staticwebassets\\img\\imgbateria1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgbateria2.png",
+      "PackagePath": "staticwebassets\\img\\imgbateria2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgbateria3.png",
+      "PackagePath": "staticwebassets\\img\\imgbateria3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgbateria4.png",
+      "PackagePath": "staticwebassets\\img\\imgbateria4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgbateria5.png",
+      "PackagePath": "staticwebassets\\img\\imgbateria5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgdisco1.png",
+      "PackagePath": "staticwebassets\\img\\imgdisco1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgdisco2.png",
+      "PackagePath": "staticwebassets\\img\\imgdisco2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgdisco3.png",
+      "PackagePath": "staticwebassets\\img\\imgdisco3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgdisco4.png",
+      "PackagePath": "staticwebassets\\img\\imgdisco4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgdisco5.png",
+      "PackagePath": "staticwebassets\\img\\imgdisco5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgescap1.png",
+      "PackagePath": "staticwebassets\\img\\imgescap1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgescap2.png",
+      "PackagePath": "staticwebassets\\img\\imgescap2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgescap3.png",
+      "PackagePath": "staticwebassets\\img\\imgescap3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgescap4.png",
+      "PackagePath": "staticwebassets\\img\\imgescap4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgescap5.png",
+      "PackagePath": "staticwebassets\\img\\imgescap5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgfiltroar1.png",
+      "PackagePath": "staticwebassets\\img\\imgfiltroar1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgfiltroar2.png",
+      "PackagePath": "staticwebassets\\img\\imgfiltroar2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgfiltroar3.png",
+      "PackagePath": "staticwebassets\\img\\imgfiltroar3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgfiltroar4.png",
+      "PackagePath": "staticwebassets\\img\\imgfiltroar4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgfiltroar5.png",
+      "PackagePath": "staticwebassets\\img\\imgfiltroar5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imglanterna1.png",
+      "PackagePath": "staticwebassets\\img\\imglanterna1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imglanterna2.png",
+      "PackagePath": "staticwebassets\\img\\imglanterna2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imglanterna3.png",
+      "PackagePath": "staticwebassets\\img\\imglanterna3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imglanterna4.png",
+      "PackagePath": "staticwebassets\\img\\imglanterna4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imglanterna5.png",
+      "PackagePath": "staticwebassets\\img\\imglanterna5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgmotor1.png",
+      "PackagePath": "staticwebassets\\img\\imgmotor1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgmotor2.png",
+      "PackagePath": "staticwebassets\\img\\imgmotor2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgmotor3.png",
+      "PackagePath": "staticwebassets\\img\\imgmotor3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgmotor4.png",
+      "PackagePath": "staticwebassets\\img\\imgmotor4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgmotor5.png",
+      "PackagePath": "staticwebassets\\img\\imgmotor5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgoleo1.png",
+      "PackagePath": "staticwebassets\\img\\imgoleo1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgoleo2.png",
+      "PackagePath": "staticwebassets\\img\\imgoleo2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgoleo3.png",
+      "PackagePath": "staticwebassets\\img\\imgoleo3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgoleo4.png",
+      "PackagePath": "staticwebassets\\img\\imgoleo4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgoleo5.png",
+      "PackagePath": "staticwebassets\\img\\imgoleo5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgpneu1.png",
+      "PackagePath": "staticwebassets\\img\\imgpneu1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgpneu2.png",
+      "PackagePath": "staticwebassets\\img\\imgpneu2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgpneu3.png",
+      "PackagePath": "staticwebassets\\img\\imgpneu3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgpneu4.png",
+      "PackagePath": "staticwebassets\\img\\imgpneu4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgpneu5.png",
+      "PackagePath": "staticwebassets\\img\\imgpneu5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgradiador1.png",
+      "PackagePath": "staticwebassets\\img\\imgradiador1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgradiador2.png",
+      "PackagePath": "staticwebassets\\img\\imgradiador2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgradiador3.png",
+      "PackagePath": "staticwebassets\\img\\imgradiador3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgradiador4.png",
+      "PackagePath": "staticwebassets\\img\\imgradiador4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgradiador5.png",
+      "PackagePath": "staticwebassets\\img\\imgradiador5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgretro1.png",
+      "PackagePath": "staticwebassets\\img\\imgretro1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgretro2.png",
+      "PackagePath": "staticwebassets\\img\\imgretro2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgretro3.png",
+      "PackagePath": "staticwebassets\\img\\imgretro3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgretro4.png",
+      "PackagePath": "staticwebassets\\img\\imgretro4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgretro5.png",
+      "PackagePath": "staticwebassets\\img\\imgretro5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgsuspensao1.png",
+      "PackagePath": "staticwebassets\\img\\imgsuspensao1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgsuspensao2.png",
+      "PackagePath": "staticwebassets\\img\\imgsuspensao2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgsuspensao3.png",
+      "PackagePath": "staticwebassets\\img\\imgsuspensao3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgsuspensao4.png",
+      "PackagePath": "staticwebassets\\img\\imgsuspensao4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgsuspensao5.png",
+      "PackagePath": "staticwebassets\\img\\imgsuspensao5.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgvolante1.png",
+      "PackagePath": "staticwebassets\\img\\imgvolante1.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgvolante2.png",
+      "PackagePath": "staticwebassets\\img\\imgvolante2.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgvolante3.png",
+      "PackagePath": "staticwebassets\\img\\imgvolante3.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgvolante4.png",
+      "PackagePath": "staticwebassets\\img\\imgvolante4.png"
+    },
+    {
+      "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\imgvolante5.png",
+      "PackagePath": "staticwebassets\\img\\imgvolante5.png"
     },
     {
       "Id": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\img\\insta.png",

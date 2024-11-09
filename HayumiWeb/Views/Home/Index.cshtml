@@ -1,4 +1,6 @@
-﻿@{
+﻿@model HomeViewModel
+
+@{
     ViewData["Title"] = "Início: ";
 }
 
@@ -9,62 +11,17 @@
         <hr style="flex-grow: 1; margin-left: 10px; border: 1px solid #002454;" />
     </div>
     <div class="category-grid">
-        <div class="category-item">
-            <a href="http://localhost:5094/Peca/?categoriaId=1">
-                <img src="~/img/cpne.png" alt="Body Parts">
-            </a>
-            <p>Pneus</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/cmot.png" alt="Headlights & Lighting">
-            <p>Motores</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/cbateria.png" alt="Brakes & Suspension">
-            <p>Baterias</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/cretrovisor.png" alt="Engine & Drivetrain">
-            <p>Retrovisores</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/csuspens.png" alt="Tools & Garage">
-            <p>Suspensão</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/cfreio.png" alt="Interior Parts">
-            <p>Freios</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/cfiltro.png" alt="Engine & Drivetrain">
-            <p>Filtros de Ar</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/clamp.png" alt="Tools & Garage">
-            <p>Lanternas Traseiras</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/cvolantes.png" alt="Interior Parts">
-            <p>Volantes</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/coleoelubri.png" alt="Engine & Drivetrain">
-            <p>Óleos e Lubrificantes</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/cescapa.png" alt="Tools & Garage">
-            <p>Escapamentos</p>
-        </div>
-        <div class="category-item">
-            <img src="~/img/cradiador.png" alt="Interior Parts">
-            <p>Radiadores</p>
-        </div>
 
-
+        @foreach (CategoriaModel categoria in Model.Categorias)
+        {
+            <div class="category-item">
+                <a href="http://localhost:5094/Peca/?categoriaId=@categoria.CategoriaId">
+                    <img src="~/img/@categoria.ImgCategoria" alt="@categoria.NomeCategoria">
+                </a>
+                <p>@categoria.NomeCategoria</p>
+            </div>
+        }
     </div>
-
-
-    <button class="shop-now">Mostrar mais</button>
 </div>
 
 

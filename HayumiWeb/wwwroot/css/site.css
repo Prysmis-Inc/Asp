@@ -356,3 +356,35 @@ h2 {
     .shop-now:hover {
         background-color: #cc0000;
     }
+
+/*Peças */
+
+.product-card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+    .product-card img {
+        margin-bottom: 15px;
+        border-radius: 8px;
+    }
+
+    .product-card h5 {
+        font-size: 1.25em;
+        margin-bottom: 10px;
+    }
+
+    .product-card p {
+        margin-bottom: 10px;
+    }
+
+    .product-card .price {
+        font-size: 1.2em;
+        color: #000B54;
+    }
+

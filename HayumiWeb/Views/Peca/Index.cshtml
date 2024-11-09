@@ -1,16 +1,20 @@
 ﻿@model HayumiWeb.Models.PecaViewModel
 
-@foreach (PecaModel pecaModel in Model.Pecas)
-{
-    <span>@pecaModel.PecaId</span>
-
-    <span>@pecaModel.NomePeca</span>
-
-    <span>@pecaModel.ImgPeca</span>
-
-    <span>@pecaModel.Descricao</span>
-
-    <span>@pecaModel.ValorPeca</span>
-
-    <span>@pecaModel.CategoriaId</span>
-}
+<link href="~/css/product.css" rel="stylesheet" />
+<div class="container">
+    <h1 class="my-4">Produtos</h1>
+    <div class="row">
+        @foreach (PecaModel pecaModel in Model.Pecas)
+        {
+            <div class="col-md-4">
+                <div class="product-card">
+                    <img src="~/img/@pecaModel.ImgPeca" alt="@pecaModel.NomePeca" width="300px" height="200px">
+                    <h5>@pecaModel.NomePeca</h5>
+                    <p class="price">@pecaModel.ValorPeca.ToString("C")</p>
+                    <button class="proddetalhes">Detalhes</button>
+                    <button class="prodcomprar">Comprar</button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

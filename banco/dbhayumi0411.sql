@@ -301,23 +301,28 @@ select * from tblogin;
 
 DELIMITER $$ 
 CREATE PROCEDURE spInsertCategoria (
-    IN p_categoriaid INT,
     IN p_nomecategoria VARCHAR(150),
     IN p_img varchar(255)
 )
 BEGIN
-    INSERT INTO tbCategoria (categoriaid, nomeCategoria, img_categoria)
-    VALUES (p_categoriaid, p_nomecategoria, p_img);
+    INSERT INTO tbCategoria ( nomeCategoria, img_categoria)
+    VALUES (p_nomecategoria, p_img);
 END $$
 
+CALL spInsertCategoria('Pneus', 'cpne.png'); 
+CALL spInsertCategoria('Motores', 'cmot.png'); 
+CALL spInsertCategoria('Baterias', 'cbateria.png');
+CALL spInsertCategoria('Retrovisores', 'cretrovisor.png'); 
+CALL spInsertCategoria('Suspensão', 'csuspens.png'); 
+CALL spInsertCategoria('Freios', 'cfreio.png');
+CALL spInsertCategoria('Filtros de Ar', 'cfiltro.png'); 
+CALL spInsertCategoria('Lanternas Traseiras', 'clamp.png'); 
+CALL spInsertCategoria('Volantes', 'cvolantes.png');
+CALL spInsertCategoria('Óleos e Lubrificantes', 'coleoelubri.png'); 
+CALL spInsertCategoria('Escapamentos', 'cescapa.png'); 
+CALL spInsertCategoria('Radiadores', 'cradiador.png');
 
-
-CALL spInsertCategoria(1, 'Fabricante A', 'imagem1'); -- generico 
-CALL spInsertCategoria(2, 'Fabricante B', 'imagem2'); -- generico 
-CALL spInsertCategoria(3, 'Fabricante C', 'imagem3'); -- generico 
-
-
-
+select * from tbCategoria;
 delimiter $$
 create procedure spInsertPeca(vNomePeca varchar(100), vValorPeca decimal(8,2), vImgPeca varchar(255), vDescricao varchar(200), vQtdEstoque int, vcategoriaid int)
 begin
@@ -330,12 +335,136 @@ begin
     end if;
 end $$
 
-call spInsertPeca('Carburador Marea', 220, 'img_carb_marea.jpg', 'Carburador para Fiat Marea 2.5',5,1); -- pros outros calls tem q ser nesse pique
-/*call spInsertPeca('Carburador Gol', 700,'WolksWagen', 'Carburadores', 'img_carb_gol.jpg', 'Carburador para Wolkswagen Gol 1000',10);
-call spInsertPeca('Carburador Gol 1.6', 700,'WolksWagen', 'Carburadores', 'img_carb_gol1_6.jpg', 'Carburador para Wolkswagen Gol 1.6',0);*/
+/*Inserção de peças - pneus*/
+CALL spInsertPeca('Pneu Aro 22 XBri', 1400.00, 'imgpneu1.png', 'Pneu Aro 22 da marca XBri, ideal para veículos com alto desempenho e segurança, com excelente durabilidade e aderência.', 10, 1);
+CALL spInsertPeca('Pneu 110H Scorpion', 1400.00, 'imgpneu2.png', 'Pneu Scorpion 110H, proporciona ótima performance em diferentes tipos de terreno, com resistência e alta estabilidade.', 10, 1);
+CALL spInsertPeca('Pneu Aro 15 Archiles', 2099.00, 'imgpneu3.png', 'Pneu Archiles Aro 15, ideal para carros de passeio, com design que oferece ótima performance e conforto ao dirigir.', 10, 1);
+CALL spInsertPeca('Pneu Aro 16 Goodyear', 959.00, 'imgpneu4.png', 'Pneu Aro 16 da Goodyear, com tecnologia avançada que garante maior durabilidade e segurança ao dirigir.', 10, 1);
+CALL spInsertPeca('Pneu Aro 16 XBri', 293.00, 'imgpneu5.png', 'Pneu XBri Aro 16, ideal para carros de passeio com excelente custo-benefício e durabilidade.', 10, 1);
+/*Inserção de peças - Motores*/
+CALL spInsertPeca('Motor Ford Coyote V8 5.0 3ª Geração Mustang 2018+', 73000.00, 'imgmotor1.png', 
+    'Motor Ford Coyote V8 5.0 0km, motor novo e importado, 466 cavalos de potência, para Mustang 2018+.', 10, 2);
+CALL spInsertPeca('Motor Chevy V8 496 Injetado Completo G', 119830.00, 'imgmotor2.png', 
+    'Motor Chevy V8 496 injetado completo, ideal para carros de alta performance, configuração V8.', 8, 2);
+CALL spInsertPeca('Motor Completo GM Montana 1.4 8V Gasolina 2015 e 2016', 18000.00, 'imgmotor3.png', 
+    'Motor completo GM Montana 1.4 8V Gasolina, inclui cabeçote, pistão, biela, virabrequim e muito mais.', 12, 2);
+CALL spInsertPeca('Motor Completo Subaru Forester', 24500.00, 'imgmotor4.png', 
+    'Motor completo Subaru Forester EJ20, 150cv, para modelos 2009 da Subaru.', 7, 2);
+CALL spInsertPeca('Motor Novo EA888 Gen3 VW Jetta', 50000.00, 'imgmotor5.png', 
+    'Motor EA888 Gen3, novo e importado, compatível com VW Jetta GLI, Golf GTI, Tiguan e Passat a partir de 2014.', 5, 2);
+/*Inserção de peças - Baterias*/
+CALL spInsertPeca('Bateria Cral – CS-60 D – 60 Ah', 260.00, 'imgbateria1.png', 
+    'Bateria Cral totalmente selada, com liga de Cálcio/Prata, indicador de carga com 3 leituras e protetor de pólo personalizado.', 10, 3);
+CALL spInsertPeca('Bateria De Carro Moura 60ah Corsa', 527.00, 'imgbateria2.png', 
+    'Bateria Moura 60Ah para veículos como Corsa, alta performance e durabilidade.', 8, 3);
+CALL spInsertPeca('Bateria de carro 12V, 60Ah', 1807.00, 'imgbateria3.png', 
+    'Bateria automotiva de lítio LiFePO4, 12V, 60Ah, ideal para veículos de alta performance, com tecnologia de ponta.', 12, 3);
+CALL spInsertPeca('Bateria De Carro 72ah Moura Start-stop Efb', 799.99, 'imgbateria4.png', 
+    'Bateria Moura 72Ah com tecnologia Start-stop EFB, ideal para veículos modernos com sistemas de parada e partida automática.', 7, 3);
+CALL spInsertPeca('Bateria De Carro Moura 60ah 12v 60gx Gol Camaro Vectra Punto', 765.00, 'imgbateria5.png', 
+    'Bateria Moura 60Ah 12V para veículos como Gol, Camaro, Vectra e Punto, com alta capacidade de carga e longa durabilidade.', 5, 3);
+/*Inserção de peças - Retrovisores*/
+CALL spInsertPeca('Espelho Retrovisor Lateral De motocicleta, Barra De Alumínio', 120.00, 'imgretro1.png', 
+    'Espelho retrovisor lateral de motocicleta com barra de alumínio.', 10, 4);
+CALL spInsertPeca('Par Espelho Retrovisor Motocicleta Kawasaki  Z400', 95.00, 'imgretro2.png', 
+    'Par de espelhos retrovisores para motocicleta Kawasaki. Produto elaborado com material de alta qualidade, testado e aprovado dentro das normas de segurança.', 20, 4);
+CALL spInsertPeca('Retrovisor Esquerdo S10 Blazer 1995 A 2011 Elétrico Fuscão', 445.00, 'imgretro3.png', 
+    'Retrovisor esquerdo elétrico para S10 Blazer 1995 a 2011, modelo Fuscão.', 5, 4);
+CALL spInsertPeca('Retrovisor Santa Fé 2010 2011 2012 2013 Com Pisca Elétrico', 1200.00, 'imgretro4.png', 
+    'Retrovisor elétrico com pisca para Hyundai Santa Fé 2010 a 2013.', 0, 4);
+CALL spInsertPeca('Retrovisor Corolla 2020 2021 2022 Elétrico Com Pisca', 1020.00, 'imgretro5.png', 
+    'Retrovisor elétrico com pisca para Hyundai Corolla 2020 a 2022.', 8, 4);
+/*Inserção de peças - Suspensão*/
+CALL spInsertPeca('Suspensão Coilover D2 Racing Street Volkswagen Up!', 12900.00, 'imgsuspensao1.png', 
+    'Suspensão Coilover D2 Racing Street Volkswagen UP! O kit Coilover Street da D2 Racing é o kit perfeito para quem utiliza o carro nas ruas para o dia a dia.', 10, 5);
+CALL spInsertPeca('Suspensão esportiva completa BlueLine coilover compatível com Audi A3 8P', 2254.58, 'imgsuspensao4.png', 
+'Os coilovers BlueLine são componentes de suspensão específicos para veículos de alta qualidade para rebaixamento em forma de cunha VA 20-60 / HA 30-75 mm. ', 0, 5);
+CALL spInsertPeca('Suspensão Fusca Quadro Suspensão Fusca Pivô Novo PC', 1397.44, 'imgsuspensao3.png', 
+    'Este anúncio contém os seguintes produtos: 01 Suspensão Dianteira completa Fusca Sistema de freio a disco industrializada.', 5, 5);
+CALL spInsertPeca('Kit Rosca Padrão Volkswagen', 1300.00, 'imgsuspensao2.png', 
+    '2 OU 4 AMORTECEDORES PREPARADOS (REMANUFATURADO) 4 MOLAS ESPECIAIS 4 CONJUNTO DE REGULAGEM (ROSCADA / USINAGEM CNC)', 20, 5);
+CALL spInsertPeca('Kit Suspensão Rosca Slim Gol G2 À G4', 2007.08, 'imgsuspensao5.png', 
+    'Kit de Suspensão Regulável Rosca Slim Macaulay é composto por amortecedores reguláveis e molas slim.', 8, 5);
+/*Inserção de peças - Freios*/
+CALL spInsertPeca('Par Disco De Freio Dianteiro Ventilado Saveiro', 880.00, 'imgdisco1.png', 
+    'Conjunto de discos de freio dianteiros ventilados para Saveiro G6 MSI 280mm, proporcionando eficiência e segurança ao frear.', 10, 6);
+CALL spInsertPeca('Par Freio a Disco Cerâmica 280mm', 600.00, 'imgdisco2.png', 
+    'Par de freios a disco cerâmicos de alta performance, proporcionando desaceleração rápida e segura, com baixo desgaste e ruído reduzido.', 15, 6);
+CALL spInsertPeca('Par Disco De Freio Dianteiro 280MM', 342.77, 'imgdisco3.png', 
+    'Conjunto de discos de freio dianteiros de alta qualidade, proporcionando eficiência e segurança ao frear.', 20, 6);
+CALL spInsertPeca('Par Disco Freio Dianteiro 328,00 mm', 515.85, 'imgdisco4.png', 
+    'Par de discos de freio dianteiros de alta performance, ideais para veículos que exigem desempenho e durabilidade.', 18, 6);
+CALL spInsertPeca('Disco de Freio Fremax 287MM Dodge', 525.01, 'imgdisco5.png', 
+    'Disco de freio de alta qualidade para Dodge, projetado para proporcionar desaceleração rápida e segura.', 12, 6);
+/*Inserção de peças - Filtros de Ar*/
+CALL spInsertPeca('Filtro de Ar Simples Wix', 38.50, 'imgfiltroar1.png', 
+    'Filtro de ar básico para veículos, oferece boa eficiência em filtragem de partículas.', 10, 7);
+CALL spInsertPeca('Filtro de Ar de Alta Eficiência K&S', 20.00, 'imgfiltroar2.png', 
+    'Filtro de ar avançado com tecnologia de filtragem de alta eficiência.', 20, 7);
+CALL spInsertPeca('Filtro de Ar AEM DryFlow', 59.99, 'imgfiltroar3.png', 
+    'Filtro de ar DryFlow da AEM, oferece alta eficiência e durabilidade.', 5, 7);
+CALL spInsertPeca('Filtro de Ar Primário Donaldson', 538.11, 'imgfiltroar4.png', 
+    'Filtro de ar industrial de alta qualidade para aplicações pesadas.', 0, 7);
+CALL spInsertPeca('Filtro de Ar Spectre', 32.50, 'imgfiltroar5.png', 
+    'Filtro de ar Spectre, oferece boa eficiência em filtragem de partículas.', 8, 7);
+/*Inserção de peças - Lanternas Traseiras*/
+CALL spInsertPeca('Lâmpada H4 Philips Blue Vision', 100.00, 'imglanterna1.png', 
+    'Lâmpada automotiva H4 Philips Blue Vision, com alto desempenho e durabilidade.', 10, 8);
+CALL spInsertPeca('Lâmpada Osram H4 12v 60/55w', 211.00, 'imglanterna2.png', 
+    'Lâmpada halógena H4 NightBreaker Laser 12V Osram, até 150% mais brilho em comparação com o mínimo legal.', 20, 8);
+CALL spInsertPeca('Lâmpada Led H4 Haloway 12v 24w 6500k', 249.90, 'imglanterna3.png', 
+    'Lâmpada LED H4 Haloway 12/24V 24W 6500K, luz branca fria e durabilidade longa.', 5, 8);
+CALL spInsertPeca('Lampada 12v Hb4 51w 9006 Standard Osram', 114.25, 'imglanterna4.png', 
+    'Lâmpada automotiva HB4 51W 9006 Osram, oferece maior visibilidade para condução segura.', 0, 8);
+CALL spInsertPeca('Lampada H4 100w 90w 12v Rallye Original Bosch Atacado', 100.00, 'imglanterna5.png', 
+    'Lâmpada halógena H4 100W 90W 12V Rallye Bosch, alta performance e durabilidade.', 8, 8);
+/*Inserção de peças - Volantes*/
+CALL spInsertPeca('Volante Esportivo Chevrolet', 159.99, 'imgvolante1.png', 
+    'Volante esportivo para veículos Chevrolet, com design aerodinâmico e materiais de alta qualidade.', 10, 9);
+CALL spInsertPeca('Volante Esportivo Volkswagen', 187.99, 'imgvolante2.png', 
+    'Volante esportivo para veículos Volkswagen, com tecnologia avançada e conforto.', 20, 9);
+CALL spInsertPeca('Volante Esportivo Renault', 140.00, 'imgvolante3.png', 
+    'Volante esportivo para veículos Renault, com design moderno e ergonomia.', 5, 9);
+CALL spInsertPeca('Volante Esportivo Hyundai', 159.00, 'imgvolante4.png', 
+    'Volante esportivo para veículos Hyundai, com materiais de alta qualidade e conforto.', 0, 9);
+CALL spInsertPeca('Volante Esportivo Fiat', 139.90, 'imgvolante5.png', 
+    'Volante esportivo para veículos Fiat, com design clássico e funcionalidade.', 8, 9);
+/*Inserção de peças - Óleos e Lubrificantes*/
+CALL spInsertPeca('Óleo de Motor Lubrax 500ml', 21.90, 'imgoleo1.png', 
+    'Óleo de motor sintético para veículos, com proteção contra desgaste e corrosão.', 10, 10);
+CALL spInsertPeca('Óleo de Motor Super SL GT-0IL 1L', 16.95, 'imgoleo2.png', 
+    'Óleo de motor convencional para veículos, com boa viscosidade e proteção.', 20, 10);
+CALL spInsertPeca('Óleo de Motor Ipiranga SI 1L', 28.00, 'imgoleo3.png', 
+    'Óleo de motor sintético para veículos, com alta performance e proteção.', 5, 10);
+CALL spInsertPeca('Óleo de Motor Havoline 1L', 28.44, 'imgoleo4.png', 
+    'Óleo de motor sintético para veículos, com proteção contra desgaste e corrosão.', 0, 10);
+CALL spInsertPeca('Óleo de Motor Mobil 20w50 1L', 29.89, 'imgoleo5.png', 
+    'Óleo sintético de alta performance, projetado para proteger os motores modernos contra desgaste e corrosão.', 8, 10);
+/*Inserção de peças - Escapamentos*/
+CALL spInsertPeca('Escapamento de Carro Fiat', 254.90, 'imgescap1.png', 
+    'Escapamento original para carros Fiat.', 12, 11);
+CALL spInsertPeca('Escapamento Intermediário Meriva', 190.24, 'imgescap2.png', 
+    'Melhora desempenho do motor e reduz ruídos.', 3, 11);
+CALL spInsertPeca('Escapamento Silencioso Traseiro', 155.99, 'imgescap3.png', 
+    'Reduz ruídos e melhora eficiência. Para Gol G5 8v', 0, 11);
+CALL spInsertPeca('Escapamento Silencioso Traseiro ', 132.19, 'imgescap4.png', 
+    'Reduz ruídos e melhora desempenho. Para Palio 1.0 á 1.4', 17, 11);
+CALL spInsertPeca('Escapamento Silencioso Traseiro Doblô', 182.85, 'imgescap5.png', 
+    'Reduz ruídos e melhora eficiência.', 10, 11);
+/*Inserção de peças - Radiadores*/
+CALL spInsertPeca('Radiador - Fire - Palio Siena Strada Idea - Eurus', 539.91, 'imgradiador1.png', 
+    'Radiador dianteiro para Fiat Palio, Siena, Strada, Idea, modelo Fire, marca Notus.', 10, 12);
+CALL spInsertPeca('Radiador Fiat Fiorino / Uno 1.0 / 1.5 / 1.6 8v Com Ou Sem Ar', 588.80, 'imgradiador2.png', 
+    'Radiador para Fiat Fiorino / Uno 1.0 / 1.5 / 1.6 8v, com ou sem ar condicionado, marca Procooler.', 20, 12);
+CALL spInsertPeca('Radiador de Óleo de alta Performance 700ml', 1390.00, 'imgradiador3.png', 
+    'Radiador de óleo de alta performance com colmeia brasada, material alumínio, capacidade 700 ml.', 10, 12);
+CALL spInsertPeca('Grade de radiador', 6181.73, 'imgradiador4.png', 
+    'Grade de radiador do carro com luz para o tanque 500, pára-choques dianteiro, máscara da grade, marca Reit.', 20, 12);
+CALL spInsertPeca('Radiador de Água CR 2448', 518.89, 'imgradiador5.png', 
+    'Radiador de água Mahle CR 2448, líder global em autopeças, com alta performance e qualidade.', 5, 12);
 
-select * from tbPeca
-
+select * from tbPeca;
+select * from tbCategoria;
 -- procedure para insrir registro de carrinho --
 delimiter $$
 create procedure spInsertCarrinhoCompras( vProdutosSelecionados varchar(200),  vQtdPeca int, vValorTotalCompra decimal(8,2), vClienteId int, in vPecaId int)
@@ -572,4 +701,10 @@ BEGIN
     END IF;
 END $$
 
+
+describe tbPeca;
+select * from tbPeca where categoriaid = 1;
+
+describe tbCategoria;
+select * from tbCategoria;
 

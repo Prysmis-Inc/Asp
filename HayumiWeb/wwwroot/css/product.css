@@ -1,0 +1,33 @@
+﻿.product-card button {
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin: 5px 0;
+    border: 2px solid;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+.proddetalhes {
+    background-color: #FFCC00;
+    border: 2px solid #000B54;
+    color: #002454;
+}
+
+    .proddetalhes:hover {
+        background-color: #002454;
+        color: #FFCC00;
+        border: 2px solid #FFCC00;
+    }
+.prodcomprar {
+    background-color: #002454;
+    color: #FFCC00;
+}
+    .prodcomprar:hover {
+        background-color: #FFCC00;
+        color: #002454;
+        border: 2px solid #002454;
+    }
+
+

@@ -22,6 +22,7 @@ builder.Services.AddMemoryCache();
 
 builder.Services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
 builder.Services.AddScoped<IPecaRepositorio, PecaRepositorio>();
+builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 builder.Services.AddScoped<HayumiWeb.Libraries.Session.Session>();
 builder.Services.AddScoped<LoginCliente>();
 

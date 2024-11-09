@@ -14,9 +14,8 @@ namespace HayumiWeb.Controllers
         }
         public IActionResult Index(int categoriaId)
         {
+            ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
             List<PecaModel> peca = _IPecaRepositorio.BuscarPecaPorCategoria(categoriaId);
-
-
             return View(new PecaViewModel { Pecas = peca });
         }
     }

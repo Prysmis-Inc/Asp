@@ -13,12 +13,14 @@ namespace HayumiWeb.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IClienteRepositorio? _clienteRepositorio;
+        private ICategoriaRepositorio _categoriaRepositorio;
         private LoginCliente _loginCliente;
 
-        public HomeController(ILogger<HomeController> logger, IClienteRepositorio clienteRepositorio, LoginCliente loginCliente)
+        public HomeController(ILogger<HomeController> logger, IClienteRepositorio clienteRepositorio, ICategoriaRepositorio categoriaRepositorio, LoginCliente loginCliente)
         {
             _logger = logger;
             _clienteRepositorio = clienteRepositorio;
+            _categoriaRepositorio = categoriaRepositorio;
             _loginCliente = loginCliente;
         }
 
@@ -26,13 +28,20 @@ namespace HayumiWeb.Controllers
         {
             ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
 
-            return View();
+            List<CategoriaModel> categorias = _categoriaRepositorio.BuscarCategorias();
+
+            return View(new HomeViewModel
+            {
+                Categorias = categorias
+            });
         }
+
         public IActionResult Login()
         {
 
             return View();
         }
+
         [HttpPost]
         public IActionResult Login(ClienteModel cliente)
         {
@@ -73,7 +82,7 @@ namespace HayumiWeb.Controllers
             }
 
             _clienteRepositorio.Cadastrar(cliente); // Salva o cliente no banco de dados
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Login));
         }
 
 
