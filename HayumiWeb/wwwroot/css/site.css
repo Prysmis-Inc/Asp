@@ -3,11 +3,6 @@ html {
     font-size: 14px;
 }
 
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
 
 html {
     position: relative;
@@ -51,7 +46,6 @@ body {
     border-color: #002454;
     width: 90px;
     height: 40px;
-    margin-right: 100px;
     border-radius: 8px;
     border: 1px solid #002454;
     font-size: 18px;
@@ -60,7 +54,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-
 
 /* Estilos para a Barra de Pesquisa */
 .search-input {
@@ -81,6 +74,11 @@ body {
 
 .search-icon {
     fill: #FFFFFF;
+}
+.navbar-collapse {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 /* Estilos para Produtos */
@@ -193,74 +191,82 @@ body {
         padding: 10px;
     }
 
-    .search-input {
-        width: 300px;
-    }
-
-    .search-button {
-        width: 50px;
-    }
-
-    /* Ajustes para a Barra de Navegação no Mobile */
-    .navbar-collapse {
-        display: block;
-        width: 100%;
-    }
-
     .navbar-nav {
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: auto;
     }
 
         .navbar-nav .nav-item {
-            margin: 5px 0;
+            margin: 0;
         }
 
-    #botaoentrar {
-        width: 80px;
-        height: 35px;
+    .search-input {
+        width: 90%; 
         font-size: 14px;
-        margin-right: 0;
-        padding: 5px 10px;
-    }
-}
-
-@media (max-width: 550px) {
-    .navbar-nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-        .navbar-nav .nav-item {
-            margin: 5px 0;
-        }
-
-    #botaoentrar {
-        width: 70px;
-        height: 30px;
-        font-size: 12px;
-        margin-right: 0;
-        padding: 5px 10px;
-    }
-
-    .search-input {
-        width: 80%;
-        font-size: 12px;
     }
 
     .search-button {
         width: 35px;
         height: 35px;
-        padding: 6px;
     }
 
-    .navbar-brand img {
-        width: 70px;
-        height: 70px;
+    #botaoentrar {
+        width: 80px;
+        height: 40px;
+        font-size: 16px;
+        margin-right: 0;
+    }
+
+    /* Ajuste no Carrinho */
+    #carrinho {
+        padding: 8px;
+        font-size: 18px;
     }
 }
 
+@media (max-width: 580px) {
+    /* Ocultar elementos originais e exibir o menu */
+    .navbar-collapse {
+        display: none; /* Ocultar conteúdo da navbar */
+    }
+
+    .navbar-toggler {
+        display: flex; /* Mostrar o ícone do menu */
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navbar-collapse.show {
+        display: flex; /* Mostrar o conteúdo quando o menu é aberto */
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px;
+    }
+
+    /* Ajustes de responsividade nos elementos internos */
+    .search-form {
+        width: 100%;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .search-button {
+        width: 70%;
+    }
+
+    #botaoentrar,
+    #carrinho {
+        width: 100%;
+        text-align: center;
+    }
+}
 /* Estilos para a Tela de Login */
 .left-box {
     background-color: #002454;
@@ -387,4 +393,32 @@ h2 {
         font-size: 1.2em;
         color: #000B54;
     }
+
+/*Carrinho de compras*/
+#carrinho {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border: 2px solid #FFCC00;
+    transition: all 0.3s ease;
+}
+
+    #carrinho:hover {
+        border-color: #FFAA00;
+        background-color: #003366; 
+    }
+
+    #carrinho i {
+        color: #FFCC00;
+    }
+
+#cartCount {
+    margin-left: 5px;
+    color:#000B54;
+}
+#carrinho:hover #cartCount{
+    color: white;
+}
+
 

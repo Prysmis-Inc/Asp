@@ -3,32 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\models\\carrinhocompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\models\\carrinhocompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\repositorio\\icarrinhocompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\repositorio\\icarrinhocompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\repositorio\\carrinhocompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\repositorio\\carrinhocompra.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\views\\peca\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\views\\peca\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\wwwroot\\css\\product.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\wwwroot\\css\\product.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\controllers\\pecacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\controllers\\pecacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\views\\peca\\detalhes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\views\\peca\\detalhes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\repositorio\\pecarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\repositorio\\pecarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\repositorio\\categoriarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\repositorio\\categoriarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\repositorio\\ipecarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\repositorio\\ipecarepositorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|c:\\users\\renan\\desktop\\tttt\\asp\\hayumiweb\\models\\pecaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{136BE842-EB8A-4969-BFD2-5777AED0A150}|HayumiWeb\\HayumiWeb.csproj|solutionrelative:hayumiweb\\models\\pecaviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,91 +54,120 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "HayumiWeb\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "HayumiWeb\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAxwFQAAAAwAAAA",
+              "DocumentIndex": 0,
+              "Title": "CarrinhoCompra.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Models\\CarrinhoCompra.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Models\\CarrinhoCompra.cs",
+              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Models\\CarrinhoCompra.cs",
+              "RelativeToolTip": "HayumiWeb\\Models\\CarrinhoCompra.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T01:02:22.503Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PecaController.cs",
-              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Controllers\\PecaController.cs",
-              "RelativeDocumentMoniker": "HayumiWeb\\Controllers\\PecaController.cs",
-              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Controllers\\PecaController.cs",
-              "RelativeToolTip": "HayumiWeb\\Controllers\\PecaController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-09T00:42:08.22Z",
+              "WhenOpened": "2024-11-09T23:38:22.407Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "product.css",
-              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\css\\product.css",
-              "RelativeDocumentMoniker": "HayumiWeb\\wwwroot\\css\\product.css",
-              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\css\\product.css",
-              "RelativeToolTip": "HayumiWeb\\wwwroot\\css\\product.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-09T00:33:47.72Z",
+              "Title": "ICarrinhoCompra.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Repositorio\\ICarrinhoCompra.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Repositorio\\ICarrinhoCompra.cs",
+              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Repositorio\\ICarrinhoCompra.cs",
+              "RelativeToolTip": "HayumiWeb\\Repositorio\\ICarrinhoCompra.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T23:38:11.189Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Views\\Peca\\Index.cshtml",
-              "RelativeDocumentMoniker": "HayumiWeb\\Views\\Peca\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Views\\Peca\\Index.cshtml",
-              "RelativeToolTip": "HayumiWeb\\Views\\Peca\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAGAAAA",
+              "DocumentIndex": 2,
+              "Title": "CarrinhoCompra.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Repositorio\\CarrinhoCompra.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Repositorio\\CarrinhoCompra.cs",
+              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Repositorio\\CarrinhoCompra.cs",
+              "RelativeToolTip": "HayumiWeb\\Repositorio\\CarrinhoCompra.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T23:38:02.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IPecaRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Repositorio\\IPecaRepositorio.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Repositorio\\IPecaRepositorio.cs",
+              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Repositorio\\IPecaRepositorio.cs",
+              "RelativeToolTip": "HayumiWeb\\Repositorio\\IPecaRepositorio.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T22:12:20.798Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PecaRepositorio.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Repositorio\\PecaRepositorio.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Repositorio\\PecaRepositorio.cs",
+              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Repositorio\\PecaRepositorio.cs",
+              "RelativeToolTip": "HayumiWeb\\Repositorio\\PecaRepositorio.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAuwFwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T22:10:52.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Detalhes.cshtml",
+              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Views\\Peca\\Detalhes.cshtml",
+              "RelativeDocumentMoniker": "HayumiWeb\\Views\\Peca\\Detalhes.cshtml",
+              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Views\\Peca\\Detalhes.cshtml",
+              "RelativeToolTip": "HayumiWeb\\Views\\Peca\\Detalhes.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAAAC4AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-08T20:56:11.215Z",
+              "WhenOpened": "2024-11-09T22:00:19.768Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "site.css",
-              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\css\\site.css",
-              "RelativeDocumentMoniker": "HayumiWeb\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\wwwroot\\css\\site.css",
-              "RelativeToolTip": "HayumiWeb\\wwwroot\\css\\site.css",
-              "ViewState": "AQIAAGQBAAAAAAAAAAAAAHMBAAAXAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-11-08T21:00:05.614Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "HayumiWeb\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "HayumiWeb\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAAABcAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-08T20:53:04.786Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoriaRepositorio.cs",
-              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Repositorio\\CategoriaRepositorio.cs",
-              "RelativeDocumentMoniker": "HayumiWeb\\Repositorio\\CategoriaRepositorio.cs",
-              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Repositorio\\CategoriaRepositorio.cs",
-              "RelativeToolTip": "HayumiWeb\\Repositorio\\CategoriaRepositorio.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAkAAAA",
+              "Title": "PecaController.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Controllers\\PecaController.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Controllers\\PecaController.cs",
+              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Controllers\\PecaController.cs",
+              "RelativeToolTip": "HayumiWeb\\Controllers\\PecaController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-08T20:51:45.443Z"
+              "WhenOpened": "2024-11-09T21:52:06.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PecaViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Models\\PecaViewModel.cs",
+              "RelativeDocumentMoniker": "HayumiWeb\\Models\\PecaViewModel.cs",
+              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Models\\PecaViewModel.cs",
+              "RelativeToolTip": "HayumiWeb\\Models\\PecaViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T21:46:28.188Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Views\\Peca\\Index.cshtml",
+              "RelativeDocumentMoniker": "HayumiWeb\\Views\\Peca\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Renan\\Desktop\\tttt\\Asp\\HayumiWeb\\Views\\Peca\\Index.cshtml",
+              "RelativeToolTip": "HayumiWeb\\Views\\Peca\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAABjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-09T21:41:41.86Z",
+              "EditorCaption": ""
             }
           ]
         }

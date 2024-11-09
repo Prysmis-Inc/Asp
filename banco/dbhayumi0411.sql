@@ -344,7 +344,7 @@ CALL spInsertPeca('Pneu Aro 16 XBri', 293.00, 'imgpneu5.png', 'Pneu XBri Aro 16,
 /*Inserção de peças - Motores*/
 CALL spInsertPeca('Motor Ford Coyote V8 5.0 3ª Geração Mustang 2018+', 73000.00, 'imgmotor1.png', 
     'Motor Ford Coyote V8 5.0 0km, motor novo e importado, 466 cavalos de potência, para Mustang 2018+.', 10, 2);
-CALL spInsertPeca('Motor Chevy V8 496 Injetado Completo G', 119830.00, 'imgmotor2.png', 
+CALL spInsertPeca('Motor Chevy V8 496 Injetado Completo G - Carros', 119830.00, 'imgmotor2.png', 
     'Motor Chevy V8 496 injetado completo, ideal para carros de alta performance, configuração V8.', 8, 2);
 CALL spInsertPeca('Motor Completo GM Montana 1.4 8V Gasolina 2015 e 2016', 18000.00, 'imgmotor3.png', 
     'Motor completo GM Montana 1.4 8V Gasolina, inclui cabeçote, pistão, biela, virabrequim e muito mais.', 12, 2);
@@ -386,7 +386,7 @@ CALL spInsertPeca('Kit Rosca Padrão Volkswagen', 1300.00, 'imgsuspensao2.png',
 CALL spInsertPeca('Kit Suspensão Rosca Slim Gol G2 À G4', 2007.08, 'imgsuspensao5.png', 
     'Kit de Suspensão Regulável Rosca Slim Macaulay é composto por amortecedores reguláveis e molas slim.', 8, 5);
 /*Inserção de peças - Freios*/
-CALL spInsertPeca('Par Disco De Freio Dianteiro Ventilado Saveiro', 880.00, 'imgdisco1.png', 
+CALL spInsertPeca('Par Disco De Freio Dianteiro Ventilado', 880.00, 'imgdisco1.png', 
     'Conjunto de discos de freio dianteiros ventilados para Saveiro G6 MSI 280mm, proporcionando eficiência e segurança ao frear.', 10, 6);
 CALL spInsertPeca('Par Freio a Disco Cerâmica 280mm', 600.00, 'imgdisco2.png', 
     'Par de freios a disco cerâmicos de alta performance, proporcionando desaceleração rápida e segura, com baixo desgaste e ruído reduzido.', 15, 6);
@@ -484,16 +484,17 @@ begin
     end if;
 end $$
 
-select * from tbpeca
+select * from tbpeca;
 
 call spInsertCarrinhoCompras('Carburador Marea', 1, 220.00,1, 1);
 call spInsertCarrinhoCompras('Carburador Marea', 1, 660.00, 4, 1);
 call spInsertCarrinhoCompras('Carburador Marea', 2, 660.00, 3, 1);
 call spInsertCarrinhoCompras('Carburador Marea',2, 1500.00, 1, 1);
 
+describe TbCarrinhoCompra;
 select * from TbCarrinhoCompra;
 select * from TbCliente;
-select * from tbpeca
+select * from tbpeca;tbpeca
 
 -- procedure para insrir registro de pedidos e verificar se eles já existem no sitema --
 delimiter $$
@@ -708,3 +709,5 @@ select * from tbPeca where categoriaid = 1;
 describe tbCategoria;
 select * from tbCategoria;
 
+
+select * from tbpeca where pecaid=1;

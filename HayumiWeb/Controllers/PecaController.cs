@@ -18,5 +18,12 @@ namespace HayumiWeb.Controllers
             List<PecaModel> peca = _IPecaRepositorio.BuscarPecaPorCategoria(categoriaId);
             return View(new PecaViewModel { Pecas = peca });
         }
+
+        public IActionResult Detalhes(int pecaId)
+        {
+            ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
+            var peca = _IPecaRepositorio.BuscarPecaPorId(pecaId);
+            return View(peca);
+        }
     }
 }

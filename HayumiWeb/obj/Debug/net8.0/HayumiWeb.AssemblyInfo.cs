@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HayumiWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1e82d4eb4f341c4baad2c8c4a113de720d45495b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c4585efbea7b026fbfc67e1659374b3e1fbf06f")]
 [assembly: System.Reflection.AssemblyProductAttribute("HayumiWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HayumiWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

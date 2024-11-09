@@ -2,7 +2,6 @@
 
 <link href="~/css/product.css" rel="stylesheet" />
 <div class="container">
-    <h1 class="my-4">Produtos</h1>
     <div class="row">
         @foreach (PecaModel pecaModel in Model.Pecas)
         {
@@ -11,7 +10,7 @@
                     <img src="~/img/@pecaModel.ImgPeca" alt="@pecaModel.NomePeca" width="300px" height="200px">
                     <h5>@pecaModel.NomePeca</h5>
                     <p class="price">@pecaModel.ValorPeca.ToString("C")</p>
-                    <button class="proddetalhes">Detalhes</button>
+                    <a asp-controller="Peca" asp-action="Detalhes" asp-route-pecaId="@pecaModel.PecaId"><button class="proddetalhes">Detalhes</button></a>
                     <button class="prodcomprar">Comprar</button>
                 </div>
             </div>
