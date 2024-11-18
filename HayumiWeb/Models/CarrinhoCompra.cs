@@ -6,5 +6,7 @@
         public int QtdPeca { get; set; }
         public int ClienteId { get; set; }
         public int PecaId { get; set; }
+
+        public PecaModel? Peca { get; set; }
     }
 }

@@ -25,6 +25,7 @@ builder.Services.AddScoped<IPecaRepositorio, PecaRepositorio>();
 builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 builder.Services.AddScoped<HayumiWeb.Libraries.Session.Session>();
 builder.Services.AddScoped<LoginCliente>();
+builder.Services.AddScoped<ICarrinhoRepositorio, CarrinhoRepositorio>();
 
 
 var app = builder.Build();

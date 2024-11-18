@@ -70,9 +70,7 @@ Foreign key (categoriaid) references tbCategoria(Categoriaid)
 
 create table tbCarrinhoCompra(
 CarrinhoId int primary key auto_increment,
-ProdutosSelecionados varchar(200) not null,
 QtdPeca int not null,
-ValorTotalCompra decimal(8,2) not null,
 ClienteId int not null,
 PecaId int not null,
 Foreign key (ClienteId) references tbCliente(ClienteId),
@@ -97,7 +95,6 @@ DataPagamento datetime not null,
 StatusPagamento varchar(50) not null, -- Ex: 'Aprovado', 'Pendente', 'Cancelado'
 foreign key (PedidoId) references tbPedido(PedidoId)
 );
-
 
 create table tbNota_Fiscal(
 NF int primary key auto_increment,
@@ -467,7 +464,7 @@ select * from tbPeca;
 select * from tbCategoria;
 -- procedure para insrir registro de carrinho --
 delimiter $$
-create procedure spInsertCarrinhoCompras( vProdutosSelecionados varchar(200),  vQtdPeca int, vValorTotalCompra decimal(8,2), vClienteId int, in vPecaId int)
+create procedure spInsertCarrinhoCompras( vQtdPeca int, vClienteId int, in vPecaId int)
 begin
     -- Verifica se o cliente existe, se nao existir 
     if not exists (select 1 from tbCliente where ClienteId = vClienteId) then
@@ -478,23 +475,21 @@ begin
     else
         -- Insere o carrinho de compras
         insert into TbCarrinhoCompra 
-            (ProdutosSelecionados, QtdPeca, ValorTotalCompra, ClienteId, PecaId) 
+            (QtdPeca,ClienteId, PecaId) 
         values
-            (vProdutosSelecionados, vQtdPeca, vValorTotalCompra, vClienteId, vPecaId);
+            (vQtdPeca,vClienteId, vPecaId);
     end if;
 end $$
 
 select * from tbpeca;
+call spInsertCarrinhoCompras(1,1, 1);
 
-call spInsertCarrinhoCompras('Carburador Marea', 1, 220.00,1, 1);
-call spInsertCarrinhoCompras('Carburador Marea', 1, 660.00, 4, 1);
-call spInsertCarrinhoCompras('Carburador Marea', 2, 660.00, 3, 1);
-call spInsertCarrinhoCompras('Carburador Marea',2, 1500.00, 1, 1);
-
+use dbhayumi;
 describe TbCarrinhoCompra;
 select * from TbCarrinhoCompra;
 select * from TbCliente;
-select * from tbpeca;tbpeca
+select * from tbpeca;
+select * from tblogin;
 
 -- procedure para insrir registro de pedidos e verificar se eles já existem no sitema --
 delimiter $$
@@ -538,7 +533,7 @@ end $$
 
 call spInsertPedidos('2024-10-15', 'teste', 1, 'Cartão de Crédito');
 call spInsertPedidos('2024-10-15','3 carburadores de Marea', 2, 'Pix');
-/*call spInsertPedidos('2024-10-15','2 Laptop Mouse', 8); */
+call spInsertPedidos('2024-10-15','2 Laptop Mouse', 8);
 select * from tbcarrinhocompra;
 select * from tbpedido
 
@@ -629,6 +624,11 @@ select * from tbnota_fiscal;
 select * from tbpedido;
 
 
+CALL spInsertNotaFiscal(1);  -- Substitua 1 pelo ID de um pedido existente
+select * from tbnota_fiscal;
+select * from tbpedido;
+
+
 DELIMITER $$
 
 CREATE PROCEDURE spInserirTroca(
@@ -703,11 +703,65 @@ BEGIN
 END $$
 
 
-describe tbPeca;
-select * from tbPeca where categoriaid = 1;
-
-describe tbCategoria;
-select * from tbCategoria;
+describe tbCliente;
+describe tblogin;
 
 
-select * from tbpeca where pecaid=1;
+DELIMITER $$
+
+CREATE PROCEDURE spAtualizaCliente(
+    vCPF DECIMAL(11),
+    vSenhaUsu VARCHAR(50),
+    vTelefone BIGINT,
+    vNumEnd SMALLINT,
+    vCompEnd VARCHAR(50),
+    vCEP DECIMAL(8, 0),
+    vBairro VARCHAR(200),
+    vCidade VARCHAR(200),
+    vUF CHAR(2)
+)
+BEGIN
+    DECLARE vClienteStatus BOOLEAN;
+
+    -- Verifica se o cliente existe
+    IF EXISTS (SELECT CPF FROM tbCliente WHERE CPF = vCPF) THEN
+        -- Pega o status atual do cliente para preservá-lo
+        SET vClienteStatus = (SELECT Cliente_Status FROM tbCliente WHERE CPF = vCPF);
+
+        -- Atualiza os dados do cliente (não altera o email e o status)
+        UPDATE tbCliente
+        SET 
+            SenhaUsu = vSenhaUsu,
+            Telefone = vTelefone,
+            NumEnd = vNumEnd,
+            CompEnd = vCompEnd,
+            CEP = vCEP
+        WHERE CPF = vCPF;
+
+        -- Atualiza a tabela de Endereço com os novos dados (Bairro, Cidade, UF, CEP)
+        UPDATE tbEndereco
+        SET 
+            BairroId = (SELECT BairroId FROM tbBairro WHERE Bairro = vBairro),
+            CidadeId = (SELECT CidadeId FROM tbCidade WHERE Cidade = vCidade),
+            UFId = (SELECT UFId FROM tbEstado WHERE UF = vUF),
+            CEP = vCEP
+        WHERE CEP = vCEP;
+
+        -- Atualiza a tabela de Login (somente a senha, não o email)
+        UPDATE TbLogin
+        SET 
+            SenhaUsu = vSenhaUsu
+        WHERE ClienteId = (SELECT ClienteId FROM tbCliente WHERE CPF = vCPF);
+
+        -- Mensagem de sucesso
+        SELECT 'Cliente atualizado com sucesso!' AS Mensagem;
+    ELSE
+        -- Caso o cliente não exista, não faz nada
+        SELECT 'Cliente não encontrado!' AS Mensagem;
+    END IF;
+END $$
+
+select * from tbCliente;
+describe tbcliente;
+
+

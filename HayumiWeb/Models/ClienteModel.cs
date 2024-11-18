@@ -4,6 +4,8 @@ namespace HayumiWeb.Models;
 
 public class ClienteModel
 {
+
+    public int ClienteId { get; set; }
     [Required(ErrorMessage = "O campo Nome é obrigatório.")]
     public string NomeCli { get; set; }
 
@@ -25,15 +27,14 @@ public class ClienteModel
 
     [Required]
     public EnderecoModel Endereco { get; set; } = new EnderecoModel(); // Referência ao EnderecoModel
+    public BairroModel Bairro { get; set; }
+    public CidadeModel Cidade { get; set; }
 
-    [Required]
-    public BairroModel Bairro { get; set; } = new BairroModel();
-
-    [Required]
-    public CidadeModel Cidade { get; set; } = new CidadeModel();
 
     [Required]
     public EstadoModel Estado { get; set; } = new EstadoModel();
+
+
 
 
 

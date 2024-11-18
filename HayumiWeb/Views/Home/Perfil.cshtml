@@ -1,0 +1,23 @@
+﻿@model HayumiWeb.Models.ClienteModel
+
+
+
+<center><h2>Perfil do Cliente</h2></center>
+
+<!-- Exibição dos dados do cliente -->
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Informações do Perfil</h4>
+        <p><strong>Nome:</strong> @Model.NomeCli</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+        <p><strong>Telefone:</strong> @Model.Telefone</p>
+        <p><strong>Data de Nascimento:</strong> @Model.DataNasc.ToString("dd/MM/yyyy")</p>
+
+        <!-- Exibindo informações do endereço -->
+        <p><strong>Endereço:</strong> @Model.NumEnd, @Model.CompEnd</p>
+        <p><strong>CEP:</strong> @Model.CEP</p>
+
+        <!-- Botão para editar perfil -->
+        <a class="btn btn-warning" href="@Url.Action("Editar", "Home")" >Editar Perfil</a>
+    </div>
+</div>

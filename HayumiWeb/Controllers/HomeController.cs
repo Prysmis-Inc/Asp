@@ -45,12 +45,13 @@ namespace HayumiWeb.Controllers
         [HttpPost]
         public IActionResult Login(ClienteModel cliente)
         {
-            ClienteModel loginDB = _clienteRepositorio.Login(cliente.Email, cliente.SenhaUsu);
+            ClienteModel loginDB = _clienteRepositorio.Login(cliente.Email, cliente.SenhaUsu, cliente.ClienteId);
 
             if (loginDB.Email != null && loginDB.SenhaUsu != null)
             {
                 _loginCliente.Login(loginDB);
                 HttpContext.Session.SetString("UsuarioNome", loginDB.Email);
+                HttpContext.Session.SetInt32("ClienteId", loginDB.ClienteId);
                 return new RedirectResult(Url.Action(nameof(Index)));
             }
             else
@@ -88,6 +89,84 @@ namespace HayumiWeb.Controllers
 
 
 
+        public IActionResult Perfil()
+        {
+            // Recupera o ClienteId da sessão
+            int? clienteId = HttpContext.Session.GetInt32("ClienteId");
+            ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
+            if (clienteId == null)
+            {
+                // Se não encontrar o ClienteId, redireciona para a página de login
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Busca os dados do cliente usando o ClienteId
+            var cliente = _clienteRepositorio.BuscarClientePorId(clienteId.Value);
+
+            if (cliente == null)
+            {
+                // Se não encontrar o cliente, redireciona para a página de erro ou login
+                return RedirectToAction("Erro", "Home");
+            }
+
+            // Retorna a view com os dados do cliente
+            return View(cliente);
+        }
+
+
+
+
+
+
+
+        [HttpGet]
+        public IActionResult Editar()
+        {
+            // Recupere o ClienteId da sessão
+            int? clienteId = HttpContext.Session.GetInt32("ClienteId");
+            ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
+            if (clienteId == null)
+            {
+                // Se o ClienteId não existir na sessão, redireciona para o login
+                return RedirectToAction("Login", "Account");
+            }
+
+            // Busca os dados do cliente pelo ID
+            var cliente = _clienteRepositorio.BuscarClientePorId(clienteId.Value);
+
+            if (cliente == null)
+            {
+                // Se não encontrar o cliente, redireciona para a página de erro
+                return RedirectToAction("Erro", "Home");
+            }
+
+            // Retorna a view de edição com os dados do cliente
+            return View(cliente);
+        }
+
+        // Ação POST para salvar as alterações do cliente
+        [HttpPost]
+        public IActionResult Editar(ClienteModel cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                _clienteRepositorio.Alterar(cliente);  // Atualiza as informações do cliente
+                return RedirectToAction("Perfil");  // Redireciona para o perfil após sucesso
+            }
+            ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
+            return View(cliente);  // Se o modelo não for válido, retorna para a view de edição
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -96,6 +175,10 @@ namespace HayumiWeb.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction(nameof(Login));
         }
+
+
+
+
 
 
 

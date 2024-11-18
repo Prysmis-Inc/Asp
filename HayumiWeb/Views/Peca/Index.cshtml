@@ -11,7 +11,14 @@
                     <h5>@pecaModel.NomePeca</h5>
                     <p class="price">@pecaModel.ValorPeca.ToString("C")</p>
                     <a asp-controller="Peca" asp-action="Detalhes" asp-route-pecaId="@pecaModel.PecaId"><button class="proddetalhes">Detalhes</button></a>
-                    <button class="prodcomprar">Comprar</button>
+                    <form method="post" asp-action="Adicionar" asp-controller="Carrinho">
+                        <input type="hidden" name="pecaId" value="@pecaModel.PecaId" />
+                        <!-- Campo de quantidade com valor padrão 1 -->
+                        <input type="number" name="quantidade" value="1" min="1" class="form-control" />
+                        <!-- Botão para adicionar ao carrinho -->
+                        <button type="submit" class="prodcomprar">Adicionar ao Carrinho</button>
+                    </form>
+                   
                 </div>
             </div>
         }

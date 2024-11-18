@@ -422,3 +422,25 @@ h2 {
 }
 
 
+/*Perfil*/
+
+
+.card {
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.btn-warning {
+    background-color: #FFCC00;
+    color: #000B54;
+    border: 2px solid #000B54;
+}

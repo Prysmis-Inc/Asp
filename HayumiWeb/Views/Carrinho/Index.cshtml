@@ -1,0 +1,43 @@
+﻿@model List<HayumiWeb.Models.CarrinhoCompra>
+
+<h2>Carrinho de Compras</h2>
+
+@if (Model.Count == 0)
+{
+    <p>Seu carrinho está vazio.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.PecaId</td>  <!-- Aqui você pode mostrar o nome da peça -->
+                    <td>
+                        <form method="post" asp-action="AtualizarQuantidade">
+                            <input type="hidden" name="pecaId" value="@item.PecaId" />
+                            <input type="number" name="quantidade" value="@item.QtdPeca" min="1" />
+                            <button type="submit" class="btn btn-primary">Atualizar</button>
+                        </form>
+                    </td>
+                    <td><!-- Aqui você pode mostrar o preço da peça --></td>
+                    <td>
+                        <a href="@Url.Action("Remover", "Carrinho", new { pecaId = item.PecaId })" class="btn btn-danger">Remover</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Botão para continuar comprando -->
+    <a href="@Url.Action("Index", "Home")" class="btn btn-success">Continuar Comprando</a>
+}

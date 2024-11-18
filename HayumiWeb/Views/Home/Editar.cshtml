@@ -1,0 +1,62 @@
+﻿@model HayumiWeb.Models.ClienteModel
+
+@{
+    ViewData["Title"] = "Editar Perfil";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<!-- Formulário para editar os dados do cliente -->
+<form method="post">
+    <!-- Nome -->
+    <div class="form-group">
+        <label for="NomeCli">Nome</label>
+        <input type="text" id="NomeCli" name="NomeCli" class="form-control" value="@Model.NomeCli" required />
+    </div>
+
+    <!-- Email (somente leitura) -->
+    <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" id="Email" name="Email" class="form-control" value="@Model.Email" readonly />
+    </div>
+
+    <div class="form-group">
+        <label for="SenhaUsu">Senha:</label>
+        <input type="password" id="SenhaUsu" name="SenhaUsu" class="form-control" value="@Model.SenhaUsu" required />
+    </div>
+    <!-- Telefone -->
+    <div class="form-group">
+        <label for="Telefone">Telefone</label>
+        <input type="text" id="Telefone" name="Telefone" class="form-control" value="@Model.Telefone" required />
+    </div>
+
+    <!-- Data de Nascimento -->
+    <div class="form-group">
+        <label for="DataNasc">Data de Nascimento</label>
+        <input type="date" id="DataNasc" name="DataNasc" class="form-control" value="@Model.DataNasc.ToString("yyyy-MM-dd")" required />
+    </div>
+
+    <!-- Número do Endereço -->
+    <div class="form-group">
+        <label for="NumEnd">Número</label>
+        <input type="text" id="NumEnd" name="NumEnd" class="form-control" value="@Model.NumEnd" required />
+    </div>
+
+    <!-- Complemento do Endereço -->
+    <div class="form-group">
+        <label for="CompEnd">Complemento</label>
+        <input type="text" id="CompEnd" name="CompEnd" class="form-control" value="@Model.CompEnd" />
+    </div>
+
+    <!-- CEP -->
+    <div class="form-group">
+        <label for="CEP">CEP</label>
+        <input type="text" id="CEP" name="CEP" class="form-control" value="@Model.CEP" required />
+    </div>
+
+    <!-- Botão de Submissão -->
+    <button type="submit" class="btn btn-primary mt-3">Salvar Alterações</button>
+</form>
+
+<!-- Botão para retornar ao Perfil -->
+<a href="@Url.Action("Perfil", "Home")" class="btn btn-secondary mt-3">Cancelar</a>
