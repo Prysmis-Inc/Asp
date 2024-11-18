@@ -320,6 +320,7 @@ CALL spInsertCategoria('Escapamentos', 'cescapa.png');
 CALL spInsertCategoria('Radiadores', 'cradiador.png');
 
 select * from tbCategoria;
+
 delimiter $$
 create procedure spInsertPeca(vNomePeca varchar(100), vValorPeca decimal(8,2), vImgPeca varchar(255), vDescricao varchar(200), vQtdEstoque int, vcategoriaid int)
 begin
@@ -458,7 +459,21 @@ CALL spInsertPeca('Radiador de Óleo de alta Performance 700ml', 1390.00, 'imgra
 CALL spInsertPeca('Grade de radiador', 6181.73, 'imgradiador4.png', 
     'Grade de radiador do carro com luz para o tanque 500, pára-choques dianteiro, máscara da grade, marca Reit.', 20, 12);
 CALL spInsertPeca('Radiador de Água CR 2448', 518.89, 'imgradiador5.png', 
-    'Radiador de água Mahle CR 2448, líder global em autopeças, com alta performance e qualidade.', 5, 12);
+    'A função do servo freio é de extrema importância para o sistema. A peça faz com que a força colocada no pedal de freio seja multiplicada, proporcionando assim, mais conforto e segurança ao condutor. ', 5, 12);
+
+-- insert dos produtos em desconto
+CALL spInsertPeca('Motor Completo Subaru Forester',  2400.41, 'imgmotoroferta1.png', 
+    'Motor completo GM Montana 1.4 8V Gasolina, inclui cabeçote, pistão, biela, virabrequim e muito mais.', 5, 2);
+CALL spInsertPeca('Motor Parcial L200 2011', 9600.00, 'imgmotoroferta2.png', 
+    'Motor parcial  L200 1.4 8V Gasolina, inclui cabeçote, pistão, biela, virabrequim e muito mais.', 5, 2);
+CALL spInsertPeca('Pneu Esportivo 255X65R16 110H Scorpion', 1399.90, 'imgpneuoferta.png', 
+    'Pneu Scorpion 110H, proporciona ótima performance em diferentes tipos de terreno, com resistência e alta estabilidade.', 5, 1);
+CALL spInsertPeca('Pneu 255X65R17 110H Scorpion', 1899.90, 'imgpneuoferta2.png', 
+    'Pneu Scorpion 110H, proporciona ótima performance em diferentes tipos de terreno, com resistência e alta estabilidade.', 5, 1);
+CALL spInsertPeca('Servo Freio TOYOTA HILUX', 499.90, 'imgfreiooferta.png', 
+    'Radiador de água Mahle CR 2448, líder global em autopeças, com alta performance e qualidade.', 5, 6);
+
+select * from tbcategoria
 
 select * from tbPeca;
 select * from tbCategoria;
@@ -484,7 +499,6 @@ end $$
 select * from tbpeca;
 call spInsertCarrinhoCompras(1,1, 1);
 
-use dbhayumi;
 describe TbCarrinhoCompra;
 select * from TbCarrinhoCompra;
 select * from TbCliente;
@@ -496,6 +510,7 @@ delimiter $$
 create procedure spInsertPedidos(
     vDataPedido datetime, 
     vInfoPedido varchar(500), 
+    vValorTotalC
     vCarrinhoId int,
     vTipoPagamento varchar(50) -- Adicionando o tipo de pagamento como parâmetro
 )
@@ -515,10 +530,7 @@ begin
         if contador > 0 THEN
             select 'Pedido já registrado' as mensagem;
         else
-            -- Busca o valor total do carrinho
-            select ValorTotalCompra into vValorTotalCarrinho
-            from TbCarrinhoCompra 
-            where CarrinhoId = vCarrinhoId;
+           
 
             -- Insere o pedido com o valor total do carrinho e o tipo de pagamento
             insert into TbPedido 
@@ -531,11 +543,13 @@ begin
     end if;
 end $$
 
-call spInsertPedidos('2024-10-15', 'teste', 1, 'Cartão de Crédito');
+-- mexer nessa procedure, pra puxar o id do valor da compra pela peca, nao pelo carrinho
+call spInsertPedidos('2024-10-15', 'teste', 199.00, 1, 'Cartão de Crédito');
 call spInsertPedidos('2024-10-15','3 carburadores de Marea', 2, 'Pix');
-call spInsertPedidos('2024-10-15','2 Laptop Mouse', 8);
 select * from tbcarrinhocompra;
 select * from tbpedido
+describe tbpedido
+describe tbcarrinhocompra
 
 delimiter $$ 
 create procedure spInsertPagamento(
@@ -765,3 +779,10 @@ select * from tbCliente;
 describe tbcliente;
 
 
+
+
+
+ -- Busca o valor total do carrinho
+       --     select ValorTotal into vValorTotalCarrinho
+         --   from TbCarrinhoCompra 
+        --    where CarrinhoId = vCarrinhoId;
