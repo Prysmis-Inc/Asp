@@ -140,7 +140,7 @@ public class ClienteRepositorio : IClienteRepositorio
                     cliente.NomeCli= Convert.ToString(dr["NomeCli"])!;
                     cliente.Email = Convert.ToString(dr["Email"])!;
                     cliente.SenhaUsu= Convert.ToString(dr["SenhaUsu"])!;
-                    cliente.Telefone = Convert.ToInt32(dr["telefone"])!;
+                    cliente.Telefone = Convert.ToInt64(dr["telefone"])!;
                     cliente.NumEnd = Convert.ToInt32(dr["NumEnd"])!;
                     cliente.CompEnd = Convert.ToString(dr["CompEnd"])!;
                     cliente.CEP = Convert.ToInt32(dr["CEP"])!;

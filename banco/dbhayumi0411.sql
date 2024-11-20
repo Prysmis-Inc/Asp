@@ -461,7 +461,7 @@ CALL spInsertPeca('Grade de radiador', 6181.73, 'imgradiador4.png',
 CALL spInsertPeca('Radiador de Água CR 2448', 518.89, 'imgradiador5.png', 
     'A função do servo freio é de extrema importância para o sistema. A peça faz com que a força colocada no pedal de freio seja multiplicada, proporcionando assim, mais conforto e segurança ao condutor. ', 5, 12);
 
--- insert dos produtos em desconto
+-- insert dos produtos em ofertas
 CALL spInsertPeca('Motor Completo Subaru Forester',  2400.41, 'imgmotoroferta1.png', 
     'Motor completo GM Montana 1.4 8V Gasolina, inclui cabeçote, pistão, biela, virabrequim e muito mais.', 5, 2);
 CALL spInsertPeca('Motor Parcial L200 2011', 9600.00, 'imgmotoroferta2.png', 
@@ -510,7 +510,7 @@ delimiter $$
 create procedure spInsertPedidos(
     vDataPedido datetime, 
     vInfoPedido varchar(500), 
-    vValorTotalC
+    vValorTotalC decimal(8,2),
     vCarrinhoId int,
     vTipoPagamento varchar(50) -- Adicionando o tipo de pagamento como parâmetro
 )
