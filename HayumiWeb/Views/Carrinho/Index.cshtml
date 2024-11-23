@@ -1,43 +1,154 @@
 ﻿@model List<HayumiWeb.Models.CarrinhoCompra>
+<div class="container my-5">
+    <h2 class="mb-4">Carrinho de Compras</h2>
 
-<h2>Carrinho de Compras</h2>
+    @if (Model.Count == 0)
+    {
+        <p>Seu carrinho está vazio.</p>
+        <a href="@Url.Action("Index", "Home")" class="btn btn-success">Continuar Comprando</a>
+    }
+    else
+    {
+        <div class="row">
+            <!-- Produtos do Carrinho -->
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Produtos</strong>
+                    </div>
+                    <div class="card-body">
+                        <table class="table align-middle">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Imagem</th>
+                                    <th>Quantidade</th>
+                                    <th>Preço</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr data-peca-id="@item.PecaId">
+                                        <td>@item.Peca.NomePeca</td>
+                                        <td>
+                                            <img src="~/img/@item.Peca.ImgPeca" alt="Produto" width="80px" height="60px" />
+                                        </td>
+                                        <td>
+                                            <div class="d-flex">
+                                                <button class="btn btn-outline-secondary btn-sm adjust-quantity" data-action="decrease">-</button>
+                                                <input type="number" class="form-control form-control-sm w-50 mx-2 quantity" value="@item.QtdPeca" min="1" readonly />
+                                                <button class="btn btn-outline-secondary btn-sm adjust-quantity" data-action="increase">+</button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <!-- Exibe o valor da peça multiplicado pela quantidade -->
+                                            <span class="price" data-unit-price="@item.Peca.ValorPeca">@item.Peca.ValorPeca.ToString("C2")</span>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Remover", "Carrinho", new { pecaId = item.PecaId })" class="btn btn-danger btn-sm">Remover</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-@if (Model.Count == 0)
-{
-    <p>Seu carrinho está vazio.</p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Produto</th>
-                <th>Quantidade</th>
-                <th>Preço</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.PecaId</td>  <!-- Aqui você pode mostrar o nome da peça -->
-                    <td>
-                        <form method="post" asp-action="AtualizarQuantidade">
-                            <input type="hidden" name="pecaId" value="@item.PecaId" />
-                            <input type="number" name="quantidade" value="@item.QtdPeca" min="1" />
-                            <button type="submit" class="btn btn-primary">Atualizar</button>
-                        </form>
-                    </td>
-                    <td><!-- Aqui você pode mostrar o preço da peça --></td>
-                    <td>
-                        <a href="@Url.Action("Remover", "Carrinho", new { pecaId = item.PecaId })" class="btn btn-danger">Remover</a>
-                    </td>
-                </tr>
+            <!-- Resumo da Compra -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <strong>Resumo do Pedido</strong>
+                    </div>
+                    <div class="card-body">
+                        <p class="d-flex justify-content-between">
+                            <span><strong>Total</strong></span>
+                            <span id="total-price">R$ 0,00</span> <!-- Total que será atualizado -->
+                        </p>
+                        <hr />
+                        <a href="@Url.Action("Checkout", "Carrinho")" class="btn btn-primary w-100">Finalizar Pedido</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Função para atualizar os preços
+            function updatePrice($row) {
+                var unitPrice = parseFloat($row.find('.price').data('unit-price')); // Preço unitário do produto
+                var quantity = parseInt($row.find('.quantity').val(), 10); // Quantidade
+                var totalPrice = unitPrice * quantity; // Preço total por item
+
+                // Atualiza o preço da célula
+                $row.find('.price').text(totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+
+                // Atualiza o total geral
+                updateTotalPrice();
             }
-        </tbody>
-    </table>
 
-    <!-- Botão para continuar comprando -->
-    <a href="@Url.Action("Index", "Home")" class="btn btn-success">Continuar Comprando</a>
+            // Função para atualizar o total de todos os itens
+            function updateTotalPrice() {
+                var total = 0;
+
+                // Itera sobre todas as linhas e soma os preços
+                $('tr[data-peca-id]').each(function () {
+                    var $row = $(this);
+                    var unitPrice = parseFloat($row.find('.price').data('unit-price')); // Preço unitário
+                    var quantity = parseInt($row.find('.quantity').val(), 10); // Quantidade
+                    total += unitPrice * quantity; // Soma o preço total
+                });
+
+                // Atualiza o preço total na parte inferior
+                $('#total-price').text(total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }));
+            }
+
+            // Evento para ajustar a quantidade de produtos
+            $('.adjust-quantity').click(function () {
+                var $button = $(this);
+                var $row = $button.closest('tr');
+                var $quantityInput = $row.find('.quantity');
+                var currentQuantity = parseInt($quantityInput.val(), 10);
+
+                // Atualiza a quantidade com base na ação (increase/decrease)
+                if ($button.data('action') === 'increase') {
+                    currentQuantity++;
+                } else if ($button.data('action') === 'decrease' && currentQuantity > 1) {
+                    currentQuantity--;
+                }
+
+                // Atualiza o valor no input
+                $quantityInput.val(currentQuantity);
+
+                // Atualiza o preço do item
+                updatePrice($row);
+
+                // Envia a atualização via AJAX para o servidor
+                var pecaId = $row.data('peca-id');
+                $.ajax({
+                    url: '@Url.Action("AtualizarQuantidade", "Carrinho")',
+                    method: 'POST',
+                    data: {
+                        pecaId: pecaId,
+                        quantidade: currentQuantity
+                    },
+                    success: function (response) {
+                        console.log('Quantidade atualizada com sucesso');
+                    },
+                    error: function () {
+                        alert('Erro ao atualizar a quantidade.');
+                    }
+                });
+            });
+
+            // Inicializa o preço total na página
+            updateTotalPrice();
+        });
+    </script>
 }

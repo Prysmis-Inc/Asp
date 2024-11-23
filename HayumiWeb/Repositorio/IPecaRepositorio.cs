@@ -7,5 +7,7 @@ namespace HayumiWeb.Repositorio
         List<PecaModel> BuscarPecaPorCategoria(int categoriaId);
 
         PecaModel? BuscarPecaPorId(int pecaId);
+        List<PecaModel> BuscarPecaPorNome(string pesquisa);
+        List<PecaModel> BuscarTodasAsPecas();
     }
 }

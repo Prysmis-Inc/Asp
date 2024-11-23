@@ -779,8 +779,27 @@ select * from tbCliente;
 describe tbcliente;
 
 
+SELECT *
+FROM tbCarrinhoCompra
+WHERE ClienteId = 1
 
+SELECT *
+FROM tbPeca
+WHERE PecaId in (1, 31)
 
+SELECT *
+FROM tbCarrinhoCompra
+INNER JOIN tbPeca on tbCarrinhoCompra.PecaId = tbPeca.PecaId
+WHERE ClienteId = 1
+
+-- Todos
+SELECT *
+FROM tbPeca
+
+-- Por Nome
+SELECT *
+FROM tbPeca
+WHERE NomePeca like '%%'
 
  -- Busca o valor total do carrinho
        --     select ValorTotal into vValorTotalCarrinho

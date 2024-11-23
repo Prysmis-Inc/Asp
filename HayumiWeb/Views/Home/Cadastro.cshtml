@@ -92,3 +92,24 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+
+    <script>
+        $('#cep').on('blur', function () {
+
+            var cep = $('#cep').val()
+
+            var url = 'https://viacep.com.br/ws/' + cep + '/json/'
+
+            $.get(url, function (data) {
+                $('#bairro').val(data.bairro)
+                $('#cidade').val(data.localidade)
+                $('#uf').val(data.uf)
+                //$('#logradouro').val(data.logradouro)
+            });
+
+        })
+    </script>
+
+}

@@ -91,6 +91,85 @@ namespace HayumiWeb.Repositorio
             return null;
         }
 
+        public List<PecaModel> BuscarPecaPorNome(string pesquisa)
+        {
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                // Abre a conexão com o banco de dados
+                conexao.Open();
 
+                // Comando SQL para buscar a peça pelo ID
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM tbPeca WHERE NomePeca like @NomePeca", conexao);
+
+                // Adiciona o parâmetro para nome da peca
+                cmd.Parameters.Add("@NomePeca", MySqlDbType.String).Value = "%" + pesquisa + "%";
+                //Le os dados que foi pego do categoria do banco de dados
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                //guarda os dados que foi pego do categoria do banco de dados
+                MySqlDataReader dr;
+
+                //instanciando a model peça
+                List<PecaModel> listaPeca = new List<PecaModel>();
+
+                //executando os comandos do mysql e passsando paa a variavel dr
+                dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                //verifica todos os dados que foram pego do banco e pega a categoria
+                while (dr.Read())
+                {
+                    PecaModel peca = new PecaModel();
+                    peca.PecaId = Convert.ToInt32(dr["PecaId"]);
+                    peca.NomePeca = Convert.ToString(dr["NomePeca"])!;
+                    peca.ValorPeca = Convert.ToDouble(dr["ValorPeca"])!;
+                    peca.ImgPeca = Convert.ToString(dr["img_peca"])!;
+                    peca.Descricao = Convert.ToString(dr["descricao"])!;
+                    peca.QtdEstoque = Convert.ToInt32(dr["qtd_estoque"])!;
+                    peca.CategoriaId = Convert.ToInt32(dr["categoriaid"])!;
+                    listaPeca.Add(peca);
+                }
+
+                return listaPeca;
+            }
+        }
+
+        public List<PecaModel> BuscarTodasAsPecas()
+        {
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                // Abre a conexão com o banco de dados
+                conexao.Open();
+
+                // Comando SQL para buscar a peça pelo ID
+                MySqlCommand cmd = new MySqlCommand("SELECT * FROM tbPeca", conexao);
+
+                // Adiciona o parâmetro para nome da peca
+                //Le os dados que foi pego do categoria do banco de dados
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                //guarda os dados que foi pego do categoria do banco de dados
+                MySqlDataReader dr;
+
+                //instanciando a model peça
+                List<PecaModel> listaPeca = new List<PecaModel>();
+
+                //executando os comandos do mysql e passsando paa a variavel dr
+                dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                //verifica todos os dados que foram pego do banco e pega a categoria
+                while (dr.Read())
+                {
+                    PecaModel peca = new PecaModel();
+                    peca.PecaId = Convert.ToInt32(dr["PecaId"]);
+                    peca.NomePeca = Convert.ToString(dr["NomePeca"])!;
+                    peca.ValorPeca = Convert.ToDouble(dr["ValorPeca"])!;
+                    peca.ImgPeca = Convert.ToString(dr["img_peca"])!;
+                    peca.Descricao = Convert.ToString(dr["descricao"])!;
+                    peca.QtdEstoque = Convert.ToInt32(dr["qtd_estoque"])!;
+                    peca.CategoriaId = Convert.ToInt32(dr["categoriaid"])!;
+                    listaPeca.Add(peca);
+                }
+
+                return listaPeca;
+            }
+        }
     }
 }

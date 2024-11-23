@@ -64,7 +64,12 @@ namespace HayumiWeb.Repositorio
             using (var conexao = new MySqlConnection(_conexaoMySQL))
             {
                 conexao.Open();
-                var cmd = new MySqlCommand("SELECT * FROM tbCarrinhoCompra WHERE ClienteId = @ClienteId", conexao);
+                var cmd = new MySqlCommand("""
+                    SELECT *
+                    FROM tbCarrinhoCompra
+                    INNER JOIN tbPeca on tbCarrinhoCompra.PecaId = tbPeca.PecaId
+                    WHERE ClienteId = @ClienteId
+                    """, conexao);
                 cmd.Parameters.AddWithValue("@ClienteId", clienteId);
 
                 using (var reader = cmd.ExecuteReader())
@@ -77,6 +82,13 @@ namespace HayumiWeb.Repositorio
                             ClienteId = Convert.ToInt32(reader["ClienteId"]),
                             PecaId = Convert.ToInt32(reader["PecaId"]),
                             QtdPeca = Convert.ToInt32(reader["QtdPeca"]),
+                            Peca = new PecaModel
+                            {
+                                NomePeca = Convert.ToString(reader["NomePeca"]),
+                                ImgPeca = Convert.ToString(reader["img_peca"]),
+                                ValorPeca = Convert.ToDouble(reader["ValorPeca"]),
+                                QtdEstoque = Convert.ToInt32(reader["qtd_estoque"]),
+                            }
                         };
                         itensCarrinho.Add(item);
                     }
