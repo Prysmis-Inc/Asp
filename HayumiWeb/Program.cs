@@ -26,6 +26,7 @@ builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
 builder.Services.AddScoped<HayumiWeb.Libraries.Session.Session>();
 builder.Services.AddScoped<LoginCliente>();
 builder.Services.AddScoped<ICarrinhoRepositorio, CarrinhoRepositorio>();
+builder.Services.AddScoped<IPedidoRepositorio, PedidoRepositorio>();
 
 
 var app = builder.Build();

@@ -2,10 +2,8 @@
 
 public class PedidoModel
 {
-    public int PedidoID { get; set; }
+    public int PedidoId { get; set; }
     public DateTime DataPedido { get; set; }
-    public string InformacaoPedido { get; set; }
-    public decimal ValorTotal { get; set; }
-    public int ClienteID { get; set; }
-    public int NF { get; set; }
+    public int ClienteId { get; set; }
+    public string StatusPedido { get; set; }
 }

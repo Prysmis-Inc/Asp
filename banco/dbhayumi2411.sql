@@ -77,48 +77,37 @@ Foreign key (ClienteId) references tbCliente(ClienteId),
 foreign key (PecaId) references tbPeca(PecaId)
 );
 
-create table tbPedido (
+create table tbPedido(
 PedidoId int primary key auto_increment,
-datapedido datetime not null,    -- Data do pedido
-ClienteId int not null,          -- Referência ao cliente que fez o pedido
-StatusPedido varchar(50) not null default 'Pendente',  -- Status do pedido (Pendente, Enviado, Entregue, Cancelado)
-foreign key (ClienteId) references tbCliente(ClienteId)
-);
-
-create table tbItemPedido (
-ItemPedidoId int primary key auto_increment,
-PedidoId int not null,            -- Referência ao pedido
-PecaId int not null,              -- Referência à peça comprada
-QtdPeca int not null,             -- Quantidade da peça comprada
-ValorUnitario decimal(8,2) not null,  -- Valor unitário da peça no momento da compra
-ValorTotal decimal(8,2) not null,    -- Valor total (QtdPeca * ValorUnitario)
-foreign key (PedidoId) references tbPedido(PedidoId),
-foreign key (PecaId) references tbPeca(PecaId)
+datapedido datetime,
+ClienteId int not null,
+PecaId int not null,
+foreign key (ClienteId) references tbCliente (ClienteId),
+foreign key (PecaId) references tbPeca (PecaId)
 );
 
 create table tbPagamento (
 PagamentoId int primary key auto_increment,
-PedidoId int not null,           -- Referência ao pedido
-ValorPago decimal(8,2) not null, -- Valor pago
-DataPagamento datetime not null, -- Data do pagamento
-StatusPagamento varchar(50) not null default 'Pendente',  -- Status do pagamento (Aprovado, Pendente, Cancelado)
-TipoPagamento varchar(50) not null,    -- Tipo de pagamento (Cartão, Boleto, etc.)
-NomeCartao varchar(60) null,         -- Nome no cartão (se for pagamento com cartão)
-BandeiraCartao varchar(30) null,     -- Bandeira do cartão (Visa, MasterCard, etc.)
-NumeroCartao numeric(16) null,       -- Número do cartão (masculino ou criptografado)
-CVV numeric(3) null,                -- CVV do cartão
+PedidoId int not null,
+ValorPago decimal(8,2) not null,
+DataPagamento datetime not null,
+StatusPagamento varchar(50) not null, -- Ex: 'Aprovado', 'Pendente', 'Cancelado'
+TipoPagamento varchar(50) not null,
+NomeCartao varchar(60) null,
+BandeiraCartao varchar (30) null,
+NumeroCartao numeric(16) null,
+cvv numeric(3) null,
 foreign key (PedidoId) references tbPedido(PedidoId)
 );
 
-create table tbNota_Fiscal (
+create table tbNota_Fiscal(
 NF int primary key auto_increment,
-Produtos varchar(500) not null,     -- Descrição dos produtos
-DataEmissao datetime not null,      -- Data da emissão da nota fiscal
-ValorTotal decimal(8,2) not null,   -- Valor total da nota fiscal
-PedidoId int not null,              -- Referência ao pedido
-foreign key (PedidoId) references tbPedido(PedidoId)
+Produtos varchar(500) not null,
+DataEmissao datetime,
+ValorTotal decimal(8,2) not null,
+PedidoId int not null,
+foreign key (PedidoId) references tbPedido (PedidoId)
 );
-
 
 
 
@@ -760,10 +749,6 @@ FROM tbPeca
 SELECT *
 FROM tbPeca
 WHERE NomePeca like '%%'
-
-select * from tbpedido;
-select * from tbitempedido;
-select * from tbCarrinhoCompra;
 
  -- Busca o valor total do carrinho
        --     select ValorTotal into vValorTotalCarrinho

@@ -7,10 +7,12 @@ namespace HayumiWeb.Controllers
     public class CarrinhoController : Controller
     {
         private readonly ICarrinhoRepositorio _carrinhoRepositorio;
+        private readonly IPedidoRepositorio _pedidoRepositorio;
 
-        public CarrinhoController(ICarrinhoRepositorio carrinhoRepositorio)
+        public CarrinhoController(ICarrinhoRepositorio carrinhoRepositorio, IPedidoRepositorio pedidoRepositorio)
         {
             _carrinhoRepositorio = carrinhoRepositorio;
+            _pedidoRepositorio = pedidoRepositorio;
         }
 
         // Exibe os itens do carrinho de compras para o cliente
@@ -79,6 +81,37 @@ namespace HayumiWeb.Controllers
             // Atualiza a quantidade do item no carrinho
             _carrinhoRepositorio.AtualizarQuantidade(clienteId.Value, pecaId, quantidade);
             return RedirectToAction("Index"); // Redireciona para a página do carrinho
+        }
+
+        [HttpPost]
+        public IActionResult FinalizarPedido()
+        {
+            // Recupera o ClienteId da sessão
+            int? clienteId = HttpContext.Session.GetInt32("ClienteId");
+
+            if (clienteId == null)
+            {
+                // Se o cliente não estiver logado, redireciona para a página de login
+                return RedirectToAction("Login", "Home");
+            }
+
+            try
+            {
+                // Chama o repositório para finalizar o pedido
+                int pedidoId = _pedidoRepositorio.FinalizarPedido(clienteId.Value);
+
+                // Passa o ID do pedido para a View de confirmação de pagamento
+                ViewBag.PedidoId = pedidoId;
+
+                // Redireciona para a página de pagamento
+                return RedirectToAction("Pagamento", "Pagamento");
+            }
+            catch (Exception ex)
+            {
+                // Em caso de erro, pode exibir uma mensagem de erro ou logar o erro
+                TempData["Erro"] = "Erro ao finalizar o pedido: " + ex.Message;
+                return RedirectToAction("Index", "Home"); // Volta para o carrinho em caso de erro
+            }
         }
     }
 }

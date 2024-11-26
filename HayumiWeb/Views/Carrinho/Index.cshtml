@@ -69,7 +69,9 @@
                             <span id="total-price">R$ 0,00</span> <!-- Total que será atualizado -->
                         </p>
                         <hr />
-                        <a href="@Url.Action("Checkout", "Carrinho")" class="btn btn-primary w-100">Finalizar Pedido</a>
+                        <form method="post" action="@Url.Action("FinalizarPedido", "Carrinho")">
+                            <button type="submit" class="btn btn-primary w-100">Finalizar Pedido</button>
+                        </form>
                     </div>
                 </div>
             </div>
