@@ -34,6 +34,7 @@ namespace HayumiWeb.Repositorio
                     {
                         while (reader.Read())
                         {
+                            int carrinhoId = Convert.ToInt32(reader["CarrinhoId"]);
                             int pecaId = Convert.ToInt32(reader["PecaId"]);
                             int qtdPeca = Convert.ToInt32(reader["QtdPeca"]);
 
@@ -69,7 +70,7 @@ namespace HayumiWeb.Repositorio
                 {
                     // Em caso de erro, desfaz todas as operações
                     transaction.Rollback();
-                    throw new Exception("Erro ao finalizar o pedido: " + ex.Message);
+                    throw new Exception("Erro ao finalizar o pedido: " + ex.Message, ex);
                 }
             }
         }
