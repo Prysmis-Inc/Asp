@@ -201,4 +201,6 @@ C:\Users\Windows\source\repos\Hayumi\HayumiWeb\obj\Debug\net8.0\refint\HayumiWeb
 C:\Users\Windows\source\repos\Hayumi\HayumiWeb\obj\Debug\net8.0\HayumiWeb.pdb
 C:\Users\Windows\source\repos\Hayumi\HayumiWeb\obj\Debug\net8.0\HayumiWeb.genruntimeconfig.cache
 C:\Users\Windows\source\repos\Hayumi\HayumiWeb\obj\Debug\net8.0\ref\HayumiWeb.dll
-C:\Users\3ds\Desktop\Hayumi\Asp\HayumiWeb\obj\Debug\net8.0\HayumiWeb.csproj.Up2Date
+C:\Users\3ds\Desktop\Hayumi\Asp\HayumiWeb\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\3ds\Desktop\Hayumi\Asp\HayumiWeb\bin\Debug\net8.0\System.Text.Json.dll
+C:\Users\3ds\Desktop\Hayumi\Asp\HayumiWeb\obj\Debug\net8.0\HayumiWeb.csproj.CopyComplete
