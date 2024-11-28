@@ -7,44 +7,61 @@ namespace HayumiWeb.Controllers
     public class PedidoController : Controller
     {
         private readonly IPedidoRepositorio _pedidoRepositorio;
-        private readonly ILogger<PedidoController> _logger;
-        public PedidoController(IPedidoRepositorio pedidoRepositorio, ILogger<PedidoController> logger) 
+        private readonly ICarrinhoRepositorio _carrinhoRepositorio;
+        public PedidoController(IPedidoRepositorio pedidoRepositorio, ICarrinhoRepositorio carrinhoRepositorio) 
         {
             _pedidoRepositorio = pedidoRepositorio;
-            _logger = logger;
+            _carrinhoRepositorio = carrinhoRepositorio;
         }
-
+        // Método para finalizar o pedido
         [HttpPost]
         public IActionResult FinalizarPedido()
         {
-            // Recupera o ClienteId da sessão
             int? clienteId = HttpContext.Session.GetInt32("ClienteId");
-
-            // Verifica se o cliente está logado
             if (clienteId == null)
             {
-                // Se o cliente não estiver logado, redireciona para a página de login
-                return RedirectToAction("Login", "Home");
+                // Se não encontrar o ClienteId, redireciona para a página de login
+                return RedirectToAction("Login", "Account");
             }
 
-            try
+            int carrinhoId = _carrinhoRepositorio.ObterCarrinhoPorId(clienteId);
+
+            // Chama o repositório para inserir o pedido e obter o ID do pedido
+            int pedidoId = _pedidoRepositorio.InserirPedido(carrinhoId);
+
+            // Verifica se o ID do pedido é válido
+            if (pedidoId > 0)
             {
-                // Chama o repositório para finalizar o pedido
-                int pedidoId = _pedidoRepositorio.FinalizarPedido(clienteId.Value);
-
-                // Passa o ID do pedido para a View de confirmação de pagamento
-                ViewBag.PedidoId = pedidoId;
-
-                // Redireciona para a página de pagamento
-                return RedirectToAction("Index", "Pagamento");
+                TempData["Mensagem"] = $"Pedido {pedidoId} registrado com sucesso!";
             }
-            catch (Exception ex)
+            else
             {
-                // Registra o erro
-                _logger.LogError(ex, "Erro ao finalizar o pedido para o cliente ID: {ClienteId}", clienteId);
-                TempData["Erro"] = "Erro ao finalizar o pedido: " + ex.Message;
-                return RedirectToAction("Index", "Home");
+                TempData["Mensagem"] = "Houve um erro ao registrar o pedido.";
             }
+
+            // Redireciona para a página de confirmação
+            return RedirectToAction("ConfirmarPedido", "Pedido");
         }
+
+        [HttpPost]
+        public IActionResult ConfirmarPedido(int pedidoId)
+        {
+            // Chama o método para confirmar o pedido
+            int resultado = _pedidoRepositorio.ConfirmarPedido(pedidoId);
+
+            // Verifica se o retorno é válido (pedido confirmado)
+            if (resultado > 0)
+            {
+                TempData["Mensagem"] = $"Pedido {resultado} confirmado com sucesso!";
+            }
+            else
+            {
+                TempData["Mensagem"] = "Erro ao confirmar o pedido.";
+            }
+
+            // Redireciona para a página de pagamento
+            return RedirectToAction("Index", "Pagamento", new { id = pedidoId });
+        }
+
     }
 }

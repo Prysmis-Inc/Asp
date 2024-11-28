@@ -64,6 +64,7 @@ namespace HayumiWeb.Repositorio
 
                 // Comando SQL para buscar a peça pelo ID
                 MySqlCommand cmd = new MySqlCommand("SELECT * FROM tbPeca WHERE pecaid = @pecaId", conexao);
+                // 
 
                 // Adiciona o parâmetro para o ID da peça
                 cmd.Parameters.Add("@pecaId", MySqlDbType.Int32).Value = pecaId;

@@ -1,5 +1,6 @@
 ﻿using HayumiWeb.Models;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace HayumiWeb.Repositorio
 {
@@ -122,6 +123,38 @@ namespace HayumiWeb.Repositorio
                 cmd.Parameters.AddWithValue("@ClienteId", clienteId);
                 cmd.Parameters.AddWithValue("@PecaId", pecaId);
                 cmd.ExecuteNonQuery();
+            }
+        }
+
+        public CarrinhoCompra? ObterCarrinhoPorId(int clienteId)
+        {
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                // Abre a conexão com o banco de dados
+                conexao.Open();
+
+                // Comando SQL para buscar a peça pelo ID
+                MySqlCommand cmd = new MySqlCommand("select * from tbCarrinhoCompra where ClienteId = @clientId;", conexao);
+
+                cmd.Parameters.Add("@clientId", MySqlDbType.Int32).Value = clienteId;
+
+                // Adiciona o parâmetro para o ID da peça
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Executa a consulta e obtém o leitor de dados
+                using (MySqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                {
+                    if (dr.Read()) // Se houver carro com o ID especificado
+                    {
+                        CarrinhoCompra carro = new CarrinhoCompra();
+                        carro.CarrinhoId= Convert.ToInt32(dr["CarrinhoId"]);
+                        carro.ClienteId = Convert.ToInt32(dr["ClienteId"]);
+                        carro.PecaId= Convert.ToInt32(dr["PecaId"]);
+                        carro.QtdPeca = Convert.ToInt32(dr["QtdPeca"]);
+                        return carro;
+                    }
+                }
+                return null;
             }
         }
     }

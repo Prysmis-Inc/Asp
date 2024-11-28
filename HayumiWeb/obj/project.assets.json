@@ -1651,19 +1651,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\3ds\\.nuget\\packages\\": {}
+    "C:\\Users\\Renan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\3ds\\Desktop\\Asp\\HayumiWeb\\HayumiWeb.csproj",
+      "projectUniqueName": "C:\\Users\\Renan\\Desktop\\atual\\Asp\\HayumiWeb\\HayumiWeb.csproj",
       "projectName": "HayumiWeb",
-      "projectPath": "C:\\Users\\3ds\\Desktop\\Asp\\HayumiWeb\\HayumiWeb.csproj",
-      "packagesPath": "C:\\Users\\3ds\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\3ds\\Desktop\\Asp\\HayumiWeb\\obj\\",
+      "projectPath": "C:\\Users\\Renan\\Desktop\\atual\\Asp\\HayumiWeb\\HayumiWeb.csproj",
+      "packagesPath": "C:\\Users\\Renan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Renan\\Desktop\\atual\\Asp\\HayumiWeb\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\3ds\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Renan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1723,7 +1723,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

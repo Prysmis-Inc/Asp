@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Data;
 
 namespace HayumiWeb.Repositorio
 {
@@ -10,69 +11,68 @@ namespace HayumiWeb.Repositorio
         // Construtor que obtém a string de conexão do arquivo de configuração
         public PedidoRepositorio(IConfiguration conf) => _conexaoMySQL = conf.GetConnectionString("ConexaoMySQL");
 
-        // Método que finaliza o pedido e retorna o ID do pedido recém-criado
-        public int FinalizarPedido(int clienteId)
+        public int InserirPedido(int carrinhoId)
         {
             using (var conexao = new MySqlConnection(_conexaoMySQL))
             {
                 conexao.Open();
-                var transaction = conexao.BeginTransaction();
 
-                try
+                using (var cmd = new MySqlCommand("spInsertPedido", conexao))
                 {
-                    // 1. Criar o Pedido
-                    var cmdCriarPedido = new MySqlCommand("INSERT INTO tbPedido (ClienteId, DataPedido) VALUES (@ClienteId, @DataPedido); SELECT LAST_INSERT_ID();", conexao, transaction);
-                    cmdCriarPedido.Parameters.AddWithValue("@ClienteId", clienteId);
-                    cmdCriarPedido.Parameters.AddWithValue("@DataPedido", DateTime.Now);
-                    int pedidoId = Convert.ToInt32(cmdCriarPedido.ExecuteScalar());  // Pega o ID do pedido recém-criado
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    // 2. Obter os Itens do Carrinho
-                    var cmdCarrinho = new MySqlCommand("SELECT CarrinhoId, PecaId, QtdPeca FROM tbCarrinhoCompra WHERE ClienteId = @ClienteId", conexao, transaction);
-                    cmdCarrinho.Parameters.AddWithValue("@ClienteId", clienteId);
+                    // Parâmetros da stored procedure
+                    cmd.Parameters.AddWithValue("vCarrinhoId", carrinhoId);
+                    cmd.Parameters.AddWithValue("vStatusPedido", "pendente"); // Status fixo como 'pendente'
 
-                    using (var reader = cmdCarrinho.ExecuteReader())
+                    // Adiciona um parâmetro de saída para obter o ID do pedido inserido
+                    MySqlParameter outputParam = new MySqlParameter("@PedidoId", MySqlDbType.Int32)
                     {
-                        while (reader.Read())
-                        {
-                            int carrinhoId = Convert.ToInt32(reader["CarrinhoId"]);
-                            int pecaId = Convert.ToInt32(reader["PecaId"]);
-                            int qtdPeca = Convert.ToInt32(reader["QtdPeca"]);
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputParam);
 
-                            // 3. Adicionar os Itens ao Pedido (tbItemPedido)
-                            var cmdAdicionarItem = new MySqlCommand("INSERT INTO tbItemPedido (PedidoId, PecaId, QtdPeca, ValorUnitario, ValorTotal) " +
-                                                                    "SELECT @PedidoId, @PecaId, @QtdPeca, ValorPeca, ValorPeca * @QtdPeca " +
-                                                                    "FROM tbPeca WHERE PecaId = @PecaId", conexao, transaction);
-                            cmdAdicionarItem.Parameters.AddWithValue("@PedidoId", pedidoId);
-                            cmdAdicionarItem.Parameters.AddWithValue("@PecaId", pecaId);
-                            cmdAdicionarItem.Parameters.AddWithValue("@QtdPeca", qtdPeca);
-                            cmdAdicionarItem.ExecuteNonQuery();
+                    // Executa a stored procedure
+                    cmd.ExecuteNonQuery();
 
-                            // 4. Atualizar o Estoque da Peça
-                            var cmdAtualizarEstoque = new MySqlCommand("UPDATE tbPeca SET qtd_estoque = qtd_estoque - @QtdPeca WHERE PecaId = @PecaId", conexao, transaction);
-                            cmdAtualizarEstoque.Parameters.AddWithValue("@QtdPeca", qtdPeca);
-                            cmdAtualizarEstoque.Parameters.AddWithValue("@PecaId", pecaId);
-                            cmdAtualizarEstoque.ExecuteNonQuery();
-                        }
-                    }
-
-                    // 5. Remover os Itens do Carrinho
-                    var cmdRemoverCarrinho = new MySqlCommand("DELETE FROM tbCarrinhoCompra WHERE ClienteId = @ClienteId", conexao, transaction);
-                    cmdRemoverCarrinho.Parameters.AddWithValue("@ClienteId", clienteId);
-                    cmdRemoverCarrinho.ExecuteNonQuery();
-
-                    // 6. Commit da transação
-                    transaction.Commit();
-
-                    // Retorna o ID do pedido gerado
-                    return pedidoId;
-                }
-                catch (Exception ex)
-                {
-                    // Em caso de erro, desfaz todas as operações
-                    transaction.Rollback();
-                    throw new Exception("Erro ao finalizar o pedido: " + ex.Message, ex);
+                    // Retorna o ID do pedido inserido
+                    return Convert.ToInt32(outputParam.Value);
                 }
             }
         }
+
+
+        public int ConfirmarPedido(int pedidoId)
+        {
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                conexao.Open();
+
+                using (var cmd = new MySqlCommand("spConfirmarPedido", conexao))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Parâmetro de entrada para o PedidoId
+                    cmd.Parameters.AddWithValue("vPedidoId", pedidoId);
+
+                    // Executa a stored procedure
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        // Verifica se o pedido foi encontrado e confirmado
+                        if (reader.Read())
+                        {
+                            // Retorna o PedidoId se a confirmação foi bem-sucedida
+                            return Convert.ToInt32(reader["PedidoId"]);
+                        }
+                    }
+
+                    // Se não foi possível confirmar o pedido, retorna -1
+                    return -1;
+                }
+            }
+        }
+
+
+
     }
 }

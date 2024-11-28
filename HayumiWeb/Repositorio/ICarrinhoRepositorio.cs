@@ -15,5 +15,6 @@ namespace HayumiWeb.Repositorio
 
         // Atualiza a quantidade de um item no carrinho
         void AtualizarQuantidade(int clienteId, int pecaId, int quantidade);
+        public CarrinhoCompra? ObterCarrinhoPorId(int clienteId);
     }
 }
