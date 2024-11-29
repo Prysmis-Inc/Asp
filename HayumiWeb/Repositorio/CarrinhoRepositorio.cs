@@ -139,7 +139,6 @@ namespace HayumiWeb.Repositorio
                 cmd.Parameters.Add("@clientId", MySqlDbType.Int32).Value = clienteId;
 
                 // Adiciona o parâmetro para o ID da peça
-                cmd.CommandType = CommandType.StoredProcedure;
 
                 // Executa a consulta e obtém o leitor de dados
                 using (MySqlDataReader dr = cmd.ExecuteReader(CommandBehavior.CloseConnection))

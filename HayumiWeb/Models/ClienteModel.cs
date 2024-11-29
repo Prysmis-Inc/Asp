@@ -23,16 +23,15 @@ public class ClienteModel
     public int NumEnd { get; set; }
     public string CompEnd { get; set; }
     public decimal CEP { get; set; }
+    public string Logradouro { get; set; }
     public bool? ClienteStatus { get; set; }
 
-    [Required]
-    public EnderecoModel Endereco { get; set; } = new EnderecoModel(); // Referência ao EnderecoModel
-    public BairroModel Bairro { get; set; }
-    public CidadeModel Cidade { get; set; }
-
-
-    [Required]
+ // Referência ao EnderecoModel
+    public BairroModel? Bairro { get; set; }
+    public CidadeModel? Cidade { get; set; }
+ 
     public EstadoModel Estado { get; set; } = new EstadoModel();
+
 
 
 

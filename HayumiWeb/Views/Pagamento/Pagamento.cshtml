@@ -1,0 +1,45 @@
+﻿@model PagamentoViewModel
+
+<link href="~/css/pagamento.css" rel="stylesheet" />
+
+
+<div class="containerr">
+    <!-- Seção de Forma de Pagamento -->
+    <div class="payment-section">
+        <h2>Forma de Pagamento</h2>
+        <form action="proxima-pagina.html" method="POST">
+            <div class="payment-option">
+                <input type="radio" id="pix" name="formaPagamento" value="Pix" required>
+                &nbsp
+                <img src="~/img/pixx.png" width="50px" height="50px"/>
+                <label for="pix">&nbsp &nbsp &nbspPix</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="debito" name="formaPagamento" value="Débito">
+                <img src="~/img/debitoo.png" width="60px" height="50px />
+                <label for="debito">&nbsp &nbsp Débito</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="credito" name="formaPagamento" value="Crédito">
+                <img src="~/img/creditoo.png" width="70px" height="50px />
+                <label for="credito">&nbsp Crédito</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="boleto" name="formaPagamento" value="Boleto">
+                &nbsp
+                <img src="~/img/boleto.png" width="55px" height="50px"/>
+                <label for="boleto">&nbsp &nbsp &nbspBoleto</label>
+            </div>
+        </form>
+    </div>
+
+    <!-- Seção de Resumo do Pedido -->
+    <div class="summary-section">
+        <h2>Resumo do Pedido #@Model.Pedido.PedidoId</h2>
+        <p>Produto(s):</p>
+        <!-- Fazer foreach dos items nome, valor, qtd -->
+
+        <p>Valor Final: @Model.Pedido.Itens.Sum(c => c.ValorTotal)</p>
+        <button type="submit" class="btnpag">Gerar Pagamento</button>
+    </div>
+</div>

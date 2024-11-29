@@ -69,6 +69,7 @@ public class ClienteRepositorio : IClienteRepositorio
                 cmd.Parameters.AddWithValue("vNumEnd", cliente.NumEnd);
                 cmd.Parameters.AddWithValue("vCompEnd", cliente.CompEnd);
                 cmd.Parameters.AddWithValue("vCEP", cliente.CEP);
+                cmd.Parameters.AddWithValue("vLogradouro", cliente.Logradouro);
                 cmd.Parameters.AddWithValue("vClienteStatus", cliente.ClienteStatus);
                 cmd.Parameters.AddWithValue("vBairro", cliente.Bairro.Bairro);
                 cmd.Parameters.AddWithValue("vCidade", cliente.Cidade.Cidade);
@@ -109,6 +110,7 @@ public class ClienteRepositorio : IClienteRepositorio
                 cmd.Parameters.AddWithValue("vBairro", cliente.Bairro.Bairro);
                 cmd.Parameters.AddWithValue("vCidade", cliente.Cidade.Cidade);
                 cmd.Parameters.AddWithValue("vUF", cliente.Estado.UF);
+                cmd.Parameters.AddWithValue("vDataNasc", cliente.DataNasc);
 
                 // Executando a stored procedure
                 cmd.ExecuteNonQuery();
@@ -124,7 +126,7 @@ public class ClienteRepositorio : IClienteRepositorio
             conexao.Open();
 
             // Comando SQL para buscar a peça pelo ID
-            MySqlCommand cmd = new MySqlCommand("SELECT * FROM tbCliente WHERE ClienteId = @ClienteId", conexao);
+            MySqlCommand cmd = new MySqlCommand("select * from tbcliente inner join tbEndereco on tbcliente.CEP = tbEndereco.Cep inner join tbBairro on tbEndereco.BairroId = tbBairro.BairroId inner join tbCidade on tbEndereco.CidadeId = tbCidade.CidadeId inner join tbEstado on tbEndereco.UFId = tbEstado.UFId  WHERE tbcliente.ClienteId = @ClienteId;", conexao);
 
             // Adiciona o parâmetro para o ID da peça
             cmd.Parameters.Add("@ClienteId", MySqlDbType.Int32).Value = pecaId;
@@ -144,6 +146,22 @@ public class ClienteRepositorio : IClienteRepositorio
                     cliente.NumEnd = Convert.ToInt32(dr["NumEnd"])!;
                     cliente.CompEnd = Convert.ToString(dr["CompEnd"])!;
                     cliente.CEP = Convert.ToInt32(dr["CEP"])!;
+                    cliente.DataNasc = Convert.ToDateTime(dr["DataNasc"]);
+                    // Preenchendo as propriedades relacionadas aos modelos Bairro, Cidade e Estado
+                    cliente.Estado = new EstadoModel
+                    {
+                        UF = Convert.ToString(dr["UF"])!
+                    };
+
+                    cliente.Bairro = new BairroModel
+                    {
+                        Bairro = Convert.ToString(dr["Bairro"])!
+                    };
+
+                    cliente.Cidade = new CidadeModel
+                    {
+                        Cidade = Convert.ToString(dr["Cidade"])!
+                    };
 
                     return cliente; // Retorna o cliente encontrada
                 }

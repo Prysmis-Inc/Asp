@@ -24,10 +24,8 @@ namespace HayumiWeb.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var carrinho = _carrinhoRepositorio.ObterCarrinhoPorId(clienteId.Value);
-
             // Chama o repositório para inserir o pedido e obter o ID do pedido
-            int pedidoId = _pedidoRepositorio.InserirPedido(carrinho.CarrinhoId);
+            int pedidoId = _pedidoRepositorio.InserirPedido(clienteId.Value);
 
             // Verifica se o ID do pedido é válido
             if (pedidoId > 0)
@@ -40,7 +38,7 @@ namespace HayumiWeb.Controllers
             }
 
             // Redireciona para a página de confirmação
-            return RedirectToAction("ConfirmarPedido", "Pedido");
+            return RedirectToAction("Pagamento", "Pagamento", new { pedidoId });
         }
 
         [HttpPost]

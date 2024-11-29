@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using HayumiWeb.Models;
+using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 
@@ -11,7 +12,7 @@ namespace HayumiWeb.Repositorio
         // Construtor que obtém a string de conexão do arquivo de configuração
         public PedidoRepositorio(IConfiguration conf) => _conexaoMySQL = conf.GetConnectionString("ConexaoMySQL");
 
-        public int InserirPedido(int carrinhoId)
+        public int InserirPedido(int clienteId)
         {
             using (var conexao = new MySqlConnection(_conexaoMySQL))
             {
@@ -22,11 +23,11 @@ namespace HayumiWeb.Repositorio
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     // Parâmetros da stored procedure
-                    cmd.Parameters.AddWithValue("vCarrinhoId", carrinhoId);
+                    cmd.Parameters.AddWithValue("vClienteId", clienteId);
                     cmd.Parameters.AddWithValue("vStatusPedido", "pendente"); // Status fixo como 'pendente'
 
                     // Adiciona um parâmetro de saída para obter o ID do pedido inserido
-                    MySqlParameter outputParam = new MySqlParameter("@PedidoId", MySqlDbType.Int32)
+                    MySqlParameter outputParam = new MySqlParameter("@vPedidoId", MySqlDbType.Int32)
                     {
                         Direction = ParameterDirection.Output
                     };
@@ -72,7 +73,9 @@ namespace HayumiWeb.Repositorio
             }
         }
 
+        public PedidoModel BuscaPedidoPorId(int pedidoId)
+        {
 
-
+        }
     }
 }

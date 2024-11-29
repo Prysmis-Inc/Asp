@@ -56,6 +56,11 @@
                     <span asp-validation-for="Telefone" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-3">
+                    <label for="cep" class="text-muted">CEP:</label>
+                    <input asp-for="CEP" class="form-control form-control-lg bg-light fs-6 rounded-3" id="cep" placeholder="Digite o CEP" />
+                    <span asp-validation-for="CEP" class="text-danger"></span>
+                </div>
+                <div class="form-group mb-3">
                     <label for="numEnd" class="text-muted">Número:</label>
                     <input asp-for="NumEnd" type="number" class="form-control form-control-lg bg-light fs-6 rounded-3" id="numEnd" placeholder="Digite o número do endereço" />
                     <span asp-validation-for="NumEnd" class="text-danger"></span>
@@ -66,10 +71,10 @@
                     <span asp-validation-for="CompEnd" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="cep" class="text-muted">CEP:</label>
-                    <input asp-for="CEP" class="form-control form-control-lg bg-light fs-6 rounded-3" id="cep" placeholder="Digite o CEP" />
-                    <span asp-validation-for="CEP" class="text-danger"></span>
-                </div>      
+                    <label for="Logradouro" class="text-muted">Rua:</label>
+                    <input asp-for="Logradouro" class="form-control form-control-lg bg-light fs-6 rounded-3" id="logradouro" placeholder="Digite sua Rua" />
+                    <span asp-validation-for="Logradouro" class="text-danger"></span>
+                </div>
                 <div class="form-group mb-3">
                     <label for="bairro" class="text-muted">Bairro:</label>
                     <input asp-for="Bairro.Bairro" class="form-control form-control-lg bg-light fs-6 rounded-3" id="bairro" placeholder="Digite o bairro" />
@@ -106,7 +111,7 @@
                 $('#bairro').val(data.bairro)
                 $('#cidade').val(data.localidade)
                 $('#uf').val(data.uf)
-                //$('#logradouro').val(data.logradouro)
+                $('#logradouro').val(data.logradouro)
             });
 
         })

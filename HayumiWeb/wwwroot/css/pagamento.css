@@ -1,0 +1,74 @@
+﻿.containerr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    gap: 20px;
+}
+
+.payment-section, .summary-section {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 40%;
+}
+
+    .payment-section h2, .summary-section h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    background: #f0f0f0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+    .payment-option:hover {
+        background: #e0e0e0;
+    }
+
+    .payment-option input {
+        margin-right: 10px;
+    }
+
+    .payment-option label {
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+.summary-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width:317px;
+}
+
+    .summary-section p {
+        margin: 10px 0;
+    }
+
+.btnpag {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+    .btnpag:hover {
+        background-color: #218838;
+    }

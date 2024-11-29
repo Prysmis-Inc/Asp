@@ -73,7 +73,7 @@ namespace HayumiWeb.Controllers
         [HttpPost]
         public IActionResult Cadastro(ClienteModel cliente)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View();
             }

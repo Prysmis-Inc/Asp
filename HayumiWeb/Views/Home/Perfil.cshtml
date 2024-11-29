@@ -17,6 +17,20 @@
         <p><strong>Endereço:</strong> @Model.NumEnd, @Model.CompEnd</p>
         <p><strong>CEP:</strong> @Model.CEP</p>
 
+        <!-- Exibindo informações de Bairro, Cidade e UF -->
+        @if (Model.Bairro != null)
+        {
+            <p><strong>Bairro:</strong> @Model.Bairro.Bairro</p>
+        }
+        @if (Model.Cidade != null)
+        {
+            <p><strong>Cidade:</strong> @Model.Cidade.Cidade</p>
+        }
+        @if (Model.Estado != null)
+        {
+            <p><strong>UF:</strong> @Model.Estado.UF</p>
+        }
+
         <!-- Botão para editar perfil -->
         <a class="btn btn-warning" href="@Url.Action("Editar", "Home")" >Editar Perfil</a>
     </div>

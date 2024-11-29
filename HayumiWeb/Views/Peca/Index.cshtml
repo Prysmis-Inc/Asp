@@ -14,9 +14,19 @@
                     <form method="post" asp-action="Adicionar" asp-controller="Carrinho">
                         <input type="hidden" name="pecaId" value="@pecaModel.PecaId" />
                         <!-- Campo de quantidade com valor padrão 1 -->
-                        <input type="number" name="quantidade" value="1" min="1" class="form-control" />
-                        <!-- Botão para adicionar ao carrinho -->
-                        <button type="submit" class="prodcomprar">Adicionar ao Carrinho</button>
+
+                        @if(pecaModel.QtdEstoque <= 0)
+                        {
+                            <input type="number" name="quantidade" value="1" min="1" max="@pecaModel.QtdEstoque" disabled class="form-control" />
+                            <!-- Botão para adicionar ao carrinho -->
+                            <button type="submit" disabled class="prodcomprarr">Estoque indisponível</button>
+                        }
+                        else
+                        {
+                            <input type="number" name="quantidade" value="1" min="1" max="@pecaModel.QtdEstoque" class="form-control" />
+                            <!-- Botão para adicionar ao carrinho -->
+                            <button type="submit" class="prodcomprar">Adicionar ao Carrinho</button>
+                        }
                     </form>
                    
                 </div>
