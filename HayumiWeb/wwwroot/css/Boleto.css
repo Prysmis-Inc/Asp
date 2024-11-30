@@ -1,0 +1,58 @@
+﻿.container {
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 400px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.codigo-barras {
+    margin-top: 20px;
+}
+
+.linha-digitavel {
+    font-size: 14px;
+    word-break: break-all;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+    text-align: center;
+}
+
+.copy-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+    .copy-button:hover {
+        background-color: #0056b3;
+    }
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+    button:hover {
+        background-color: #218838;
+    }

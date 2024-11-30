@@ -1,0 +1,45 @@
+﻿@model HayumiWeb.Models.PedidoViewModel
+<link href="~/css/pedido.css" rel="stylesheet" />
+@{
+    ViewData["Title"] = "Pedidos do Cliente";
+}
+
+<h1 style="text-align: center;">@ViewData["Title"]</h1>
+
+@if (Model.Pedidos != null && Model.Pedidos.Any())
+{
+    foreach (var pedido in Model.Pedidos)
+    {
+        <div class="pedido-container">
+            <div class="pedido-item">
+                <h2>Pedido #@pedido.PedidoId</h2>
+                <p><strong>Data do Pedido:</strong> @pedido.DataPedido.ToString("dd/MM/yyyy HH:mm:ss")</p>
+                <p><strong>Status do Pedido:</strong> @pedido.StatusPedido</p>
+
+                <!-- Botões -->
+                <div class="btn-group">
+                    <!-- Botão para Exibir Nota Fiscal -->
+                    <a href="@Url.Action("ExibirNotaFiscal", "Pedido", new { id = pedido.PedidoId })"
+                       class="btn d"
+                       style="background-color: #FFCC00; color: #002454; border: 2px solid #000B54; border-radius: 2px;">
+                        Exibir Nota Fiscal
+                    </a>
+
+                    <!-- Botão para Exibir Detalhes do Pedido -->
+                    <a href="@Url.Action("ExibirDetalhes", "Pedido", new { id = pedido.PedidoId })"
+                       class="btn d"
+                       style="background-color: #002454; color: #FFCC00; border: 2px solid #FFCC00; border-radius: 2px;">
+                        Exibir Detalhes
+                    </a>
+                </div>
+
+            </div>
+        </div>
+        <hr />
+    }
+}
+else
+{
+    <p>Não há pedidos para exibir.</p>
+}
+

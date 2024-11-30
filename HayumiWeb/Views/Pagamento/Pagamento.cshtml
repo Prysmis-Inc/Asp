@@ -1,34 +1,51 @@
 ﻿@model PagamentoViewModel
 
 <link href="~/css/pagamento.css" rel="stylesheet" />
-
+<script src="~/js/site.js"></script>
 
 <div class="containerr">
     <!-- Seção de Forma de Pagamento -->
     <div class="payment-section">
         <h2>Forma de Pagamento</h2>
         <form action="proxima-pagina.html" method="POST">
+            <!-- Opção Pix -->
             <div class="payment-option">
-                <input type="radio" id="pix" name="formaPagamento" value="Pix" required>
-                &nbsp
-                <img src="~/img/pixx.png" width="50px" height="50px"/>
-                <label for="pix">&nbsp &nbsp &nbspPix</label>
+                <label for="pix" style="display:inline-block;
+                                    width:775px;">
+                    <input type="radio" id="pix" name="formaPagamento" value="Pix" required />
+                    <img src="~/img/pixx.png" width="50px" height="50px" />
+                    &nbsp Pix
+                </label>
             </div>
+
+            <!-- Opção Débito -->
             <div class="payment-option">
-                <input type="radio" id="debito" name="formaPagamento" value="Débito">
-                <img src="~/img/debitoo.png" width="60px" height="50px />
-                <label for="debito">&nbsp &nbsp Débito</label>
+                <label for="debito" style="display:inline-block;
+                                    width:775px;">
+                    <input type="radio" id="debito" name="formaPagamento" value="Débito" />
+                    <img src="~/img/debitoo.png" width="60px" height="50px" />
+                    &nbsp Débito
+                </label>
             </div>
+
+            <!-- Opção Crédito -->
             <div class="payment-option">
-                <input type="radio" id="credito" name="formaPagamento" value="Crédito">
-                <img src="~/img/creditoo.png" width="70px" height="50px />
-                <label for="credito">&nbsp Crédito</label>
+                <label for="credito" style="display:inline-block;
+                                    width:775px;">
+                    <input type="radio" id="credito" name="formaPagamento" value="Crédito" />
+                    <img src="~/img/creditoo.png" width="70px" height="50px" />
+                    &nbsp Crédito
+                </label>
             </div>
+
+            <!-- Opção Boleto -->
             <div class="payment-option">
-                <input type="radio" id="boleto" name="formaPagamento" value="Boleto">
-                &nbsp
-                <img src="~/img/boleto.png" width="55px" height="50px"/>
-                <label for="boleto">&nbsp &nbsp &nbspBoleto</label>
+                <label for="boleto" style="display:inline-block;
+                                    width:775px;">
+                    <input type="radio" id="boleto" name="formaPagamento" value="Boleto" />
+                    <img src="~/img/boleto.png" width="55px" height="50px" />
+                    &nbsp Boleto
+                </label>
             </div>
         </form>
     </div>
@@ -37,7 +54,13 @@
     <div class="summary-section">
         <h2>Resumo do Pedido #@Model.Pedido.PedidoId</h2>
         <p>Produto(s):</p>
-        <!-- Fazer foreach dos items nome, valor, qtd -->
+        @foreach (ItemPedido item in Model.Pedido.Itens)
+        {
+            <span>Nome: @item.Peca.NomePeca</span>
+            <span>Quantidade: @item.QtdPeca</span>
+            <span>Valor: @item.ValorTotal</span>
+            <hr style="border-top: 2px solid #ccc;" />
+        }
 
         <p>Valor Final: @Model.Pedido.Itens.Sum(c => c.ValorTotal)</p>
         <button type="submit" class="btnpag">Gerar Pagamento</button>

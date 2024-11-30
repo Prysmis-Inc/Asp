@@ -15,15 +15,28 @@ namespace HayumiWeb.Controllers
 
         public IActionResult Pagamento(int pedidoId)
         {
-            // Aqui você pode carregar as informações do pedido e permitir que o cliente faça o pagamento
-            ViewBag.PedidoId = pedidoId;
-
+            ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
             var pedido = _pedidoRepositorio.BuscaPedidoPorId(pedidoId);
 
             return View(new PagamentoViewModel
             {
                 Pedido = pedido
             });
+        }
+        
+        public IActionResult Pix() 
+        {
+            return View(); 
+        }
+
+        public IActionResult Cartao() 
+        { 
+            return View();
+        }
+
+        public IActionResult Boleto() 
+        { 
+            return View(); 
         }
     }
 }

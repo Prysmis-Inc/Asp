@@ -1,0 +1,17 @@
+﻿<link href="~/css/boleto.css" rel="stylesheet" />
+
+<div class="container">
+    <h2>Escaneie o código de barras para efetuar o pagamento do boleto</h2>
+    <div class="codigo-barras">
+        <img src="seu_codigo_barras.png" alt="Código de Barras">
+    </div>
+    <p>Ou copie a linha de código digitável</p>
+    <div id="linha-digitavel" class="linha-digitavel">
+        42297.11504 00064.897317 02893.915329 1 91980000329900
+    </div>
+    <button class="copy-button" onclick="copiarLinhaDigitavel()">Copiar linha de código</button>
+    <button onclick="verificarPagamento()">Verificar pagamento</button>
+</div>
+
+
+<script src="~/js/boleto.js"></script>

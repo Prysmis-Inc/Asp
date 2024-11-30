@@ -19,6 +19,8 @@
         margin-bottom: 20px;
     }
 
+
+
 .payment-option {
     display: flex;
     align-items: center;
@@ -39,9 +41,17 @@
     }
 
     .payment-option label {
-        font-size: 16px;
-        cursor: pointer;
+        display: inline-block; /* Alinha o label como bloco */
+        width: 100%; /* Ajusta o width conforme necessário */
+        cursor: pointer; /* Deixa o cursor visível quando passa sobre a opção */
+        padding: 5px;
+        box-sizing: border-box; /* Para garantir que o padding e o width não sobreponham o conteúdo */
     }
+
+    .payment-option input[type="radio"] {
+        margin-right: 10px; /* Ajusta o espaço entre o radio e o texto */
+    }
+
 
 .summary-section {
     display: flex;

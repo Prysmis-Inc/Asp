@@ -1,4 +1,5 @@
-﻿using HayumiWeb.Repositorio;
+﻿using HayumiWeb.Models;
+using HayumiWeb.Repositorio;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -60,6 +61,29 @@ namespace HayumiWeb.Controllers
             // Redireciona para a página de pagamento
             return RedirectToAction("Index", "Pagamento", new { id = pedidoId });
         }
+
+        public IActionResult ExibirPedidos(int clienteId)
+        {
+            ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
+            int? sclienteId = HttpContext.Session.GetInt32("ClienteId");
+            // Recupera os pedidos do cliente
+            var pedidos = _pedidoRepositorio.BuscaPedidoPorCliente(sclienteId.Value); // Chama o repositório para buscar os pedidos
+
+            // Cria o PedidoViewModel com a lista de pedidos
+            var pedidoViewModel = new PedidoViewModel
+            {
+                Pedidos = pedidos // Atribui a lista de pedidos ao modelo
+            };
+
+            // Verifica se não encontrou pedidos
+            if (pedidoViewModel.Pedidos == null || !pedidoViewModel.Pedidos.Any())
+            {
+                ViewBag.Mensagem = "Nenhum pedido encontrado para este cliente.";
+            }
+
+            return View(pedidoViewModel); // Passa o modelo para a view
+        }
+
 
     }
 }

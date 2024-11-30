@@ -1,0 +1,15 @@
+﻿<link href="~/css/pix.css" rel="stylesheet" />
+
+<div class="container">
+    <h2>Escaneie o QR Code para efetuar o pagamento</h2>
+    <img src="seu_qrcode.png" alt="QR Code">
+    <p>Ou copie o código pix</p>
+    <div class="pix-code-container">
+        <div id="pix-code" class="pix-code">0123049124:PixHdshjkhjkbjofabkjfbjdsdgfakjs...</div>
+        <button class="copy-button" onclick="copiarPix()">Copiar código</button>
+    </div>
+    <button onclick="verificarPagamento()">Verificar pagamento</button>
+</div>
+
+
+<script src="~/js/pix.js"></script>

@@ -1,0 +1,37 @@
+﻿/* Estilo para centralizar o conteúdo */
+.pedido-container {
+    border: 1px solid #ddd; /* Borda suave ao redor do pedido */
+    padding: 15px; /* Espaçamento interno */
+    margin: 0 auto 20px auto; /* Centraliza horizontalmente e adiciona margem inferior */
+    border-radius: 8px; /* Borda arredondada */
+    background-color: #f9f9f9;
+    max-width: 600px; /* Largura máxima para o container */
+    text-align: center; /* Centraliza o texto dentro do container */
+}
+
+/* Estilo para os itens dentro de cada pedido */
+.pedido-item {
+    font-family: Arial, sans-serif;
+    color: #333; /* Cor do texto */
+}
+
+/* Botões dentro do grupo */
+.btn-group {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center; /* Centraliza os botões dentro do grupo */
+    gap: 10px; /* Espaçamento entre os botões */
+}
+
+/* Botão personalizado */
+.btn {
+    padding: 10px 15px; /* Adiciona mais espaçamento interno aos botões */
+    font-size: 14px; /* Ajusta o tamanho da fonte */
+}
+
+/* Estilo de separação entre pedidos */
+hr {
+    border-top: 1px solid #ccc; /* Linha horizontal suave */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
