@@ -166,5 +166,65 @@ namespace HayumiWeb.Repositorio
                 return listaPedidos;
             }
         }
+
+        public List<PedidoModel> MostrarPedidos()
+        {
+            //usando a variavel conexao 
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                //abre a conexão com o banco de dados
+                conexao.Open();
+
+                // variavel cmd que receb o select do banco de dados buscando email e senha
+                MySqlCommand cmd = new MySqlCommand("select tbPedido.PedidoId, datapedido, tbPedido.ClienteId, StatusPedido, ItemPedidoId, QtdPeca, ValorUnitario, ValorTotal," +
+                                                    " tbPeca.NomePeca, tbCliente.NomeCli, PagamentoId, ValorPago, DataPagamento, StatusPagamento, TipoPagamento, NomeTitular, BandeiraCartao, NumeroCartao, CVV, DataValidade from tbPedido" +
+                                                    " inner join tbitempedido on tbPedido.PedidoId = tbitempedido.PedidoId" +
+                                                    " inner join tbpeca on tbitempedido.pecaid = tbpeca.pecaid" +
+                                                    " inner join tbCliente on tbpedido.clienteid = tbcliente.clienteid" +
+                                                    " inner join tbPagamento on tbPedido.PedidoId = tbPagamento.PedidoId;", conexao);
+
+                //os paramentros do email e da senha
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                //guarda os dados que foi pego do categoria do banco de dados
+                MySqlDataReader dr;
+
+                //instanciando a model peça
+                List<PedidoModel> listPedido = new List<PedidoModel>();
+
+                //executando os comandos do mysql e passsando paa a variavel dr
+                dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                //verifica todos os dados que foram pego do banco e pega a categoria
+                while (dr.Read())
+                {
+                    PedidoModel pedido = new PedidoModel();
+                    pedido.PedidoId = Convert.ToInt32(dr["PedidoId"]);
+                    pedido.DataPedido = Convert.ToDateTime(dr["datapedido"]);
+                    pedido.ClienteId = Convert.ToInt32(dr["ClienteId"]);
+                    pedido.StatusPedido = Convert.ToString(dr["StatusPedido"]);
+                    ItemPedido item = new ItemPedido();
+                    {
+                        item.ItemPedidoId = Convert.ToInt32(dr["ItemPedidoId"]);
+                        item.QtdPeca = Convert.ToInt32(dr["QtdPeca"]);
+                        item.ValorUnitario = Convert.ToInt32(dr["ValorUnitario"]);
+                        item.ValorTotal = Convert.ToDecimal(dr["ValorTotal"]);
+                    }
+                    ClienteModel cliente = new ClienteModel();
+                    {
+                        cliente.NomeCli = Convert.ToString(dr["NomeCli"]);
+                    }
+                    PecaModel peca = new PecaModel();
+                    {
+                        peca.NomePeca = Convert.ToString(dr["NomePeca"]);
+                    }
+                    pedido.Peca = peca;
+                    pedido.ItemPedido = item;
+                    pedido.Cliente = cliente;
+                    listPedido.Add(pedido);
+                }
+                return listPedido;
+            }
+        }
     } 
 }

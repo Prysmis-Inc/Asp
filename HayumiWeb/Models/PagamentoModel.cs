@@ -12,9 +12,10 @@ namespace HayumiWeb.Models
         public string TipoPagamento { get; set; }    // Cartão, Boleto, etc.
 
         // Dados do Cartão (caso o pagamento seja com cartão)
-        public string NomeCartao { get; set; }
-        public string BandeiraCartao { get; set; }
-        public string NumeroCartao { get; set; }
-        public string CVV { get; set; }
+        public string? NomeTitular { get; set; }
+        public string? BandeiraCartao { get; set; }
+        public decimal? NumeroCartao { get; set; }
+        public int? CVV { get; set; }
+        public string? DataValidade { get; set; }
     }
 }

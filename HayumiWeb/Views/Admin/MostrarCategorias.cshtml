@@ -1,0 +1,42 @@
+﻿@model List<HayumiWeb.Models.CategoriaModel>
+
+
+
+<link href="~/css/styles.css" rel="stylesheet" /> <!-- Adicione o link para o seu CSS -->
+
+<div class="container" style="margin-bottom:50px;">
+    <h1>Lista de Categorias</h1>
+
+    <a href="@Url.Action("CriarCategoria", "Admin")" class="btn btn-success mb-3">Criar Nova Categoria</a><br />
+    <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary "style="margin-bottom:50px;">Voltar</a>
+    <!-- Tabela para exibir as categorias -->
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome da Categoria</th>
+                <th>Imagem da Categoria</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var categoria in Model)
+            {
+                <tr>
+                    <td>@categoria.CategoriaId</td>
+                    <td>@categoria.NomeCategoria</td>
+                    <td>
+                        <img src="~/img/@categoria.ImgCategoria" alt="@categoria.NomeCategoria" style="max-width: 100px; max-height: 100px; object-fit: contain;" />
+                    </td>
+                    <td>
+                        <a asp-action="" asp-controller="" class="btn btn-outline-secondary">Editar</a>
+                        <a asp-action="" asp-controller="" class="btn btn-danger">Remover</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+   
+   
+
+</div>

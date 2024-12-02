@@ -1,0 +1,43 @@
+﻿.containerrr {
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.button-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria duas colunas */
+    gap: 20px;
+    justify-items: center;
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #fff;
+    color: Black;
+    border: 2px solid #FFCC00;
+    width: 60%; /* Garante que cada botão ocupe toda a largura da célula da grid */
+    box-sizing: border-box; /* Garante que o padding não ultrapasse a largura do botão */
+}
+
+    .button:hover {
+        border: 2px solid blue;
+    }
+
+/* Garantir que os links não afetem o tamanho do botão */
+.link {
+    width:100%;
+    text-decoration: none; /* Remove o sublinhado padrão */
+    display: contents; /* Faz o link ocupar toda a largura do botão */
+}
+
+@media (max-width: 768px) {
+    .button-container {
+        grid-template-columns: 1fr; /* Para telas pequenas, os botões ocupam uma coluna */
+    }
+}

@@ -1,0 +1,32 @@
+﻿@model List<HayumiWeb.Models.CarrinhoCompra>
+
+<div class="container" style="margin-bottom:50px;">
+<h1>Carros no Carrinho de Compras</h1>
+
+<!-- Tabela para exibir os carrinhos de compras -->
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID do Carrinho</th>
+            <th>Quantidade de Peças</th>
+            <th>Id do Cliente</th>
+            <th>Nome do Cliente</th>
+            <th>Nome da Peça</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var carro in Model)
+        {
+            <tr>
+                <td>@carro.CarrinhoId</td>
+                <td>@carro.QtdPeca</td>
+                <td>@carro.ClienteId</td>
+                <td>@carro.Cliente.NomeCli</td>
+                <td>@carro.Peca.NomePeca</td>
+            </tr>
+        }
+    </tbody>
+        
+</table>
+    <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">Voltar</a>
+</div>

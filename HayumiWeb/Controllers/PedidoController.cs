@@ -22,7 +22,7 @@ namespace HayumiWeb.Controllers
             if (clienteId == null)
             {
                 // Se não encontrar o ClienteId, redireciona para a página de login
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("Login", "Home");
             }
 
             // Chama o repositório para inserir o pedido e obter o ID do pedido
@@ -42,25 +42,7 @@ namespace HayumiWeb.Controllers
             return RedirectToAction("Pagamento", "Pagamento", new { pedidoId });
         }
 
-        [HttpPost]
-        public IActionResult ConfirmarPedido(int pedidoId)
-        {
-            // Chama o método para confirmar o pedido
-            int resultado = _pedidoRepositorio.ConfirmarPedido(pedidoId);
-
-            // Verifica se o retorno é válido (pedido confirmado)
-            if (resultado > 0)
-            {
-                TempData["Mensagem"] = $"Pedido {resultado} confirmado com sucesso!";
-            }
-            else
-            {
-                TempData["Mensagem"] = "Erro ao confirmar o pedido.";
-            }
-
-            // Redireciona para a página de pagamento
-            return RedirectToAction("Index", "Pagamento", new { id = pedidoId });
-        }
+       
 
         public IActionResult ExibirPedidos(int clienteId)
         {
@@ -85,5 +67,26 @@ namespace HayumiWeb.Controllers
         }
 
 
+        public IActionResult ExibirDetalhes(int id)  // O "id" vai ser o pedidoId passado pela URL
+        {
+            ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
+            var pedido = _pedidoRepositorio.BuscaPedidoPorId(id);
+
+            // Verifica se o pedido foi encontrado
+            if (pedido == null)
+            {
+                TempData["Mensagem"] = "Pedido não encontrado!";
+                return RedirectToAction("ExibirPedidos"); // Redireciona para a lista de pedidos caso não encontre
+            }
+
+            // Passa o pedido para a View
+            return View(new PagamentoViewModel
+            {
+                Pedido = pedido
+            }); 
+         }
+
+        
     }
 }
+

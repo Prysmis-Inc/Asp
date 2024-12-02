@@ -8,5 +8,6 @@
         public int PecaId { get; set; }
 
         public PecaModel? Peca { get; set; }
+        public ClienteModel? Cliente { get; set; }
     }
 }

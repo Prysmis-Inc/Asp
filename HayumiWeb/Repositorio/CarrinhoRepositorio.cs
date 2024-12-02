@@ -156,5 +156,54 @@ namespace HayumiWeb.Repositorio
                 return null;
             }
         }
+
+        public List<CarrinhoCompra> MostrarCarros() 
+        {
+            //usando a variavel conexao 
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                //abre a conexão com o banco de dados
+                conexao.Open();
+
+                // variavel cmd que recebe o select do banco de dados
+                MySqlCommand cmd = new MySqlCommand("select CarrinhoId, QtdPeca, tbCarrinhoCompra.ClienteId, tbCliente.NomeCli, tbCarrinhoCompra.PecaId, tbPeca.NomePeca from tbCarrinhoCompra" +
+                                                    " inner join tbCliente on tbCarrinhoCompra.ClienteId = tbCliente.ClienteId " +
+                                                    "inner join tbPeca on tbCarrinhoCompra.PecaId = tbPeca.PecaId;", conexao);
+
+                //Le os dados que foi pego das categorias
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                //guarda os dados que foi pego do categoria do banco de dados
+                MySqlDataReader dr;
+
+                //instanciando a model categoria
+                List<CarrinhoCompra> carrinhos = new List<CarrinhoCompra>();
+
+                //executando os comandos do mysql e passsando paa a variavel dr
+                dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                //verifica todos os dados que foram pego do banco e pega a categoria
+                while (dr.Read())
+                {
+                    CarrinhoCompra carro = new CarrinhoCompra();
+                    carro.CarrinhoId = Convert.ToInt32(dr["CarrinhoId"]);
+                    carro.QtdPeca = Convert.ToInt32(dr["QtdPeca"])!;
+                    carro.ClienteId = Convert.ToInt32(dr["ClienteId"]);
+                    carrinhos.Add(carro);
+                    PecaModel peca = new PecaModel();
+                    {
+                        peca.NomePeca = Convert.ToString(dr["NomePeca"]);
+                    }
+                    ClienteModel cliente = new ClienteModel();
+                    {
+                        cliente.NomeCli = Convert.ToString(dr["NomeCli"]);
+                    }
+                    carro.Peca = peca;
+                    carro.Cliente = cliente;
+                    carrinhos.Add(carro);
+                }
+
+                return carrinhos;
+            }
+        }
     }
 }

@@ -12,10 +12,11 @@
         <p><strong>Email:</strong> @Model.Email</p>
         <p><strong>Telefone:</strong> @Model.Telefone</p>
         <p><strong>Data de Nascimento:</strong> @Model.DataNasc.ToString("dd/MM/yyyy")</p>
+        <p><strong>CEP:</strong> @Model.CEP</p>
+        <p><strong>Endereço: </strong>@Model.Logradouro @Model.NumEnd, @Model.CompEnd</p>
 
         <!-- Exibindo informações do endereço -->
-        <p><strong>Endereço:</strong> @Model.NumEnd, @Model.CompEnd</p>
-        <p><strong>CEP:</strong> @Model.CEP</p>
+        
 
         <!-- Exibindo informações de Bairro, Cidade e UF -->
         @if (Model.Bairro != null)

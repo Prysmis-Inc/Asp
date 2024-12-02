@@ -1,0 +1,44 @@
+﻿@model HayumiWeb.Models.PagamentoViewModel
+
+@{
+    ViewData["Title"] = "Detalhes do Pedido";
+}
+<div class="container">
+<h2>@ViewData["Title"]</h2>
+
+<div class="pedido-details">
+    <h3>Informações do Pedido</h3>
+    <p><strong>ID do Pedido:</strong> @Model.Pedido.PedidoId</p>
+    <p><strong>Data do Pedido:</strong> @Model.Pedido.DataPedido.ToString("dd/MM/yyyy")</p>
+    <p><strong>Status do Pedido:</strong> @Model.Pedido.StatusPedido</p>
+
+    <h3>Itens do Pedido</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Imagem da Peça</th>
+                <th>Nome da Peça</th>
+                <th>Quantidade</th>
+                <th>Valor Unitário</th>
+                <th>Valor Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ItemPedido item in Model.Pedido.Itens)
+            {
+                <tr>
+                    <td><img src="~/img/@item.Peca.ImgPeca" width="80px" height="50px"/></td>
+                    <td>@item.Peca.NomePeca</td>
+                    <td>@item.QtdPeca</td>
+                    <td>@item.ValorUnitario.ToString("C2")</td>
+                    <td>@item.ValorTotal.ToString("C2")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Botão para retornar -->
+    <p><strong>Valor Final: </strong>@Model.Pedido.Itens.Sum(c => c.ValorTotal)</p>
+<a href="@Url.Action("ExibirPedidos", "Pedido")" class="btn btn-primary">Voltar</a>
+</div>

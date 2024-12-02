@@ -9,5 +9,6 @@ namespace HayumiWeb.Repositorio
         public int ConfirmarPedido(int pedidoId);
         public PedidoModel BuscaPedidoPorId(int pedidoId);
         public List<PedidoModel> BuscaPedidoPorCliente(int clienteId);
+        public List<PedidoModel> MostrarPedidos();
     }
 }

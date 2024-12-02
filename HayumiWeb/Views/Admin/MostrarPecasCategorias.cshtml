@@ -1,0 +1,52 @@
+﻿@model List<HayumiWeb.Models.PecaModel>
+
+<link href="~/css/styles.css" rel="stylesheet" />
+
+<div class="container" style="margin-bottom:50px;">
+    <h1>Lista de Peças</h1>
+    <a href="@Url.Action("AdicionarPeca", "Admin")" class="btn btn-success mb-3" style="margin-top:20px;">Adicionar Peça</a><br />
+    <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary " style="margin-bottom:50px;">Voltar</a>
+    <!-- Tabela para exibir as peças -->
+    <br />
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome da Peça</th>
+                <th>Valor</th>
+                <th>Imagem da Peça</th>
+                <th>Descrição</th>
+                <th>Estoque</th>
+                <th>Categoria</th>
+                <th>Imagem da Categoria</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var peca in Model)
+            {
+                <tr>
+                    <td>@peca.PecaId</td>
+                    <td>@peca.NomePeca</td>
+                    <td>@peca.ValorPeca.ToString("C")</td>
+                    <td>
+                        <img src="~/img/@peca.ImgPeca" alt="@peca.NomePeca" style="max-width: 100px; max-height: 100px; object-fit: contain;" />
+                    </td>
+                    <td>@peca.Descricao</td>
+                    <td>@peca.QtdEstoque</td>
+                    <td>@peca.Categoria.NomeCategoria</td>
+                    <td>
+                        <img src="~/img/@peca.Categoria.ImgCategoria" alt="@peca.Categoria.NomeCategoria" style="max-width: 100px; max-height: 100px; object-fit: contain;" />
+                    </td>
+                    <td>
+                        <a asp-action="EditarPeca" asp-controller="Admin" asp-route-pecaId="@peca.PecaId" class="btn btn-outline-secondary" style="margin-bottom:35px; margin-top:15px;"> Editar</a>
+                        <a asp-action="" asp-controller="" class="btn btn-danger">Remover</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- Link para voltar -->
+    
+    </div>

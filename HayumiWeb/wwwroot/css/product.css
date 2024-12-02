@@ -41,6 +41,22 @@
         border: 2px solid #002454;
     }
 
+.prodcomprare {
+    background-color: #002454;
+    color: #FFCC00;
+    border: 2px solid #002454; /* Adicionando borda */
+    width: 100%; /* Faz o botão ocupar toda a largura do contêiner */
+    margin-top: 10px; /* Adiciona uma margem superior */
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .prodcomprare:hover {
+        background-color: #FFCC00;
+        color: #002454;
+        border: 2px solid #FFCC00;
+    }
 /*Perfil*/
 
 .card {

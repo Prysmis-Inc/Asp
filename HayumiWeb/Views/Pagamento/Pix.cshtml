@@ -1,14 +1,20 @@
-﻿<link href="~/css/pix.css" rel="stylesheet" />
+﻿@model PagamentoViewModel
+
+<link href="~/css/pix.css" rel="stylesheet" />
 
 <div class="container">
     <h2>Escaneie o QR Code para efetuar o pagamento</h2>
-    <img src="seu_qrcode.png" alt="QR Code">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=@Model.ChavePix" alt="QR Code">
     <p>Ou copie o código pix</p>
     <div class="pix-code-container">
-        <div id="pix-code" class="pix-code">0123049124:PixHdshjkhjkbjofabkjfbjdsdgfakjs...</div>
+        <div id="pix-code" class="pix-code">@Model.ChavePix</div>
         <button class="copy-button" onclick="copiarPix()">Copiar código</button>
     </div>
-    <button onclick="verificarPagamento()">Verificar pagamento</button>
+    <form method="post" asp-action="PagarPedido">
+        <input type="hidden" name="FormaPagamento" value="Pix" />
+        <input type="hidden" name="PedidoId" value="@Model.PedidoId" />
+        <button type="submit">Verificar pagamento</button>
+    </form>
 </div>
 
 

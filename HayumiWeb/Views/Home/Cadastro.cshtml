@@ -33,7 +33,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="email" class="text-muted">Email:</label>
-                    <input asp-for="Email" class="form-control form-control-lg bg-light fs-6 rounded-3" id="email" placeholder="Digite seu email aqui" />
+                    <input type="email" asp-for="Email" class="form-control form-control-lg bg-light fs-6 rounded-3" id="email" placeholder="Digite seu email aqui" />
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-3">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label for="telefone" class="text-muted">Telefone:</label>
-                    <input asp-for="Telefone" type="number" class="form-control form-control-lg bg-light fs-6 rounded-3" id="telefone" placeholder="Digite seu telefone aqui" />
+                    <input asp-for="Telefone" type="text" class="form-control form-control-lg bg-light fs-6 rounded-3" id="telefone" placeholder="Digite seu telefone aqui" />
                     <span asp-validation-for="Telefone" class="text-danger"></span>
                 </div>
                 <div class="form-group mb-3">
@@ -94,9 +94,14 @@
                     <button type="submit" class="btn btn-lg w-100 fs-6 align-content-end btn-entrar">Cadastrar</button>
                 </div>
             </form>
+
+            
+
         </div>
     </div>
 </div>
+
+
 
 @section Scripts {
 
@@ -115,6 +120,14 @@
             });
 
         })
+
+        Inputmask("999.999.999-99").mask(document.getElementById("cpf"));
+
+        // Máscara para Telefone (com DDD)
+        Inputmask("(99) 99999-9999").mask(document.getElementById("telefone"));
+
+        // Máscara para CEP
+        Inputmask("99999-999").mask(document.getElementById("cep"));
     </script>
 
 }

@@ -1,71 +1,40 @@
 ﻿using HayumiWeb.Models;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace HayumiWeb.Repositorio
 {
     public class PagamentoRepositorio : IPagamentoRepositorio
     {
-        private readonly string _conexaoMySQL;
+        private readonly string? _conexaoMySQL;
 
-        public PagamentoRepositorio(IConfiguration conf)
-        {
-            _conexaoMySQL = conf.GetConnectionString("ConexaoMySQL");
-        }
+        // Construtor que obtém a string de conexão do arquivo de configuração
+        public PagamentoRepositorio(IConfiguration conf) => _conexaoMySQL = conf.GetConnectionString("ConexaoMySQL");
 
-        // Cria um pagamento no banco de dados
-        public void CriarPagamento(int pedidoId, decimal valorPago, string tipoPagamento, string nomeCartao = null, string bandeiraCartao = null, string numeroCartao = null, string cvv = null)
-        {
-            using (var conexao = new MySqlConnection(_conexaoMySQL))
-            {
-                conexao.Open();
-                var cmd = new MySqlCommand("INSERT INTO tbPagamento (PedidoId, ValorPago, DataPagamento, StatusPagamento, TipoPagamento, NomeCartao, BandeiraCartao, NumeroCartao, CVV) " +
-                                           "VALUES (@PedidoId, @ValorPago, @DataPagamento, @StatusPagamento, @TipoPagamento, @NomeCartao, @BandeiraCartao, @NumeroCartao, @CVV)", conexao);
-                cmd.Parameters.AddWithValue("@PedidoId", pedidoId);
-                cmd.Parameters.AddWithValue("@ValorPago", valorPago);
-                cmd.Parameters.AddWithValue("@DataPagamento", DateTime.Now);
-                cmd.Parameters.AddWithValue("@StatusPagamento", "Pendente");  // Status inicial "Pendente"
-                cmd.Parameters.AddWithValue("@TipoPagamento", tipoPagamento);
-                cmd.Parameters.AddWithValue("@NomeCartao", nomeCartao ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@BandeiraCartao", bandeiraCartao ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@NumeroCartao", numeroCartao ?? (object)DBNull.Value);
-                cmd.Parameters.AddWithValue("@CVV", cvv ?? (object)DBNull.Value);
-
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        // Obtém o pagamento relacionado a um pedido
-        public PagamentoModel ObterPagamento(int pedidoId)
+        public void Pagar(PagamentoModel pagamento)
         {
             using (var conexao = new MySqlConnection(_conexaoMySQL))
             {
                 conexao.Open();
 
-                var cmd = new MySqlCommand("SELECT * FROM tbPagamento WHERE PedidoId = @PedidoId", conexao);
-                cmd.Parameters.AddWithValue("@PedidoId", pedidoId);
-
-                using (var reader = cmd.ExecuteReader())
+                using (var cmd = new MySqlCommand("spInsertPagamento", conexao))
                 {
-                    if (reader.Read())
-                    {
-                        return new PagamentoModel
-                        {
-                            PagamentoId = reader.GetInt32(reader.GetOrdinal("PagamentoId")),
-                            PedidoId = reader.GetInt32(reader.GetOrdinal("PedidoId")),
-                            ValorPago = reader.GetDecimal(reader.GetOrdinal("ValorPago")),
-                            DataPagamento = reader.GetDateTime(reader.GetOrdinal("DataPagamento")),
-                            StatusPagamento = reader["StatusPagamento"]?.ToString(), // Garantir que não seja null
-                            TipoPagamento = reader["TipoPagamento"]?.ToString(), // Garantir que não seja null
-                            NomeCartao = reader["NomeCartao"]?.ToString(), // Pode ser nulo
-                            BandeiraCartao = reader["BandeiraCartao"]?.ToString(), // Pode ser nulo
-                            NumeroCartao = reader["NumeroCartao"]?.ToString(), // Pode ser nulo
-                            CVV = reader["CVV"]?.ToString() // Pode ser nulo
-                        };
-                    }
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Parâmetros para evitar SQL Injection
+                    cmd.Parameters.AddWithValue("@pPedidoId", pagamento.PedidoId);
+                    cmd.Parameters.AddWithValue("@pValorPago", pagamento.ValorPago);
+                    cmd.Parameters.AddWithValue("@pDataPagamento", pagamento.DataPagamento);
+                    cmd.Parameters.AddWithValue("@pTipoPagamento", pagamento.TipoPagamento);
+                    cmd.Parameters.AddWithValue("@pNomeTitular", pagamento.NomeTitular ?? (object)DBNull.Value);  // Caso NomeTitular seja null
+                    cmd.Parameters.AddWithValue("@pBandeiraCartao", pagamento.BandeiraCartao ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@pNumeroCartao", pagamento.NumeroCartao ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@pCVV", pagamento.CVV ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@pDataValidade", pagamento.DataValidade ?? (object)DBNull.Value);
+
+                    cmd.ExecuteNonQuery();
                 }
             }
-
-            return null; // Retorna null caso não encontre o pagamento
         }
     }
 }

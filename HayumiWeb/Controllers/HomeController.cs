@@ -6,6 +6,7 @@ using HayumiWeb.Repositorio;
 using Newtonsoft.Json;
 using System.Diagnostics.Eventing.Reader;
 using MySqlX.XDevAPI;
+using Microsoft.AspNetCore.Http;
 
 namespace HayumiWeb.Controllers
 {
@@ -27,6 +28,9 @@ namespace HayumiWeb.Controllers
         public IActionResult Index()
         {
             ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
+            string statusString = HttpContext.Session.GetString("ClienteStatus");
+            bool status = !string.IsNullOrEmpty(statusString) && bool.Parse(statusString);
+            ViewBag.Status = status;
 
             List<CategoriaModel> categorias = _categoriaRepositorio.BuscarCategorias();
 
@@ -45,14 +49,27 @@ namespace HayumiWeb.Controllers
         [HttpPost]
         public IActionResult Login(ClienteModel cliente)
         {
-            ClienteModel loginDB = _clienteRepositorio.Login(cliente.Email, cliente.SenhaUsu, cliente.ClienteId);
+            var loginDB = _clienteRepositorio.Login(cliente.Email, cliente.SenhaUsu);
+            // Verifica se o cliente foi encontrado e se o status é 'true'
+            
+            if (loginDB.ClienteStatus == true)
+            {
+                _loginCliente.Login(loginDB);
+                // Realiza o login do cliente e redireciona para o painel de administração
 
+                HttpContext.Session.SetString("UsuarioNome", loginDB.Email);
+                HttpContext.Session.SetInt32("ClienteId", loginDB.ClienteId);
+                HttpContext.Session.SetString("Adm", loginDB.ClienteStatus.ToString());
+
+                // Redireciona para a página de administração (PainelAdm)
+                return RedirectToAction("Index", "Admin");
+            }
             if (loginDB.Email != null && loginDB.SenhaUsu != null)
             {
                 _loginCliente.Login(loginDB);
                 HttpContext.Session.SetString("UsuarioNome", loginDB.Email);
                 HttpContext.Session.SetInt32("ClienteId", loginDB.ClienteId);
-                return new RedirectResult(Url.Action(nameof(Index)));
+                return RedirectToAction("Index");
             }
             else
             {
@@ -148,13 +165,15 @@ namespace HayumiWeb.Controllers
         [HttpPost]
         public IActionResult Editar(ClienteModel cliente)
         {
-            if (ModelState.IsValid)
-            {
-                _clienteRepositorio.Alterar(cliente);  // Atualiza as informações do cliente
-                return RedirectToAction("Perfil");  // Redireciona para o perfil após sucesso
-            }
-            ViewBag.UsuarioNome = HttpContext.Session.GetString("UsuarioNome");
-            return View(cliente);  // Se o modelo não for válido, retorna para a view de edição
+            
+                // Chama o método de atualização
+                _clienteRepositorio.Alterar(cliente);  // Onde Alterar é o método que você implementou anteriormente.
+
+                // Redireciona para uma página de sucesso ou para o perfil do cliente
+                return RedirectToAction("Perfil", "Home");
+            
+
+            
         }
 
 

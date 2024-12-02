@@ -6,6 +6,12 @@
     gap: 20px;
 }
 
+    .containerr form {
+        display: flex;
+        align-content: center;
+        justify-content: space-evenly;
+    }
+
 .payment-section, .summary-section {
     background-color: #fff;
     border-radius: 8px;
@@ -41,11 +47,13 @@
     }
 
     .payment-option label {
-        display: inline-block; /* Alinha o label como bloco */
-        width: 100%; /* Ajusta o width conforme necessário */
-        cursor: pointer; /* Deixa o cursor visível quando passa sobre a opção */
+        display: flex;
+        width: 100%;
+        cursor: pointer;
         padding: 5px;
-        box-sizing: border-box; /* Para garantir que o padding e o width não sobreponham o conteúdo */
+        box-sizing: border-box;
+        justify-content: start;
+        align-items: center;
     }
 
     .payment-option input[type="radio"] {

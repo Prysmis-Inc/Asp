@@ -1,5 +1,6 @@
 ﻿using HayumiWeb.Models;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System.Data;
 
 namespace HayumiWeb.Repositorio
@@ -166,6 +167,53 @@ namespace HayumiWeb.Repositorio
                     peca.Descricao = Convert.ToString(dr["descricao"])!;
                     peca.QtdEstoque = Convert.ToInt32(dr["qtd_estoque"])!;
                     peca.CategoriaId = Convert.ToInt32(dr["categoriaid"])!;
+                    listaPeca.Add(peca);
+                }
+
+                return listaPeca;
+            }
+        }
+
+        public List<PecaModel> BuscarPecaCategorias()
+        {
+            using (var conexao = new MySqlConnection(_conexaoMySQL))
+            {
+                // Abre a conexão com o banco de dados
+                conexao.Open();
+
+                // Comando SQL para buscar a peça pelo ID
+                MySqlCommand cmd = new MySqlCommand("select PecaId, NomePeca, ValorPeca, img_peca, descricao, qtd_estoque, tbcategoria.categoriaid, nomecategoria, img_categoria from tbPeca" +
+                                                    " inner join tbCategoria on tbPeca.categoriaid = tbCategoria.categoriaid;", conexao);
+
+                // Adiciona o parâmetro para nome da peca
+                //Le os dados que foi pego do categoria do banco de dados
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                //guarda os dados que foi pego do categoria do banco de dados
+                MySqlDataReader dr;
+
+                //instanciando a model peça
+                List<PecaModel> listaPeca = new List<PecaModel>();
+
+                //executando os comandos do mysql e passsando paa a variavel dr
+                dr = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+
+                //verifica todos os dados que foram pego do banco e pega a categoria
+                while (dr.Read())
+                {
+                    PecaModel peca = new PecaModel();
+                    peca.PecaId = Convert.ToInt32(dr["PecaId"]);
+                    peca.NomePeca = Convert.ToString(dr["NomePeca"])!;
+                    peca.ValorPeca = Convert.ToDouble(dr["ValorPeca"])!;
+                    peca.ImgPeca = Convert.ToString(dr["img_peca"])!;
+                    peca.Descricao = Convert.ToString(dr["descricao"])!;
+                    peca.QtdEstoque = Convert.ToInt32(dr["qtd_estoque"])!;
+                    peca.CategoriaId = Convert.ToInt32(dr["categoriaid"])!;
+                    CategoriaModel cat = new CategoriaModel();
+                    {
+                        cat.NomeCategoria = Convert.ToString(dr["nomecategoria"]);
+                        cat.ImgCategoria = Convert.ToString(dr["img_categoria"]);
+                    };
+                    peca.Categoria = cat;
                     listaPeca.Add(peca);
                 }
 

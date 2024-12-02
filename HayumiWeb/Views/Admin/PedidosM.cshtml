@@ -1,0 +1,42 @@
+﻿@model List<HayumiWeb.Models.PedidoModel>
+
+@{
+    ViewData["Title"] = "Pedidos";
+}
+<div class="container">
+<h1>Lista de Pedidos</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID do Pedido</th>
+            <th>Data do Pedido</th>
+            <th>Nome do Cliente</th>
+            <th>Status do Pedido</th>
+            <th>ID do Item</th>
+            <th>Nome do Item</th>
+            <th>Quantidade de Peças</th>
+            <th>Valor Unitário</th>
+            <th>Valor Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pedido in Model)
+        {
+            <tr>
+                <td>@pedido.PedidoId</td>
+                <td>@pedido.DataPedido.ToString("dd/MM/yyyy")</td>
+                <td>@pedido.Cliente.NomeCli</td>
+                <td>@pedido.StatusPedido</td>
+                <td>@pedido.ItemPedido.ItemPedidoId</td>
+                <td>@pedido.Peca.NomePeca</td>
+                <td>@pedido.ItemPedido.QtdPeca</td>
+                <td>@pedido.ItemPedido.ValorUnitario.ToString("C")</td>
+                <td>@pedido.ItemPedido.ValorTotal.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">Voltar</a>
+</div>

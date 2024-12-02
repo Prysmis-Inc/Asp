@@ -1,0 +1,50 @@
+﻿@model PecaViewModel
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="NomePeca">Nome da Peça:</label>
+        <input type="text" id="NomePeca" asp-for="Peca.NomePeca" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="ValorPeca">Valor da Peça:</label>
+        <input type="number" id="ValorPeca" asp-for="Peca.ValorPeca" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="ImgPeca">Imagem da Peça:</label>
+        <input type="file" id="ImgPeca" asp-for="ImagemFormFile" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="Descricao">Descrição:</label>
+        <textarea id="Descricao" asp-for="Peca.Descricao" class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="QtdEstoque">Quantidade em Estoque:</label>
+        <input id="QtdEstoque" asp-for="Peca.QtdEstoque" type="number" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="CategoriaId">Categoria:</label>
+        <select id="CategoriaId" asp-for="Peca.CategoriaId" class="form-control">
+            <!-- Aqui você pode carregar as categorias já existentes do banco -->
+            <option value="1">Pneus</option>
+            <option value="2">Motores</option>
+            <option value="3">Baterias</option>
+            <option value="4">Retrovisores</option>
+            <option value="5">Suspensão</option>
+            <option value="6">Freios</option>
+            <option value="7">Filtros de Ar</option>
+            <option value="8">Lanternas Traseiras</option>
+            <option value="9">Volantes</option>
+            <option value="10">Óleos e Lubrificantes</option>
+            <option value="11">Escapamentos</option>
+            <option value="12">Radiadores</option>
+        </select>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Adicionar Peça</button>
+</form>

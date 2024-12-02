@@ -1,0 +1,44 @@
+﻿@model List<HayumiWeb.Models.ClienteModel>
+<div class="container">
+<h2>Lista de Clientes</h2>
+
+    <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>CEP</th>
+            <th>NumEnd</th>
+            <th>CompEnd</th>
+            <th>Rua</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>UF</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.ClienteId</td>
+                <td>@cliente.NomeCli</td>
+                <td>@cliente.CPF</td>
+                <td>@cliente.Email</td>
+                <td>@cliente.Telefone</td>
+                <td>@cliente.CEP</td>
+                <td>@cliente.NumEnd</td>
+                <td>@cliente.CompEnd</td>
+                <td>@cliente.Logradouro</td>
+                <td>@cliente.Bairro.Bairro</td>
+                <td>@cliente.Cidade.Cidade</td>
+                <td>@cliente.Estado.UF</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+    <a href="@Url.Action("Index", "Admin")" class="btn btn-secondary">Voltar</a>
+</div>

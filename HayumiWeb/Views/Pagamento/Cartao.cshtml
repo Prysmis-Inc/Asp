@@ -1,1 +1,37 @@
-﻿
+﻿<link href="~/css/cartao.css" rel="stylesheet" />
+@model HayumiWeb.Models.PagamentoViewModel
+
+
+<div class="container">
+    <form method="post" asp-action="PagarPedido">
+        <div class="form-group-inline">
+            <div class="form-group">
+                <label for="cvv">CVV</label>
+                <input asp-for="CVV" type="text" id="cvv" placeholder="Insira o CVV do cartão" maxlength="3" required>
+            </div>
+            <div class="form-group">
+                <label for="nome-titular">Nome Titular</label>
+                <input asp-for="NomeTitular" type="text" id="nome-titular" placeholder="Insira o Nome do Titular" required>
+            </div>
+            <div class="form-group">
+                <label for="bandeira">Bandeira</label>
+                <input asp-for="BandeiraCartao" type="text" id="bandeira" placeholder="Insira a Bandeira do Cartão" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="numero-cartao">Número do Cartão (16)</label>
+            <input asp-for="NumeroCartao" type="text" id="numero-cartao" placeholder="Insira o Número do seu Cartão" maxlength="16" required>
+        </div>
+        <div class="form-group">
+            <label for="validade-cartao">Data de Validade Cartão</label>
+            <input asp-for="DataValidade" type="text" id="validade-cartao" placeholder="Insira a Data de Validade (Dia/Mês)" maxlength="5" required>
+        </div>
+        <input type="hidden" name="FormaPagamento" value="Cartão" />
+        <input type="hidden" asp-for="PedidoId" value="@Model.PedidoId"/>
+        <button type="submit" class="btn-confirmar" onclick="confirmarPagamento()">Confirmar Pagamento</button>
+    </form>
+</div>
+
+
+
+<script src="~/js/cartao.js"></script>
