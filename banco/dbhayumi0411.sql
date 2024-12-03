@@ -337,6 +337,7 @@ begin
     end if;
 end $$
 
+
 /*Inserção de peças - pneus*/
 CALL spInsertPeca('Pneu Aro 22 XBri', 1400.00, 'imgpneu1.png', 'Pneu Aro 22 da marca XBri, projetado para veículos de alto desempenho e segurança. Este pneu oferece uma excelente durabilidade, aderência superior e estabilidade, ideal para rodovias e estradas de alta velocidade. A tecnologia de construção garante uma experiência de direção suave e segura, mesmo em condições adversas, com resistência aprimorada ao desgaste. A combinação perfeita de performance e custo-benefício para motoristas exigentes que buscam qualidade e confiabilidade', 10, 1);
 CALL spInsertPeca('Pneu 110H Scorpion', 1400.00, 'imgpneu2.png', 'Pneu Scorpion 110H, desenvolvido para oferecer ótima performance em diferentes tipos de terreno. Ideal para veículos que enfrentam uma variedade de superfícies, desde asfalto até estradas de terra. Seu design inovador proporciona resistência superior ao desgaste, estabilidade em curvas e maior capacidade de tração. A alta performance em todas as condições climáticas garante a segurança e o conforto do motorista, seja em pistas secas ou molhadas.', 10, 1);
@@ -664,3 +665,44 @@ select * from tbPagamento;
 describe tbpedido;
 describe tbpeca;
 describe tbcarrinhocompra;
+DELIMITER $$
+
+CREATE PROCEDURE spUpdatePeca(
+    IN vPecaId INT,              -- ID da peça a ser atualizada
+    IN vNomePeca VARCHAR(100),    -- Nome da peça
+    IN vValorPeca DECIMAL(8,2),   -- Valor da peça
+    IN vImgPeca VARCHAR(255),     -- Caminho da imagem da peça
+    IN vDescricao VARCHAR(500),   -- Descrição da peça
+    IN vQtdEstoque INT,           -- Quantidade em estoque
+    IN vCategoriaId INT           -- ID da categoria (relacionado à tabela tbCategoria)
+)
+BEGIN
+    -- Verificar se a peça com o PecaId existe
+    IF EXISTS (SELECT 1 FROM tbPeca WHERE PecaId = vPecaId) THEN
+        -- Atualizar os dados da peça
+        UPDATE tbPeca
+        SET
+            NomePeca = vNomePeca,
+            ValorPeca = vValorPeca,
+            img_peca = vImgPeca,
+            descricao = vDescricao,
+            qtd_estoque = vQtdEstoque,
+            categoriaid = vCategoriaId
+        WHERE PecaId = vPecaId;
+    ELSE
+        -- Se não existir, pode retornar uma mensagem
+        SELECT 'Peça não encontrada.' AS mensagem;
+    END IF;
+END $$
+
+DELIMITER $$
+
+CREATE PROCEDURE spDeletePeca(IN vPecaId INT)
+BEGIN
+    -- Verifica se a peça existe antes de tentar deletar
+    IF EXISTS (SELECT 1 FROM tbPeca WHERE PecaId = vPecaId) THEN
+        DELETE FROM tbPeca WHERE PecaId = vPecaId;
+    ELSE
+        SELECT 'Peça não encontrada.' AS mensagem;
+    END IF;
+END $$

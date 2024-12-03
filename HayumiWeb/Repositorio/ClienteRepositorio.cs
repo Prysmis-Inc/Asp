@@ -274,4 +274,48 @@ public class ClienteRepositorio : IClienteRepositorio
             }
         }
     }
+
+    public bool EditarPeca(PecaModel peca)
+    {
+        using (var conexao = new MySqlConnection(_conexaoMySQL))
+        {
+            conexao.Open();
+            using (var cmd = new MySqlCommand("spUpdatePeca", conexao))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("vPecaId", peca.PecaId);
+                cmd.Parameters.AddWithValue("vNomePeca", peca.NomePeca);
+                cmd.Parameters.AddWithValue("vValorPeca", peca.ValorPeca);
+                cmd.Parameters.AddWithValue("vImgPeca", peca.ImgPeca);
+                cmd.Parameters.AddWithValue("vDescricao", peca.Descricao);
+                cmd.Parameters.AddWithValue("vQtdEstoque", peca.QtdEstoque);
+                cmd.Parameters.AddWithValue("vCategoriaId", peca.CategoriaId);
+
+                int result = cmd.ExecuteNonQuery();
+
+                return result > 0; // Retorna true se a atualização foi bem-sucedida
+            }
+        }
+    }
+
+    public bool RemoverPeca(int pecaId)
+    {
+        using (var conexao = new MySqlConnection(_conexaoMySQL))
+        {
+            conexao.Open();
+
+            using (var cmd = new MySqlCommand("spDeletePeca", conexao))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("vPecaId", pecaId);
+
+
+
+                int result = cmd.ExecuteNonQuery();
+                return result > 0;
+            }
+        }
+    }
 }

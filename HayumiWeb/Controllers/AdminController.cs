@@ -131,15 +131,16 @@ namespace HayumiWeb.Controllers
             }
 
             // Trocar pra update
-            _clienteRepositorio.InserirPeca(model.Peca);
+            _clienteRepositorio.EditarPeca(model.Peca);
 
             // Redireciona para a página de listagem ou exibe uma mensagem de sucesso
             return RedirectToAction("Index", "Admin");
         }
 
-        public IActionResult EditarCategoria()
+        public IActionResult ExcluirPeca(int id) 
         {
-            return View();
+            _clienteRepositorio.RemoverPeca(id);
+            return RedirectToAction("Index", "Admin");
         }
     }
     

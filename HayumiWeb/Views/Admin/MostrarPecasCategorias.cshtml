@@ -40,7 +40,7 @@
                     </td>
                     <td>
                         <a asp-action="EditarPeca" asp-controller="Admin" asp-route-pecaId="@peca.PecaId" class="btn btn-outline-secondary" style="margin-bottom:35px; margin-top:15px;"> Editar</a>
-                        <a asp-action="" asp-controller="" class="btn btn-danger">Remover</a>
+                        <a href="@Url.Action("ExcluirPeca", "Admin", new { id = peca.PecaId })" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir esta peça?');">Excluir</a>
                     </td>
                 </tr>
             }

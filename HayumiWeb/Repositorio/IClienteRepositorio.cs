@@ -16,6 +16,9 @@ namespace HayumiWeb.Repositorio
         public List<ClienteModel> BuscarTodosClientes();
         public void InserirCategoria(CategoriaModel categoria);
         public void InserirPeca(PecaModel peca);
+        public bool EditarPeca(PecaModel peca);
+        public bool RemoverPeca(int pecaId);
+
 
     }
 }

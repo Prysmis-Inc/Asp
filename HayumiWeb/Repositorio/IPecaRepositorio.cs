@@ -10,5 +10,6 @@ namespace HayumiWeb.Repositorio
         List<PecaModel> BuscarPecaPorNome(string pesquisa);
         List<PecaModel> BuscarTodasAsPecas();
         public List<PecaModel> BuscarPecaCategorias();
+
     }
 }

@@ -15,7 +15,7 @@
     @if (!string.IsNullOrEmpty(Model.Peca.ImgPeca))
     {
         <div>
-            <label>Current Image:</label>
+            <label>Imagem Atual:</label>
             <img src="@Url.Content("~/img/" + Model.Peca.ImgPeca)" alt="Current Image" width="150" />
         </div>
     }
@@ -57,5 +57,5 @@
     <br />
     <input type="hidden" asp-for="Peca.PecaId" value="@Model.Peca.PecaId" />
     <input type="hidden" asp-for="Peca.ImgPeca" value="@Model.Peca.ImgPeca" />
-    <button type="submit" class="btn btn-primary">Adicionar Peça</button>
+    <button type="submit" class="btn btn-primary">Editar Peça</button>
 </form>
